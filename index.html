@@ -43,6 +43,8 @@ header b{font-size:18px}header button{background:#ffffff33;padding:6px 10px}
 <script>
 /* ====== HUBUNGKAN GOOGLE SHEET: tempel URL Web App (berakhiran /exec) di antara tanda kutip, lalu simpan file ====== */
 const SHEET_URL='https://script.google.com/macros/s/AKfycbzF9iE0FZZP4xA0C68nCSYfVtYKMrK6TsHPPq_EJQnDb1RI6rHJld_AZJQjbgcLs8nBrg/exec';
+/* Kecepatan baca data (milidetik). Makin kecil makin cepat, tapi makin banyak permintaan ke Google. */
+const POLL_KASIR=2000,POLL_HP=3000;
 /* ====== DEFAULT (dipakai kalau Google Sheet masih kosong; selanjutnya diubah lewat tombol Admin) ====== */
 const DEFMENU=[
  {id:1,nama:'Nasi Goreng',harga:25000,kat:'dapur'},{id:2,nama:'Mie Goreng',harga:23000,kat:'dapur'},
@@ -71,21 +73,23 @@ const rr0=()=>mode==='kasir'?kas():pel();
 const rr=()=>mode==='kasir'?pnl():pel();
 const J=(k,d)=>{try{return JSON.parse(localStorage[k])||d}catch(e){return d}};
 
-async function load(){try{
+async function load(){const t0=Date.now();try{
  if(U){const r=await(await fetch(U)).json();O=r.orders||{};M=r.meja&&r.meja.length?r.meja:DEF;MENU=r.menu&&r.menu.length?r.menu:DEFMENU.map(x=>({...x}));CFG={...DEFCFG,...(r.cfg||{})}}
  else{O=J('O',{});M=J('M',DEF);MENU=J('MENU',DEFMENU.map(x=>({...x})));CFG={...DEFCFG,...J('CFG',{})}}
- ST=U?'● online':'● lokal (tes)'}catch(e){ST='⚠ gagal sambung ('+location.protocol+' · '+((e&&e.message)||e)+')'}
+ ST=U?'● online '+((Date.now()-t0)/1000).toFixed(1)+'s':'● lokal (tes)'}catch(e){ST='⚠ gagal sambung ('+location.protocol+' · '+((e&&e.message)||e)+')'}
  $('#st')&&($('#st').textContent=ST)}
 async function post(d){try{if(U)await fetch(U,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(d)});else{localStorage.O=JSON.stringify(O);localStorage.M=JSON.stringify(M);localStorage.MENU=JSON.stringify(MENU);localStorage.CFG=JSON.stringify(CFG)}}catch(e){alert('Gagal simpan ke Google Sheet')}}
 const head=t=>`<header><b>${t}</b><span><span id="st">${ST}</span> <button onclick="bukaAdmin()">🔧</button> <button onclick="location.hash='';location.reload()">Menu</button></span></header>`;
 
+var busy=false;
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!adm&&(mode==='kasir'||(mode==='pelayan'&&sel==null)))load().then(rr0)});
 function start(){
  if(mode!=='pelayan'&&mode!=='kasir'){app.innerHTML=`<div class="home"><h1>🍽 ${esc(CFG.resto)}</h1><button onclick="go('pelayan')">📱 Pelayan (HP)</button><button class="b" onclick="go('kasir')">🖥 Kasir (Desktop)</button><button class="g" onclick="bukaAdmin()">🔧 Admin</button></div>${U?'':'<p style="color:#c0392b;font-size:13px">⚠ URL Google Sheet belum diisi di file HTML. Data hanya tersimpan di perangkat ini (mode tes).</p>'}`;load().then(()=>{if(!adm&&mode!=='pelayan'&&mode!=='kasir')start2()});return}
  load().then(rr0);
  clearInterval(window.iv);window.iv=setInterval(async()=>{
-  if(adm)return;
-  if(mode==='kasir'){await load();kas(cartN()>0||document.activeElement.tagName==='INPUT')}
-  else if(sel==null){await load();pel()}},8000);
+  if(adm||document.hidden||busy)return;busy=true;
+  try{if(mode==='kasir'){await load();kas(cartN()>0||document.activeElement.tagName==='INPUT')}
+  else if(sel==null){await load();pel()}}finally{busy=false}},mode==='kasir'?POLL_KASIR:POLL_HP);
 }
 function start2(){const h=$('.home h1');if(h)h.textContent='🍽 '+CFG.resto}
 function go(m){location.hash=m;mode=m;start()}

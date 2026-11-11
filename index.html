@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Resto Sederhana</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,sans-serif;background:#f4f1ea;color:#222}
+button{font:inherit;cursor:pointer;border:0;border-radius:8px;padding:10px 14px;background:#2d6a4f;color:#fff}
+button:disabled{opacity:.4;cursor:not-allowed}
+button.g{background:#ddd;color:#222}button.r{background:#c0392b}button.o{background:#d98324}button.b{background:#2471a3}
+header{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#2d6a4f;color:#fff;position:sticky;top:0;z-index:5}
+header b{font-size:18px}header button{background:#ffffff33;padding:6px 10px}
+.home{max-width:380px;margin:80px auto;text-align:center}.home button{display:block;width:100%;margin:12px 0;padding:18px;font-size:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:12px;padding:14px}
+.t{position:relative;min-height:84px;padding:6px;border-radius:16px;background:color-mix(in srgb,var(--c,#52b788) 18%,#fff);border:4px solid var(--c,#52b788);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;cursor:pointer;transition:transform .15s}
+.t:hover{transform:scale(1.06)}.t small{font-size:12px}
+.t.pakai{background:#ffb3a7;border-color:#e74c3c;animation:p 1.6s infinite}.t.sel{outline:4px solid #222;outline-offset:2px}
+.t i{position:absolute;top:-8px;right:-6px;background:#d98324;color:#fff;font-style:normal;font-size:11px;padding:3px 7px;border-radius:10px}
+@keyframes p{0%,100%{box-shadow:0 0 0 0 #e74c3c88}50%{box-shadow:0 0 0 10px #e74c3c00}}
+.sec{margin:14px;padding:6px 12px 14px;border-radius:16px;border:2px solid var(--c);border-left-width:10px;background:color-mix(in srgb,var(--c) 8%,#fff)}
+.sec h3{margin:8px 0 0;color:var(--c)}.sec h3 small{color:#555;font-weight:400;margin-left:8px}.sec .grid{padding:10px 0}
+.tabs{display:flex;gap:8px;padding:10px 14px}.tabs button{flex:1;background:#ddd;color:#222}.tabs .on{background:#2d6a4f;color:#fff}
+.ar{padding:10px 14px 0}.ar button{padding:8px 4px;font-size:13px}
+.item{display:flex;align-items:center;gap:10px;background:#fff;margin:8px 14px;padding:10px;border-radius:10px}
+.item div:first-child{flex:1}.item small{color:#666}.q{display:flex;align-items:center;gap:8px}.q button{width:36px;padding:6px}
+.bar{position:fixed;bottom:0;left:0;right:0;background:#fff;padding:10px 14px;box-shadow:0 -2px 8px #0003;display:flex;gap:8px}
+.bar input{flex:1;padding:10px;border:1px solid #ccc;border-radius:8px}
+.kasir{display:grid;grid-template-columns:1fr 430px;align-items:start}
+.panel{background:#fff;padding:16px;border-left:1px solid #ddd;position:sticky;top:50px;height:calc(100vh - 50px);overflow:auto}
+.panel .tabs{padding:10px 0}.panel .item{margin:6px 0;background:#f6f6f6}
+.panel table{width:100%;border-collapse:collapse}.panel td{padding:5px 2px;border-bottom:1px solid #eee}
+.btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.leg{padding:0 14px;font-size:13px;color:#555}
+.adm{max-width:760px;margin:0 auto;padding:0 8px 50px}.adm .sec{margin:12px 0}
+.rowa{display:flex;gap:8px;align-items:center;margin:6px 0}.rowa span{flex:1}
+.rowa input,.rowa select{padding:8px;border:1px solid #ccc;border-radius:8px;font:inherit;background:#fff}
+.rowa input:not([type=number]){flex:1;min-width:0}.rowa input[type=number]{width:100px}
+.fld{display:block;margin:10px 0 2px;font-size:13px;color:#555}.fld+input{width:100%;padding:10px;border:1px solid #ccc;border-radius:8px;font:inherit}
+#pr{display:none}
+@media print{body>*:not(#pr){display:none!important}#pr{display:block;width:58mm;font:12px monospace;color:#000}#pr hr{border:0;border-top:1px dashed #000}#pr .r{display:flex;justify-content:space-between}}
+@media(max-width:800px){.kasir{grid-template-columns:1fr}.panel{position:static;height:auto}}
+</style></head><body>
+<div id="app"></div><div id="pr"></div>
+<script>
+/* ====== HUBUNGKAN GOOGLE SHEET: tempel URL Web App (berakhiran /exec) di antara tanda kutip, lalu simpan file ====== */
+const SHEET_URL='https://script.google.com/macros/s/AKfycbzF9iE0FZZP4xA0C68nCSYfVtYKMrK6TsHPPq_EJQnDb1RI6rHJld_AZJQjbgcLs8nBrg/exec';
+/* ====== DEFAULT (dipakai kalau Google Sheet masih kosong; selanjutnya diubah lewat tombol Admin) ====== */
+const DEFMENU=[
+ {id:1,nama:'Nasi Goreng',harga:25000,kat:'dapur'},{id:2,nama:'Mie Goreng',harga:23000,kat:'dapur'},
+ {id:3,nama:'Ayam Bakar',harga:30000,kat:'dapur'},{id:4,nama:'Sate Ayam',harga:28000,kat:'dapur'},
+ {id:5,nama:'Soto Ayam',harga:22000,kat:'dapur'},{id:6,nama:'Kentang Goreng',harga:15000,kat:'dapur'},
+ {id:7,nama:'Es Teh',harga:6000,kat:'bar'},{id:8,nama:'Es Jeruk',harga:9000,kat:'bar'},
+ {id:9,nama:'Kopi Hitam',harga:10000,kat:'bar'},{id:10,nama:'Kopi Susu',harga:15000,kat:'bar'},
+ {id:11,nama:'Jus Alpukat',harga:16000,kat:'bar'},{id:12,nama:'Air Mineral',harga:5000,kat:'bar'}];
+const DEFCFG={resto:'RESTO SAYA',alamat:'Jl. Contoh No. 1',pin:'1234'};
+/* ========================================================================== */
+const $=s=>document.querySelector(s),rp=n=>'Rp'+(+n).toLocaleString('id-ID'),esc=s=>String(s).replace(/"/g,'&quot;').replace(/</g,'&lt;');
+const AREAS=['Lantai 1','Lantai 2','Bungkus','Online'];
+const COL={'Lantai 1':'#2d6a4f','Lantai 2':'#2471a3','Bungkus':'#d98324','Online':'#8e44ad'};
+const DEF=[];
+for(let n=1;n<=10;n++)DEF.push({id:''+n,area:'Lantai 1',nama:''+n});
+for(let n=1;n<=10;n++)DEF.push({id:''+(n+10),area:'Lantai 2',nama:''+n});
+for(let n=1;n<=5;n++)DEF.push({id:'B'+n,area:'Bungkus',nama:'Bungkus '+n});
+['Shopee','GoFood','GrabFood','Lainnya'].forEach((x,i)=>DEF.push({id:'O'+(i+1),area:'Online',nama:x}));
+let U=SHEET_URL.trim(),O={},M=DEF,MENU=DEFMENU.map(x=>({...x})),CFG={...DEFCFG},ar=AREAS[0],mode=location.hash.slice(1),sel=null,cart={},tab='dapur',note='',ST='',adm=false,atab='meja',MN=[];
+const app=$('#app');
+const tot=o=>o?o.items.reduce((a,i)=>a+i.harga*i.qty,0):0;
+const baru=o=>o?o.items.filter(i=>i.qty>(i.p||0)).length:0;
+const cartN=()=>Object.values(cart).reduce((a,b)=>a+b,0);
+const lbl=id=>{const m=M.find(x=>x.id==id);return m?(m.area.startsWith('Lantai')?m.area+' · Meja '+m.nama:m.area=='Online'?'Online · '+m.nama:m.nama):'Meja '+id};
+const rr0=()=>mode==='kasir'?kas():pel();
+const rr=()=>mode==='kasir'?pnl():pel();
+const J=(k,d)=>{try{return JSON.parse(localStorage[k])||d}catch(e){return d}};
+
+async function load(){try{
+ if(U){const r=await(await fetch(U)).json();O=r.orders||{};M=r.meja&&r.meja.length?r.meja:DEF;MENU=r.menu&&r.menu.length?r.menu:DEFMENU.map(x=>({...x}));CFG={...DEFCFG,...(r.cfg||{})}}
+ else{O=J('O',{});M=J('M',DEF);MENU=J('MENU',DEFMENU.map(x=>({...x})));CFG={...DEFCFG,...J('CFG',{})}}
+ ST=U?'● online':'● lokal (tes)'}catch(e){ST='⚠ gagal sambung ('+location.protocol+' · '+((e&&e.message)||e)+')'}
+ $('#st')&&($('#st').textContent=ST)}
+async function post(d){try{if(U)await fetch(U,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(d)});else{localStorage.O=JSON.stringify(O);localStorage.M=JSON.stringify(M);localStorage.MENU=JSON.stringify(MENU);localStorage.CFG=JSON.stringify(CFG)}}catch(e){alert('Gagal simpan ke Google Sheet')}}
+const head=t=>`<header><b>${t}</b><span><span id="st">${ST}</span> <button onclick="bukaAdmin()">🔧</button> <button onclick="location.hash='';location.reload()">Menu</button></span></header>`;
+
+function start(){
+ if(mode!=='pelayan'&&mode!=='kasir'){app.innerHTML=`<div class="home"><h1>🍽 ${esc(CFG.resto)}</h1><button onclick="go('pelayan')">📱 Pelayan (HP)</button><button class="b" onclick="go('kasir')">🖥 Kasir (Desktop)</button><button class="g" onclick="bukaAdmin()">🔧 Admin</button></div>${U?'':'<p style="color:#c0392b;font-size:13px">⚠ URL Google Sheet belum diisi di file HTML. Data hanya tersimpan di perangkat ini (mode tes).</p>'}`;load().then(()=>{if(!adm&&mode!=='pelayan'&&mode!=='kasir')start2()});return}
+ load().then(rr0);
+ clearInterval(window.iv);window.iv=setInterval(async()=>{
+  if(adm)return;
+  if(mode==='kasir'){await load();kas(cartN()>0||document.activeElement.tagName==='INPUT')}
+  else if(sel==null){await load();pel()}},8000);
+}
+function start2(){const h=$('.home h1');if(h)h.textContent='🍽 '+CFG.resto}
+function go(m){location.hash=m;mode=m;start()}
+
+/* ===== MEJA (tampilan) ===== */
+function tbl(m,k){const o=O[m.id];
+ return `<div class="t ${o?'pakai':''} ${sel==m.id?'sel':''}" onclick="pilih('${m.id}')"><b style="font-size:${m.nama.length>3?15:24}px">${esc(m.nama)}</b><small>${o?(k?rp(tot(o)):'terisi'):'kosong'}</small>${k&&baru(o)?`<i>${baru(o)} baru</i>`:''}</div>`}
+function pilih(id){sel=id;cart={};note='';rr0()}
+
+/* ===== MENU ORDER (dipakai HP & kasir) ===== */
+function menuList(pre){
+ let h=`<div class="tabs"><button class="${tab=='dapur'?'on':''}" onclick="tab='dapur';rr()">🍛 Makanan</button><button class="${tab=='bar'?'on':''}" onclick="tab='bar';rr()">🥤 Minuman</button></div>${pre||''}`;
+ MENU.filter(m=>m.kat==tab).forEach(m=>{h+=`<div class="item"><div>${esc(m.nama)}<br><small>${rp(m.harga)}</small></div><div class="q"><button class="g" onclick="chg(${m.id},-1)">−</button><b>${cart[m.id]||0}</b><button onclick="chg(${m.id},1)">+</button></div></div>`});
+ return h}
+function chg(id,d){cart[id]=Math.max(0,(cart[id]||0)+d);rr()}
+function merge(o,items){items.forEach(it=>{const ex=o.items.find(i=>i.id==it.id&&(i.n||'')==(it.n||''));ex?ex.qty+=it.qty:o.items.push(it)})}
+function markPrinted(o,list){list.forEach(x=>{const i=o.items.find(i=>i.id==x.id&&(i.n||'')==(x.n||''));if(i)i.p=Math.min(i.qty,Math.max(i.p||0,x.qty))})}
+async function kirim(){
+ const items=[];for(const id in cart){if(!cart[id])continue;const m=MENU.find(x=>x.id==id);if(m)items.push({id:+id,nama:m.nama,harga:m.harga,kat:m.kat,qty:cart[id],p:0,n:note})}
+ if(!items.length)return;
+ const waktu=new Date().toISOString();
+ if(!U){const o=O[sel]||(O[sel]={meja:sel,waktu,items:[]});merge(o,items)}
+ await post({action:'add',meja:sel,items,waktu});cart={};note='';await load();
+ if(mode==='kasir')kas();else{alert('Pesanan terkirim ke kasir ✔');sel=null;pel()}}
+
+/* ===== PELAYAN (HP) ===== */
+function pel(){
+ if(sel==null){
+  app.innerHTML=head('Pilih Meja')+'<div class="tabs ar">'+AREAS.map((a,i)=>{const n=M.filter(m=>m.area==a&&O[m.id]).length;return `<button class="${a==ar?'on':''}" onclick="ar=AREAS[${i}];pel()">${a}${n?' ('+n+')':''}</button>`}).join('')+'</div><div class="grid">'+M.filter(m=>m.area==ar).map(m=>tbl(m,false)).join('')+'</div>';return}
+ const o=O[sel],n=cartN();
+ const pre=o?`<div class="leg">Sudah dipesan: ${o.items.map(i=>i.qty+'x '+esc(i.nama)).join(', ')}</div>`:'';
+ app.innerHTML=head(lbl(sel))+menuList(pre)+`<div style="height:90px"></div><div class="bar"><button class="g" onclick="sel=null;pel()">←</button><input placeholder="Catatan (pedas, tanpa es...)" value="${esc(note)}" oninput="note=this.value"><button ${n?'':'disabled'} onclick="kirim()">Kirim (${n})</button></div>`}
+
+/* ===== KASIR (desktop) ===== */
+function denahAll(){
+ return AREAS.map(a=>{const L=M.filter(m=>m.area==a),n=L.filter(m=>O[m.id]).length;
+  return `<div class="sec" style="--c:${COL[a]}"><h3>${a}<small>${n}/${L.length} terisi</small></h3><div class="grid">${L.map(m=>tbl(m,true)).join('')}</div></div>`}).join('')}
+function kas(skip){
+ if(sel!=null&&!M.find(m=>m.id==sel))sel=null;
+ if(!$('#dn'))app.innerHTML=head('Kasir – '+esc(CFG.resto))+'<div class="kasir"><div><div class="leg" style="padding-top:12px">Merah berkedip = terisi · Badge oranye = ada pesanan belum dicetak · Klik meja untuk melihat / memesan</div><div id="dn"></div></div><div class="panel" id="pn"></div></div>';
+ $('#dn').innerHTML=denahAll();
+ if(!skip)pnl()}
+function pnl(){$('#pn').innerHTML=panel()}
+function panel(){
+ if(sel==null)return '<p>Klik meja untuk melihat atau membuat pesanan.</p>';
+ const o=O[sel],n=cartN();
+ let h=`<h2 style="margin-top:0">${lbl(sel)}</h2>`;
+ if(!o)h+='<p>Belum ada pesanan.</p>';
+ else h+='<table>'+o.items.map(i=>`<tr><td>${i.qty}x ${esc(i.nama)}${i.n?`<br><small>📝 ${esc(i.n)}</small>`:''}</td><td>${i.kat=='bar'?'🥤':'🍛'}${i.qty>(i.p||0)?' <b style="color:#d98324">baru</b>':''}</td><td align="right">${rp(i.harga*i.qty)}</td></tr>`).join('')+`<tr><td colspan="2"><b>TOTAL</b></td><td align="right"><b>${rp(tot(o))}</b></td></tr></table>
+  <div class="btns"><button class="o" onclick="cetakK('dapur')">🖨 Dapur</button><button class="b" onclick="cetakK('bar')">🖨 Bartender</button><button class="g" onclick="cetakK('semua')">🖨 Order (semua)</button><button class="g" onclick="nota()">🧾 Nota</button><button class="r" style="grid-column:span 2" onclick="bayar()">✔ Bayar &amp; Selesai</button></div>`;
+ h+=`<hr style="margin:18px 0 6px"><b>＋ ${o?'Tambah':'Buat'} pesanan</b>`+menuList()+`<div style="display:flex;gap:8px;margin-top:10px"><input placeholder="Catatan..." value="${esc(note)}" oninput="note=this.value" style="flex:1;padding:10px;border:1px solid #ccc;border-radius:8px"><button ${n?'':'disabled'} onclick="kirim()">Simpan (${n})</button></div>`;
+ return h}
+
+/* ===== CETAK ===== */
+function cetak(h){$('#pr').innerHTML=h;window.print()}
+const wk=()=>new Date().toLocaleString('id-ID');
+async function cetakK(k){
+ const o=O[sel];const kats=k=='semua'?['dapur','bar']:[k];let hasil='',pl=[];
+ kats.forEach(kt=>{let L=o.items.filter(i=>i.kat==kt&&i.qty>(i.p||0));let ulang=false;
+  if(!L.length){L=o.items.filter(i=>i.kat==kt);ulang=true}
+  if(!L.length)return;
+  L.forEach(i=>pl.push({id:i.id,n:i.n||'',qty:i.qty}));
+  hasil+=`<div style="page-break-after:always"><b>${kt=='bar'?'BARTENDER':'DAPUR'}${ulang?' (ULANG)':''}</b><br>${lbl(sel)} · ${wk()}<hr>${L.map(i=>`<div><b>${ulang?i.qty:i.qty-(i.p||0)}x ${esc(i.nama)}</b>${i.n?`<br>&nbsp;&nbsp;*${esc(i.n)}`:''}</div>`).join('')}<hr></div>`});
+ if(!hasil)return alert('Tidak ada item untuk dicetak');
+ markPrinted(o,pl);await post({action:'printed',meja:sel,list:pl});cetak(hasil);kas()}
+function nota(){const o=O[sel];
+ cetak(`<div style="text-align:center"><b>${esc(CFG.resto)}</b><br>${esc(CFG.alamat)}</div><hr>${lbl(sel)}<br>${wk()}<hr>${o.items.map(i=>`<div>${esc(i.nama)}</div><div class="r"><span>${i.qty} x ${(+i.harga).toLocaleString('id-ID')}</span><span>${(i.harga*i.qty).toLocaleString('id-ID')}</span></div>`).join('')}<hr><div class="r"><b>TOTAL</b><b>${rp(tot(o))}</b></div><hr><div style="text-align:center">Terima kasih 🙏</div>`)}
+async function bayar(){const o=O[sel];
+ if(!confirm(`${lbl(sel)} dibayar ${rp(tot(o))}? Meja akan dikosongkan.`))return;
+ const d={action:'pay',meja:sel,label:lbl(sel)};delete O[sel];await post(d);sel=null;kas()}
+
+/* ===== ADMIN ===== */
+function bukaAdmin(){
+ const p=prompt('Masukkan PIN admin:');if(p===null)return;
+ if(p!==String(CFG.pin))return alert('PIN salah');
+ adm=true;atab='meja';MN=MENU.map(x=>({...x}));load().then(admin)}
+function tutupAdmin(){adm=false;sel=null;app.innerHTML='';start()}
+function admin(){
+ const T=(k,t)=>`<button class="${atab==k?'on':''}" onclick="atab='${k}';admin()">${t}</button>`;
+ let h=`<header><b>🔧 Admin</b><button onclick="tutupAdmin()">✕ Tutup</button></header><div class="adm"><div class="tabs" style="padding-left:0;padding-right:0">${T('meja','Meja')}${T('menu','Menu')}${T('set','Pengaturan')}</div>`;
+ if(atab=='meja'){
+  h+=AREAS.map((a,i)=>`<div class="sec" style="--c:${COL[a]}"><h3>${a}</h3>${M.filter(m=>m.area==a).map(m=>`<div class="rowa"><span>${esc(m.nama)}${O[m.id]?' <small>(ada pesanan)</small>':''}</span><button class="r" ${O[m.id]?'disabled':''} onclick="admHapus('${m.id}')">🗑 Hapus</button></div>`).join('')}<div class="rowa"><input id="nm${i}" placeholder="Nama meja baru (kosong = otomatis)"><button onclick="admTambah(${i})">＋ Tambah</button></div></div>`).join('')+'<button class="g" onclick="resetMeja()">↺ Reset meja ke default</button>'}
+ if(atab=='menu'){
+  h+=MN.map((m,i)=>`<div class="rowa"><input value="${esc(m.nama)}" onchange="MN[${i}].nama=this.value"><input type="number" value="${m.harga}" onchange="MN[${i}].harga=+this.value"><select onchange="MN[${i}].kat=this.value"><option value="dapur" ${m.kat=='dapur'?'selected':''}>Makanan</option><option value="bar" ${m.kat=='bar'?'selected':''}>Minuman</option></select><button class="r" onclick="MN.splice(${i},1);admin()">🗑</button></div>`).join('')+'<div class="rowa"><button class="g" onclick="admMenuTambah()">＋ Tambah menu</button><button onclick="admMenuSimpan()">💾 Simpan menu</button></div><p class="leg" style="padding:0">Perubahan menu baru berlaku setelah klik Simpan. Pesanan yang sudah masuk tidak berubah.</p>'}
+ if(atab=='set'){
+  h+=`<label class="fld">Nama restoran</label><input id="cn" value="${esc(CFG.resto)}"><label class="fld">Alamat (tampil di nota)</label><input id="ca" value="${esc(CFG.alamat)}"><label class="fld">PIN admin</label><input id="cp" value="${esc(CFG.pin)}"><div class="rowa" style="margin-top:14px"><button onclick="admSet()">💾 Simpan pengaturan</button></div>`}
+ app.innerHTML=h+'</div>'}
+async function admTambah(i){
+ const a=AREAS[i],s=M.filter(m=>m.area==a);let n=($('#nm'+i).value||'').trim();
+ if(!n)n=a.startsWith('Lantai')?''+(Math.max(0,...s.map(m=>parseInt(m.nama)||0))+1):a+' '+(s.length+1);
+ M.push({id:'m'+Date.now(),area:a,nama:n});await post({action:'meja',list:M});admin()}
+async function admHapus(id){
+ if(!confirm('Hapus '+lbl(id)+'?'))return;
+ M=M.filter(m=>m.id!=id);await post({action:'meja',list:M});admin()}
+async function resetMeja(){
+ if(Object.keys(O).some(id=>!DEF.find(m=>m.id==id)))return alert('Masih ada pesanan aktif di meja tambahan. Bayar dulu, baru reset.');
+ if(!confirm('Kembalikan daftar meja ke default? Meja tambahan akan dihapus.'))return;
+ M=DEF.map(m=>({...m}));await post({action:'meja',list:M});admin()}
+function admMenuTambah(){MN.push({id:Math.max(0,...MN.map(m=>m.id),...MENU.map(m=>m.id))+1,nama:'Menu baru',harga:0,kat:'dapur'});admin()}
+async function admMenuSimpan(){
+ if(MN.some(m=>!String(m.nama).trim()))return alert('Nama menu tidak boleh kosong');
+ if(!MN.length)return alert('Menu tidak boleh kosong');
+ MENU=MN.map(m=>({...m,nama:String(m.nama).trim(),harga:+m.harga||0}));await post({action:'menu',list:MENU});alert('Menu tersimpan ✔');admin()}
+async function admSet(){
+ CFG={resto:$('#cn').value.trim()||DEFCFG.resto,alamat:$('#ca').value.trim(),pin:$('#cp').value.trim()||'1234'};
+ await post({action:'cfg',cfg:CFG});alert('Pengaturan tersimpan ✔');admin()}
+start();
+</script></body></html>

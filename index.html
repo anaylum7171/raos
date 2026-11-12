@@ -48,6 +48,13 @@ header b{font-size:18px}header button{background:#ffffff33;padding:6px 10px}
 .ck.y,tr.y{background:#fff3b0}.ck.rd,tr.rd{background:#ffc9d4}
 .tm{font-variant-numeric:tabular-nums;font-weight:700;color:#555;white-space:nowrap}.y .tm{color:#8a6d00}.rd .tm{color:#b0002a}
 .item{flex-wrap:wrap}.item .nt{flex-basis:100%;padding:7px 9px;border:1px solid #ddd;border-radius:8px;font:inherit;font-size:13px;background:#fafafa}
+.mdl{position:fixed;inset:0;background:#0007;z-index:50;display:flex;align-items:center;justify-content:center;padding:14px}
+.mbox{background:#fff;border-radius:14px;padding:18px;width:100%;max-width:400px;max-height:94vh;overflow:auto}.mbox h2{margin:0 0 6px}
+.mt{display:flex;gap:8px;margin:12px 0}.mt button{flex:1}.mt .g{background:#ddd}.mt .tg{background:#ddd;color:#222}.mt .on{background:#2d6a4f;color:#fff}
+.mrow{display:flex;justify-content:space-between;align-items:center;margin:9px 0;font-size:16px}
+.mbox input.by{width:170px;padding:10px;border:1px solid #ccc;border-radius:8px;font:inherit;font-size:20px;text-align:right}
+.qk{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;margin:4px 0}.qk button{background:#eee;color:#222;padding:6px 10px;font-size:13px}
+.kb{font-size:22px;font-weight:700;color:#2d6a4f}.kb.neg{color:#c0392b}
 #pr{display:none}
 @media print{body>*:not(#pr){display:none!important}#pr{display:block;width:58mm;font:12px monospace;color:#000}#pr hr{border:0;border-top:1px dashed #000}#pr .r{display:flex;justify-content:space-between}}
 @media(max-width:800px){.kasir{grid-template-columns:1fr}.panel{position:static;height:auto}}
@@ -65,7 +72,8 @@ const DEFMENU=[
  {id:5,nama:'Soto Ayam',harga:22000,kat:'dapur'},{id:6,nama:'Kentang Goreng',harga:15000,kat:'dapur'},
  {id:7,nama:'Es Teh',harga:6000,kat:'bar'},{id:8,nama:'Es Jeruk',harga:9000,kat:'bar'},
  {id:9,nama:'Kopi Hitam',harga:10000,kat:'bar'},{id:10,nama:'Kopi Susu',harga:15000,kat:'bar'},
- {id:11,nama:'Jus Alpukat',harga:16000,kat:'bar'},{id:12,nama:'Air Mineral',harga:5000,kat:'bar'}];
+ {id:11,nama:'Jus Alpukat',harga:16000,kat:'bar'},{id:12,nama:'Air Mineral',harga:5000,kat:'bar'},
+ {id:13,nama:'Paket Hemat',harga:28000,kat:'paket',isi:[{id:1,qty:1},{id:7,qty:1}]}];
 const DEFCFG={resto:'RESTO SAYA',alamat:'Jl. Contoh No. 1',pin:'1234'};
 /* ========================================================================== */
 const $=s=>document.querySelector(s),rp=n=>'Rp'+(+n).toLocaleString('id-ID'),esc=s=>String(s).replace(/"/g,'&quot;').replace(/</g,'&lt;');
@@ -79,15 +87,16 @@ for(let n=1;n<=5;n++)DEF.push({id:'B'+n,area:'Bungkus',nama:'Bungkus '+n});
 let U=SHEET_URL.trim(),O={},M=DEF,MENU=DEFMENU.map(x=>({...x})),CFG={...DEFCFG},ar=AREAS[0],mode=location.hash.slice(1),sel=null,cart={},tab='dapur',notes={},ST='',adm=false,vw='',atab='meja',MN=[];
 const app=$('#app');
 const tot=o=>o?o.items.reduce((a,i)=>a+i.harga*i.qty,0):0;
-const baru=o=>o?o.items.filter(i=>i.qty>(i.p||0)).length:0;
-const blm=o=>o?o.items.reduce((a,i)=>a+Math.max(0,i.qty-(i.d||0)),0):0;
+const act=i=>i.kat!=='paket';
+const baru=o=>o?o.items.filter(i=>act(i)&&i.qty>(i.p||0)).length:0;
+const blm=o=>o?o.items.reduce((a,i)=>a+(act(i)?Math.max(0,i.qty-(i.d||0)):0),0):0;
 const blmAll=()=>Object.values(O).reduce((a,o)=>a+blm(o),0);
-const blmP=o=>o?o.items.reduce((a,i)=>a+Math.max(0,i.qty-(i.p||0)),0):0;
+const blmP=o=>o?o.items.reduce((a,i)=>a+(act(i)?Math.max(0,i.qty-(i.p||0)):0),0):0;
 const blmPAll=()=>Object.values(O).reduce((a,o)=>a+blmP(o),0);
 const t0o=(o,it)=>it.t||(o&&o.waktu)||'';
 const fmtT=t=>{const ms=Date.now()-Date.parse(t);if(isNaN(ms))return '';const s=Math.max(0,Math.floor(ms/1000));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
-const tcls=(o,it)=>{if((it.d||0)>=it.qty)return '';const ms=Date.now()-Date.parse(t0o(o,it));return isNaN(ms)?'':ms>=900000?'rd':ms>=300000?'y':''};
-const tmr=(o,it)=>{if((it.d||0)>=it.qty)return '';const t=t0o(o,it);return t?`<small class="tm" data-t="${t}">${fmtT(t)}</small>`:''};
+const tcls=(o,it)=>{if(it.kat==='paket'||(it.d||0)>=it.qty)return '';const ms=Date.now()-Date.parse(t0o(o,it));return isNaN(ms)?'':ms>=900000?'rd':ms>=300000?'y':''};
+const tmr=(o,it)=>{if(it.kat==='paket'||(it.d||0)>=it.qty)return '';const t=t0o(o,it);return t?`<small class="tm" data-t="${t}">${fmtT(t)}</small>`:''};
 function tick(){document.querySelectorAll('[data-t]').forEach(el=>{const ms=Date.now()-Date.parse(el.dataset.t);if(isNaN(ms))return;el.textContent=fmtT(el.dataset.t);const r=el.closest('.ck,tr');if(r){r.classList.toggle('y',ms>=300000&&ms<900000);r.classList.toggle('rd',ms>=900000)}})}
 setInterval(tick,1000);
 const ostart=o=>o?(o.waktu||o.items.map(i=>i.t).filter(Boolean).sort()[0]||''):'';
@@ -104,13 +113,13 @@ async function load(force){const t0=Date.now(),w0=wv;try{
  else{O=J('O',{});M=J('M',DEF);MENU=J('MENU',DEFMENU.map(x=>({...x})));CFG={...DEFCFG,...J('CFG',{})}}
  ST=U?'● online '+((Date.now()-t0)/1000).toFixed(1)+'s':'● lokal (tes)'}catch(e){ST='⚠ gagal sambung ('+location.protocol+' · '+((e&&e.message)||e)+')'}
  $('#st')&&($('#st').textContent=ST)}
-async function post(d){wv++;lw=Date.now();try{if(U)await fetch(U,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(d)});else{localStorage.O=JSON.stringify(O);localStorage.M=JSON.stringify(M);localStorage.MENU=JSON.stringify(MENU);localStorage.CFG=JSON.stringify(CFG)}}catch(e){alert('Gagal simpan ke Google Sheet')}lw=Date.now()}
+async function post(d,quiet){wv++;lw=Date.now();let r='';try{if(U){const x=await fetch(U,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(d)});r=await x.text()}else{localStorage.O=JSON.stringify(O);localStorage.M=JSON.stringify(M);localStorage.MENU=JSON.stringify(MENU);localStorage.CFG=JSON.stringify(CFG)}}catch(e){r=null;if(!quiet)alert('Gagal simpan ke Google Sheet')}lw=Date.now();return r}
 const head=t=>`<header><b>${t}</b><span><span id="st">${ST}</span> <button onclick="bukaAdmin()">🔧</button> <button onclick="location.hash='';location.reload()">Menu</button></span></header>`;
 
 var busy=false,wv=0,lw=0;
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!adm&&(mode==='kasir'||(mode==='pelayan'&&sel==null)))load().then(rr0)});
 function start(){
- if(mode!=='pelayan'&&mode!=='kasir'){app.innerHTML=`<div class="home"><h1>🍽 ${esc(CFG.resto)}</h1><button onclick="go('pelayan')">📱 Pelayan (HP)</button><button class="b" onclick="go('kasir')">🖥 Kasir (Desktop)</button><button class="g" onclick="bukaAdmin()">🔧 Admin</button></div>${U?'':'<p style="color:#c0392b;font-size:13px">⚠ URL Google Sheet belum diisi di file HTML. Data hanya tersimpan di perangkat ini (mode tes).</p>'}`;load().then(()=>{if(!adm&&mode!=='pelayan'&&mode!=='kasir')start2()});return}
+ if(mode!=='pelayan'&&mode!=='kasir'){app.innerHTML=`<div class="home"><h1>🍽 ${esc(CFG.resto)}</h1><button class="b" onclick="go('kasir')">🖥 Kasir (Desktop)</button><button onclick="go('pelayan')">📱 Pelayan (HP)</button><button class="g" onclick="bukaAdmin()">🔧 Admin</button></div>${U?'':'<p style="color:#c0392b;font-size:13px">⚠ URL Google Sheet belum diisi di file HTML. Data hanya tersimpan di perangkat ini (mode tes).</p>'}`;load().then(()=>{if(!adm&&mode!=='pelayan'&&mode!=='kasir')start2()});return}
  load().then(rr0);
  clearInterval(window.iv);window.iv=setInterval(async()=>{
   if(adm||document.hidden||busy)return;busy=true;
@@ -128,7 +137,8 @@ function pilih(id){sel=id;vw='';cart={};notes={};rr0()}
 function antar(mid,i,on){const o=O[mid],it=o&&o.items[i];if(!it)return;it.d=on?it.qty:0;rr0();
  post({action:'delivered',meja:mid,id:it.id,n:it.n||'',done:on})}
 function rowsAntar(mid){const o=O[mid];return o.items.map((it,i)=>{const dn=(it.d||0)>=it.qty;
- return `<label class="ck ${dn?'dn':''} ${tcls(o,it)}"><input type="checkbox" ${dn?'checked':''} onchange="antar('${mid}',${i},this.checked)"><span>${it.qty}x ${esc(it.nama)}${!dn&&it.d?` <small>(sisa ${it.qty-it.d})</small>`:''}${it.n?` <small>📝 ${esc(it.n)}</small>`:''}</span>${tmr(o,it)}<small>${it.kat=='bar'?'🥤':'🍛'}</small></label>`}).join('')}
+ if(it.kat==='paket')return `<div class="ck" style="cursor:default;background:#f0f4f2"><span><b>📦 ${it.qty}x ${esc(it.nama)}</b>${it.n?` <small>📝 ${esc(it.n)}</small>`:''}</span></div>`;
+ return `<label class="ck ${dn?'dn':''} ${tcls(o,it)}"><input type="checkbox" ${dn?'checked':''} onchange="antar('${mid}',${i},this.checked)"><span>${it.pkn?'↳ ':''}${it.qty}x ${esc(it.nama)}${!dn&&it.d?` <small>(sisa ${it.qty-it.d})</small>`:''}${it.n?` <small>📝 ${esc(it.n)}</small>`:''}</span>${tmr(o,it)}<small>${it.kat=='bar'?'🥤':'🍛'}</small></label>`}).join('')}
 function ob(mid,btn){const o=O[mid],b=blm(o);
  return `<div class="ob"><div class="oh"><b>${lbl(mid)}</b>${b?`<span class="pill">${b} belum diantar</span>`:'<span class="ok">✔ semua diantar</span>'}${btn?`<button class="g" style="padding:3px 10px;font-size:12px" onclick="pilih('${mid}')">Buka</button>`:''}</div>${rowsAntar(mid)}</div>`}
 function listAll(){
@@ -138,15 +148,19 @@ function listAll(){
  return ids.map(id=>ob(id,true)).join('')}
 
 /* ===== MENU ORDER (dipakai HP & kasir) ===== */
+const isiTxt=m=>(m.isi||[]).map(c=>{const x=MENU.find(y=>y.id==c.id);return c.qty+'x '+(x?esc(x.nama):'?')}).join(', ');
 function menuList(pre){
- let h=`<div class="tabs"><button class="${tab=='dapur'?'on':''}" onclick="tab='dapur';rr()">🍛 Makanan</button><button class="${tab=='bar'?'on':''}" onclick="tab='bar';rr()">🥤 Minuman</button></div>${pre||''}`;
- MENU.filter(m=>m.kat==tab).forEach(m=>{h+=`<div class="item"><div>${esc(m.nama)}<br><small>${rp(m.harga)}</small></div><div class="q"><button class="g" onclick="chg(${m.id},-1)">−</button><b>${cart[m.id]||0}</b><button onclick="chg(${m.id},1)">+</button></div><input class="nt" placeholder="Catatan menu ini (pedas, tanpa es...)" value="${esc(notes[m.id]||'')}" oninput="notes[${m.id}]=this.value"></div>`});
+ let h=`<div class="tabs"><button class="${tab=='dapur'?'on':''}" onclick="tab='dapur';rr()">🍛 Makanan</button><button class="${tab=='bar'?'on':''}" onclick="tab='bar';rr()">🥤 Minuman</button><button class="${tab=='paket'?'on':''}" onclick="tab='paket';rr()">📦 Paket</button></div>${pre||''}`;
+ MENU.filter(m=>m.kat==tab).forEach(m=>{h+=`<div class="item"><div>${esc(m.nama)}<br><small>${rp(m.harga)}</small>${m.kat=='paket'?`<br><small>${isiTxt(m)}</small>`:''}</div><div class="q"><button class="g" onclick="chg(${m.id},-1)">−</button><b>${cart[m.id]||0}</b><button onclick="chg(${m.id},1)">+</button></div><input class="nt" placeholder="Catatan menu ini (pedas, tanpa es...)" value="${esc(notes[m.id]||'')}" oninput="notes[${m.id}]=this.value"></div>`});
  return h}
 function chg(id,d){cart[id]=Math.max(0,(cart[id]||0)+d);rr()}
 function merge(o,items){items.forEach(it=>{const ex=o.items.find(i=>i.id==it.id&&(i.n||'')==(it.n||''));if(ex){if((ex.d||0)>=ex.qty)ex.t=it.t;ex.qty+=it.qty}else o.items.push(it)})}
 function markPrinted(o,list){list.forEach(x=>{const i=o.items.find(i=>i.id==x.id&&(i.n||'')==(x.n||''));if(i)i.p=Math.min(i.qty,Math.max(i.p||0,x.qty))})}
 async function kirim(){
- const waktu=new Date().toISOString(),items=[];for(const id in cart){if(!cart[id])continue;const m=MENU.find(x=>x.id==id);if(m)items.push({id:+id,nama:m.nama,harga:m.harga,kat:m.kat,qty:cart[id],p:0,n:(notes[id]||'').trim(),t:waktu})}
+ const waktu=new Date().toISOString(),items=[];
+ for(const id in cart){if(!cart[id])continue;const m=MENU.find(x=>x.id==id);if(!m)continue;const n=(notes[id]||'').trim();
+  items.push({id:+id,nama:m.nama,harga:m.harga,kat:m.kat,qty:cart[id],p:0,n,t:waktu});
+  if(m.kat==='paket')(m.isi||[]).forEach(c=>{const x=MENU.find(y=>y.id==c.id);if(x&&x.kat!=='paket')items.push({id:'p'+m.id+'_'+x.id,nama:x.nama,harga:0,kat:x.kat,qty:c.qty*cart[id],p:0,n,t:waktu,pkn:m.nama})})}
  if(!items.length)return;
  if(!U){const o=O[sel]||(O[sel]={meja:sel,waktu,items:[]});merge(o,items)}
  await post({action:'add',meja:sel,items,waktu});cart={};notes={};await load(true);
@@ -177,8 +191,8 @@ function panel(){
  const o=O[sel],n=cartN();
  let h=`<h2 style="margin-top:0">${lbl(sel)}</h2>`;
  if(!o)h+='<p>Belum ada pesanan.</p>';
- else h+='<table>'+o.items.map((i,x)=>`<tr class="${tcls(o,i)}"><td style="width:28px"><input type="checkbox" style="width:20px;height:20px" ${(i.d||0)>=i.qty?'checked':''} onchange="antar('${sel}',${x},this.checked)"></td><td>${i.qty}x ${esc(i.nama)}${i.n?`<br><small>📝 ${esc(i.n)}</small>`:''}</td><td>${i.kat=='bar'?'🥤':'🍛'}${i.qty>(i.p||0)?' <b style="color:#d98324">baru</b>':''}${tmr(o,i)?'<br>'+tmr(o,i):''}</td><td align="right">${rp(i.harga*i.qty)}</td></tr>`).join('')+`<tr><td colspan="3"><b>TOTAL</b></td><td align="right"><b>${rp(tot(o))}</b></td></tr></table>
-  <div class="btns"><button class="o" onclick="cetakK('dapur')">🖨 Dapur</button><button class="b" onclick="cetakK('bar')">🖨 Bartender</button><button class="g" onclick="cetakK('semua')">🖨 Order (semua)</button><button class="g" onclick="nota()">🧾 Nota</button><button class="r" style="grid-column:span 2" onclick="bayar()">✔ Bayar &amp; Selesai</button></div>`;
+ else h+='<table>'+o.items.map((i,x)=>`<tr class="${tcls(o,i)}"><td style="width:28px">${i.kat==='paket'?'':`<input type="checkbox" style="width:20px;height:20px" ${(i.d||0)>=i.qty?'checked':''} onchange="antar('${sel}',${x},this.checked)">`}</td><td>${i.pkn?'↳ ':i.kat==='paket'?'📦 ':''}${i.qty}x ${esc(i.nama)}${i.n?`<br><small>📝 ${esc(i.n)}</small>`:''}</td><td>${i.kat=='paket'?'📦':i.kat=='bar'?'🥤':'🍛'}${act(i)&&i.qty>(i.p||0)?' <b style="color:#d98324">baru</b>':''}${tmr(o,i)?'<br>'+tmr(o,i):''}</td><td align="right">${i.pkn?'':rp(i.harga*i.qty)}</td></tr>`).join('')+`<tr><td colspan="3"><b>TOTAL</b></td><td align="right"><b>${rp(tot(o))}</b></td></tr></table>
+  <div class="btns"><button class="o" onclick="cetakK('dapur')">🖨 Dapur</button><button class="b" onclick="cetakK('bar')">🖨 Bartender</button><button class="g" onclick="cetakK('semua')">🖨 Order (semua)</button><button class="g" onclick="nota()">🧾 Tagihan</button><button class="r" style="grid-column:span 2" onclick="bayar()">💰 Bayar</button></div>`;
  h+=`<hr style="margin:18px 0 6px"><b>＋ ${o?'Tambah':'Buat'} pesanan</b>`+menuList()+`<div style="margin-top:10px"><button style="width:100%" ${n?'':'disabled'} onclick="kirim()">Simpan (${n})</button></div>`;
  return h}
 
@@ -191,20 +205,62 @@ async function cetakK(k){
   if(!L.length){L=o.items.filter(i=>i.kat==kt);ulang=true}
   if(!L.length)return;
   L.forEach(i=>pl.push({id:i.id,n:i.n||'',qty:i.qty}));
-  hasil+=`<div style="page-break-after:always"><b>${kt=='bar'?'BARTENDER':'DAPUR'}${ulang?' (ULANG)':''}</b><br>${lbl(sel)} · ${wk()}<hr>${L.map(i=>`<div><b>${ulang?i.qty:i.qty-(i.p||0)}x ${esc(i.nama)}</b>${i.n?`<br>&nbsp;&nbsp;*${esc(i.n)}`:''}</div>`).join('')}<hr></div>`});
+  hasil+=`<div style="page-break-after:always"><b>${kt=='bar'?'BARTENDER':'DAPUR'}${ulang?' (ULANG)':''}</b><br>${lbl(sel)} · ${wk()}<hr>${L.map(i=>`<div><b>${ulang?i.qty:i.qty-(i.p||0)}x ${esc(i.nama)}</b>${i.pkn?` <small>[${esc(i.pkn)}]</small>`:''}${i.n?`<br>&nbsp;&nbsp;*${esc(i.n)}`:''}</div>`).join('')}<hr></div>`});
  if(!hasil)return alert('Tidak ada item untuk dicetak');
  markPrinted(o,pl);await post({action:'printed',meja:sel,list:pl});cetak(hasil);kas()}
+function itemsNota(items){return items.map(i=>i.pkn?`<div style="padding-left:8px">- ${i.qty}x ${esc(i.nama)}</div>`:`<div>${esc(i.nama)}${i.n?` *${esc(i.n)}`:''}</div><div class="r"><span>${i.qty} x ${(+i.harga).toLocaleString('id-ID')}</span><span>${(i.harga*i.qty).toLocaleString('id-ID')}</span></div>`).join('')}
 function nota(){const o=O[sel];
- cetak(`<div style="text-align:center"><b>${esc(CFG.resto)}</b><br>${esc(CFG.alamat)}</div><hr>${lbl(sel)}<br>${wk()}<hr>${o.items.map(i=>`<div>${esc(i.nama)}</div><div class="r"><span>${i.qty} x ${(+i.harga).toLocaleString('id-ID')}</span><span>${(i.harga*i.qty).toLocaleString('id-ID')}</span></div>`).join('')}<hr><div class="r"><b>TOTAL</b><b>${rp(tot(o))}</b></div><hr><div style="text-align:center">Terima kasih 🙏</div>`)}
-async function bayar(){const o=O[sel];
- if(!confirm(`${lbl(sel)} dibayar ${rp(tot(o))}? Meja akan dikosongkan.`))return;
- const d={action:'pay',meja:sel,label:lbl(sel)};delete O[sel];await post(d);sel=null;kas()}
+ cetak(`<div style="text-align:center"><b>${esc(CFG.resto)}</b><br>${esc(CFG.alamat)}</div><hr><div style="text-align:center"><b>TAGIHAN</b><br>(belum dibayar)</div><hr>${esc(lbl(sel))}<br>${wk()}<hr>${itemsNota(o.items)}<hr><div class="r"><b>TOTAL</b><b>${rp(tot(o))}</b></div><hr><div style="text-align:center">Terima kasih 🙏</div>`)}
+function cetakNota(){const n=lastNota;if(!n)return;
+ cetak(`<div style="text-align:center"><b>${esc(CFG.resto)}</b><br>${esc(CFG.alamat)}</div><hr>No: ${n.no}<br>${esc(n.lbl)}<br>${n.waktu}<hr>${itemsNota(n.items)}<hr><div class="r"><b>TOTAL</b><b>${rp(n.total)}</b></div><div class="r"><span>Bayar (${esc(n.metode)})</span><span>${rp(n.bayar)}</span></div><div class="r"><span>Kembali</span><span>${rp(n.kembali)}</span></div><hr><div style="text-align:center">Terima kasih 🙏</div>`)}
+function localNo(){const t=new Date(),q=n=>String(n).padStart(2,'0'),tgl=q(t.getDate())+q(t.getMonth()+1)+q(t.getFullYear()%100);let c=J('NOTA',{});if(c.tgl!==tgl)c={tgl,n:0};c.n++;localStorage.NOTA=JSON.stringify(c);return tgl+String(c.n).padStart(4,'0')}
+
+/* ===== PEMBAYARAN ===== */
+let pay=null,lastNota=null;
+function mdlEl(){let el=$('#mdl');if(!el){el=document.createElement('div');el.id='mdl';el.className='mdl';document.body.appendChild(el)}return el}
+function tutupPay(){pay=null;const e=$('#mdl');e&&e.remove()}
+function bayar(){const o=O[sel];if(!o||!o.items.length)return;pay={mid:sel,metode:'Cash',bayar:''};payUI()}
+function payUI(){
+ const o=O[pay.mid],total=tot(o),cash=pay.metode==='Cash';
+ const qk=[20000,50000,100000,200000].filter(x=>x>=total).slice(0,3);
+ mdlEl().innerHTML=`<div class="mbox"><h2>💰 Pembayaran</h2><div style="color:#555">${esc(lbl(pay.mid))}</div>
+ <div class="mt"><button class="${cash?'on':'tg'}" onclick="pay.metode='Cash';payUI()">💵 Cash</button><button class="${cash?'tg':'on'}" onclick="pay.metode='Transfer / QRIS';payUI()">📲 Transfer / QRIS</button></div>
+ <div class="mrow"><span>Total</span><b style="font-size:22px">${rp(total)}</b></div>
+ <div class="mrow"><span>Bayar</span><input class="by" id="by" type="number" inputmode="numeric" min="0" ${cash?'':'disabled'} value="${cash?pay.bayar:total}" oninput="pay.bayar=this.value;hitung()"></div>
+ ${cash?`<div class="qk"><button onclick="setBayar(${total})">Uang pas</button>${qk.map(x=>`<button onclick="setBayar(${x})">${x.toLocaleString('id-ID')}</button>`).join('')}</div>`:''}
+ <div class="mrow"><span>Kembalian</span><span class="kb" id="kb"></span></div>
+ <div class="mt"><button class="g" onclick="tutupPay()">Batal</button><button id="okb" onclick="konfirmBayar()">✔ Bayar &amp; Selesai</button></div></div>`;
+ hitung();if(cash)$('#by').focus()}
+function setBayar(v){pay.bayar=v;payUI()}
+function hitung(){const total=tot(O[pay.mid]),by=pay.metode==='Cash'?(+pay.bayar||0):total,k=by-total,kb=$('#kb');
+ kb.textContent=k>=0?rp(k):'Kurang '+rp(-k);kb.className='kb'+(k<0?' neg':'');$('#okb').disabled=k<0}
+async function konfirmBayar(){
+ const mid=pay.mid,o=O[mid],total=tot(o),metode=pay.metode,by=metode==='Cash'?(+pay.bayar||0):total;
+ if(by<total)return;
+ const ok=$('#okb'),reset=()=>{ok.disabled=false;ok.innerHTML='✔ Bayar &amp; Selesai'};
+ ok.disabled=true;ok.textContent='Menyimpan...';
+ const snap=JSON.parse(JSON.stringify(o)),d={action:'pay',meja:mid,label:lbl(mid),total,metode,bayar:by,kembali:by-total};
+ let no;
+ if(!U){no=localNo();delete O[mid];await post(d)}
+ else{
+  const r=await post(d,true);let j=null;try{j=JSON.parse(r)}catch(e){}
+  if(r===null){reset();return alert('Gagal terhubung ke Google Sheet. Pembayaran belum tersimpan, silakan coba lagi.')}
+  if(j&&j.err==='berubah'){alert('Pesanan meja ini baru saja berubah (total sekarang '+rp(j.total)+'). Data dimuat ulang, silakan cek lalu bayar lagi.');tutupPay();await load(true);return kas()}
+  if(j&&j.err==='kosong'){alert('Meja ini sudah dibayar atau kosong.');tutupPay();await load(true);return kas()}
+  if(!j||!j.no){reset();return alert('Respon dari Google Sheet tidak dikenali. Cek sheet Riwayat sebelum mengulang, dan pastikan Code.gs terbaru sudah di-deploy (New version).')}
+  no=j.no;delete O[mid]}
+ lastNota={no,lbl:lbl(mid),waktu:new Date().toLocaleString('id-ID'),items:snap.items,total,metode,bayar:by,kembali:by-total};
+ sel=null;pay=null;doneUI();kas()}
+function doneUI(){const n=lastNota;
+ mdlEl().innerHTML=`<div class="mbox" style="text-align:center"><h2>✔ Pembayaran berhasil</h2><div style="font-size:13px;color:#555">No. Nota</div><div style="font-size:28px;font-weight:700;letter-spacing:1px">${n.no}</div>
+ <div class="mrow"><span>${esc(n.metode)}</span><b>${rp(n.total)}</b></div><div class="mrow"><span>Bayar</span><span>${rp(n.bayar)}</span></div><div class="mrow"><span>Kembalian</span><span class="kb">${rp(n.kembali)}</span></div>
+ <div class="mt"><button class="g" onclick="tutupPay()">Tutup</button><button onclick="cetakNota()">🧾 Cetak Nota</button></div></div>`}
 
 /* ===== ADMIN ===== */
 function bukaAdmin(){
  const p=prompt('Masukkan PIN admin:');if(p===null)return;
  if(p!==String(CFG.pin))return alert('PIN salah');
- adm=true;atab='meja';MN=MENU.map(x=>({...x}));load(true).then(admin)}
+ adm=true;atab='meja';MN=JSON.parse(JSON.stringify(MENU));load(true).then(admin)}
 function tutupAdmin(){adm=false;sel=null;app.innerHTML='';start()}
 function admin(){
  const T=(k,t)=>`<button class="${atab==k?'on':''}" onclick="atab='${k}';admin()">${t}</button>`;
@@ -212,7 +268,7 @@ function admin(){
  if(atab=='meja'){
   h+=AREAS.map((a,i)=>`<div class="sec" style="--c:${COL[a]}"><h3>${a}</h3>${M.filter(m=>m.area==a).map(m=>`<div class="rowa"><span>${esc(m.nama)}${O[m.id]?' <small>(ada pesanan)</small>':''}</span><button class="r" ${O[m.id]?'disabled':''} onclick="admHapus('${m.id}')">🗑 Hapus</button></div>`).join('')}<div class="rowa"><input id="nm${i}" placeholder="Nama meja baru (kosong = otomatis)"><button onclick="admTambah(${i})">＋ Tambah</button></div></div>`).join('')+'<button class="g" onclick="resetMeja()">↺ Reset meja ke default</button>'}
  if(atab=='menu'){
-  h+=MN.map((m,i)=>`<div class="rowa"><input value="${esc(m.nama)}" onchange="MN[${i}].nama=this.value"><input type="number" value="${m.harga}" onchange="MN[${i}].harga=+this.value"><select onchange="MN[${i}].kat=this.value"><option value="dapur" ${m.kat=='dapur'?'selected':''}>Makanan</option><option value="bar" ${m.kat=='bar'?'selected':''}>Minuman</option></select><button class="r" onclick="MN.splice(${i},1);admin()">🗑</button></div>`).join('')+'<div class="rowa"><button class="g" onclick="admMenuTambah()">＋ Tambah menu</button><button onclick="admMenuSimpan()">💾 Simpan menu</button></div><p class="leg" style="padding:0">Perubahan menu baru berlaku setelah klik Simpan. Pesanan yang sudah masuk tidak berubah.</p>'}
+  h+=MN.map((m,i)=>`<div class="rowa"><input value="${esc(m.nama)}" onchange="MN[${i}].nama=this.value"><input type="number" value="${m.harga}" onchange="MN[${i}].harga=+this.value"><select onchange="admKat(${i},this.value)"><option value="dapur" ${m.kat=='dapur'?'selected':''}>Makanan</option><option value="bar" ${m.kat=='bar'?'selected':''}>Minuman</option><option value="paket" ${m.kat=='paket'?'selected':''}>Paket</option></select><button class="r" onclick="MN.splice(${i},1);admin()">🗑</button></div>${m.kat=='paket'?paketEd(i):''}`).join('')+'<div class="rowa"><button class="g" onclick="admMenuTambah()">＋ Tambah menu</button><button onclick="admMenuSimpan()">💾 Simpan menu</button></div><p class="leg" style="padding:0">Perubahan menu baru berlaku setelah klik Simpan. Pesanan yang sudah masuk tidak berubah. Paket: pilih kategori Paket, lalu isi dengan menu makanan/minuman.</p>'}
  if(atab=='set'){
   h+=`<label class="fld">Nama restoran</label><input id="cn" value="${esc(CFG.resto)}"><label class="fld">Alamat (tampil di nota)</label><input id="ca" value="${esc(CFG.alamat)}"><label class="fld">PIN admin</label><input id="cp" value="${esc(CFG.pin)}"><div class="rowa" style="margin-top:14px"><button onclick="admSet()">💾 Simpan pengaturan</button></div>`}
  app.innerHTML=h+'</div>'}
@@ -227,11 +283,17 @@ async function resetMeja(){
  if(Object.keys(O).some(id=>!DEF.find(m=>m.id==id)))return alert('Masih ada pesanan aktif di meja tambahan. Bayar dulu, baru reset.');
  if(!confirm('Kembalikan daftar meja ke default? Meja tambahan akan dihapus.'))return;
  M=DEF.map(m=>({...m}));await post({action:'meja',list:M});admin()}
+function admKat(i,v){MN[i].kat=v;if(v=='paket'){if(!MN[i].isi)MN[i].isi=[]}else delete MN[i].isi;admin()}
+function admIsi(i){const f=MN.find(x=>x.kat!=='paket');if(!f)return alert('Belum ada menu makanan/minuman');(MN[i].isi=MN[i].isi||[]).push({id:f.id,qty:1});admin()}
+function paketEd(i){const m=MN[i],opts=MN.filter(x=>x.kat!=='paket');
+ return `<div style="margin:-2px 0 10px 14px;padding:8px;border-left:3px solid #d98324;background:#fff8ec;border-radius:8px"><small><b>Isi paket:</b></small>${(m.isi||[]).map((c,j)=>`<div class="rowa"><input type="number" style="width:60px" min="1" value="${c.qty}" onchange="MN[${i}].isi[${j}].qty=Math.max(1,+this.value||1)"><select style="flex:1" onchange="MN[${i}].isi[${j}].id=+this.value">${opts.map(x=>`<option value="${x.id}" ${x.id==c.id?'selected':''}>${esc(x.nama)} (${x.kat=='bar'?'minuman':'makanan'})</option>`).join('')}</select><button class="r" onclick="MN[${i}].isi.splice(${j},1);admin()">✕</button></div>`).join('')}<button class="g" style="padding:6px 10px;font-size:13px" onclick="admIsi(${i})">＋ Tambah isi</button></div>`}
 function admMenuTambah(){MN.push({id:Math.max(0,...MN.map(m=>m.id),...MENU.map(m=>m.id))+1,nama:'Menu baru',harga:0,kat:'dapur'});admin()}
 async function admMenuSimpan(){
  if(MN.some(m=>!String(m.nama).trim()))return alert('Nama menu tidak boleh kosong');
  if(!MN.length)return alert('Menu tidak boleh kosong');
- MENU=MN.map(m=>({...m,nama:String(m.nama).trim(),harga:+m.harga||0}));await post({action:'menu',list:MENU});alert('Menu tersimpan ✔');admin()}
+ for(const m of MN.filter(x=>x.kat=='paket')){if(!(m.isi||[]).length)return alert('Paket "'+m.nama+'" belum ada isinya');
+  for(const c of m.isi){const x=MN.find(y=>y.id==c.id);if(!x||x.kat=='paket')return alert('Isi paket "'+m.nama+'" memuat menu yang sudah dihapus atau diubah jadi paket. Perbaiki dulu.')}}
+ MENU=JSON.parse(JSON.stringify(MN)).map(m=>({...m,nama:String(m.nama).trim(),harga:+m.harga||0}));await post({action:'menu',list:MENU});alert('Menu tersimpan ✔');admin()}
 async function admSet(){
  CFG={resto:$('#cn').value.trim()||DEFCFG.resto,alamat:$('#ca').value.trim(),pin:$('#cp').value.trim()||'1234'};
  await post({action:'cfg',cfg:CFG});alert('Pengaturan tersimpan ✔');admin()}

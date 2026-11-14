@@ -6,6 +6,7 @@
 *{box-sizing:border-box}body{margin:0;font-family:system-ui,sans-serif;background:#f4f1ea;color:#222}
 button{font:inherit;cursor:pointer;border:0;border-radius:8px;padding:10px 14px;background:#2d6a4f;color:#fff}
 button:disabled{opacity:.4;cursor:not-allowed}
+body.mk{background:#dbe8f6}body.mk header{background:#1f5f99}
 button.g{background:#ddd;color:#222}button.r{background:#c0392b}button.o{background:#d98324}button.b{background:#2471a3}
 header{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#2d6a4f;color:#fff;position:sticky;top:0;z-index:5}
 header b{font-size:18px}header button{background:#ffffff33;padding:6px 10px}
@@ -32,7 +33,7 @@ header b{font-size:18px}header button{background:#ffffff33;padding:6px 10px}
 .panel{background:#fff;padding:16px;border-left:1px solid #ddd;position:sticky;top:50px;height:calc(100vh - 50px);overflow:auto}
 .panel .tabs{padding:10px 0}.panel .item{margin:6px 0;background:#f6f6f6}
 .panel table{width:100%;border-collapse:collapse}.panel td{padding:5px 2px;border-bottom:1px solid #eee}
-.btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px}
+.btns{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:14px}.btns button{grid-column:span 2;padding:10px 4px;font-size:14px}.btns .w3{grid-column:span 3}.btns .w6{grid-column:span 6;font-size:16px}
 .leg{padding:0 14px;font-size:13px;color:#555}
 .adm{max-width:760px;margin:0 auto;padding:0 8px 50px}.adm .sec{margin:12px 0}
 .rowa{display:flex;gap:8px;align-items:center;margin:6px 0}.rowa span{flex:1}
@@ -47,16 +48,26 @@ header b{font-size:18px}header button{background:#ffffff33;padding:6px 10px}
 .sumb{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:10px 14px 0}
 .ck.y,tr.y{background:#fff3b0}.ck.rd,tr.rd{background:#ffc9d4}
 .tm{font-variant-numeric:tabular-nums;font-weight:700;color:#555;white-space:nowrap}.y .tm{color:#8a6d00}.rd .tm{color:#b0002a}
+.t.rsv{background:#cfe3ff;border-color:#3b82f6}.rvb{margin:8px 0;padding:8px;background:#eef5ff;border:1px solid #b6d0f5;border-radius:10px}.rvr{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:6px 0;border-top:1px dashed #b6d0f5;font-size:14px}.rvbt{display:flex;gap:4px;flex-shrink:0}.rvbt button{padding:4px 8px;width:auto;font-size:13px}.rvf label{display:block;font-size:13px;margin-top:6px;color:#444}.rvf input,.rvf select{width:100%;box-sizing:border-box;padding:8px;border:1px solid #ccc;border-radius:8px;font:inherit}
+.xb{background:#fbe3e3;color:#c0392b;border:1px solid #e8b4b4;border-radius:6px;padding:0 7px;font-size:13px;line-height:22px;width:auto;margin-left:4px}.cn{flex-basis:100%;width:100%;padding:7px 9px;border:1px solid #e0c060;border-radius:8px;background:#fffbe6;font:inherit;font-size:13px;margin:6px 0;box-sizing:border-box}
+.vrw{flex-basis:100%;display:flex;flex-direction:column;gap:5px}.vr{display:flex;align-items:center;gap:6px;background:#fff7e0;border:1px solid #f0d890;border-radius:8px;padding:4px 6px}.vr input{flex:1;min-width:0;padding:6px 8px;border:1px solid #ddd;border-radius:6px;font:inherit;font-size:13px}.vr button{width:30px;padding:4px}.vr b{min-width:18px;text-align:center}.vadd{background:none;border:1px dashed #999;color:#444;font-size:12px;padding:4px 10px;border-radius:8px}
 .item{flex-wrap:wrap}.item .nt{flex-basis:100%;padding:7px 9px;border:1px solid #ddd;border-radius:8px;font:inherit;font-size:13px;background:#fafafa}
+.prev{background:#fff;border:1px dashed #999;border-radius:6px;padding:10px 12px;font:12px/1.4 monospace;color:#000;max-width:300px;margin:8px auto;max-height:55vh;overflow:auto}.prev hr{border:0;border-top:1px dashed #000}.prev .r{display:flex;justify-content:space-between}
 .mdl{position:fixed;inset:0;background:#0007;z-index:50;display:flex;align-items:center;justify-content:center;padding:14px}
 .mbox{background:#fff;border-radius:14px;padding:18px;width:100%;max-width:400px;max-height:94vh;overflow:auto}.mbox h2{margin:0 0 6px}
 .mt{display:flex;gap:8px;margin:12px 0}.mt button{flex:1}.mt .g{background:#ddd}.mt .tg{background:#ddd;color:#222}.mt .on{background:#2d6a4f;color:#fff}
 .mrow{display:flex;justify-content:space-between;align-items:center;margin:9px 0;font-size:16px}
 .mbox input.by{width:170px;padding:10px;border:1px solid #ccc;border-radius:8px;font:inherit;font-size:20px;text-align:right}
-.qk{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;margin:4px 0}.qk button{background:#eee;color:#222;padding:6px 10px;font-size:13px}
+.qk{display:flex;gap:6px;margin:4px 0}.qk button{flex:1;background:#eee;color:#222;padding:8px 6px;font-size:14px}.qk .hp{background:#f3d6d2}
+.qn{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:6px 0}.qn button{background:#eee;color:#222;padding:9px 2px;font-size:14px}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}.mg button{background:#ddd;color:#222}.mg .on{background:#2d6a4f;color:#fff}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:4px;margin:6px 0;font-size:14px}
+.pl{border-top:1px dashed #bbb;margin-top:6px}.pl .mrow{margin:5px 0;font-size:15px}.sep{border-top:3px solid #2d6a4f;margin:12px 0 8px}
+.mbox input.kt{width:100%;padding:10px;border:1px solid #ccc;border-radius:8px;font:inherit;margin-top:4px}
 .kb{font-size:22px;font-weight:700;color:#2d6a4f}.kb.neg{color:#c0392b}
+@page{margin:0}
 #pr{display:none}
-@media print{body>*:not(#pr){display:none!important}#pr{display:block;width:58mm;font:12px monospace;color:#000}#pr hr{border:0;border-top:1px dashed #000}#pr .r{display:flex;justify-content:space-between}}
+@media print{body>*:not(#pr){display:none!important}#pr{display:block;width:58mm;padding:3mm;font:12px monospace;color:#000}#pr hr{border:0;border-top:1px dashed #000}#pr .r{display:flex;justify-content:space-between}}
 @media(max-width:800px){.kasir{grid-template-columns:1fr}.panel{position:static;height:auto}}
 </style></head><body>
 <div id="app"></div><div id="pr"></div>
@@ -84,10 +95,15 @@ for(let n=1;n<=10;n++)DEF.push({id:''+n,area:'Lantai 1',nama:''+n});
 for(let n=1;n<=10;n++)DEF.push({id:''+(n+10),area:'Lantai 2',nama:''+n});
 for(let n=1;n<=5;n++)DEF.push({id:'B'+n,area:'Bungkus',nama:'Bungkus '+n});
 ['Shopee','GoFood','GrabFood','Lainnya'].forEach((x,i)=>DEF.push({id:'O'+(i+1),area:'Online',nama:x}));
-let U=SHEET_URL.trim(),O={},M=DEF,MENU=DEFMENU.map(x=>({...x})),CFG={...DEFCFG},ar=AREAS[0],mode=location.hash.slice(1),sel=null,cart={},tab='dapur',notes={},ST='',adm=false,vw='',atab='meja',MN=[];
+let U=SHEET_URL.trim(),O={},M=DEF,MENU=DEFMENU.map(x=>({...x})),CFG={...DEFCFG},ar=AREAS[0],mode=location.hash.slice(1),sel=null,cart={},tab='dapur',notes={},vr={},RV=[],rf={},ST='',adm=false,vw='',atab='meja',MN=[];
 const app=$('#app');
-const tot=o=>o?o.items.reduce((a,i)=>a+i.harga*i.qty,0):0;
-const act=i=>i.kat!=='paket';
+const subt=o=>o?Math.max(0,o.items.reduce((a,i)=>a+i.harga*i.qty,0)):0;
+const dtAmt=(sub,dt)=>!dt?0:dt.t==='%'?Math.round(sub*Math.min(100,Math.max(0,+dt.v||0))/100):Math.min(sub,Math.max(0,+dt.v||0));
+const dbase=o=>Math.max(0,subt(o)-o.items.reduce((a,i)=>a+(i.kat==='diskon'&&i.ex1?i.ex1*i.qty:0),0));
+const dtd=o=>o&&o.dt?dtAmt(dbase(o),o.dt):0;
+const tot=o=>o?subt(o)-dtd(o):0;
+const bruto=o=>o.items.reduce((a,i)=>a+(i.harga*i.qty>0?i.harga*i.qty:0),0);
+const act=i=>i.kat!=='paket'&&i.kat!=='diskon';
 const baru=o=>o?o.items.filter(i=>act(i)&&i.qty>(i.p||0)).length:0;
 const blm=o=>o?o.items.reduce((a,i)=>a+(act(i)?Math.max(0,i.qty-(i.d||0)):0),0):0;
 const blmAll=()=>Object.values(O).reduce((a,o)=>a+blm(o),0);
@@ -95,8 +111,14 @@ const blmP=o=>o?o.items.reduce((a,i)=>a+(act(i)?Math.max(0,i.qty-(i.p||0)):0),0)
 const blmPAll=()=>Object.values(O).reduce((a,o)=>a+blmP(o),0);
 const t0o=(o,it)=>it.t||(o&&o.waktu)||'';
 const fmtT=t=>{const ms=Date.now()-Date.parse(t);if(isNaN(ms))return '';const s=Math.max(0,Math.floor(ms/1000));return Math.floor(s/60)+':'+String(s%60).padStart(2,'0')};
-const tcls=(o,it)=>{if(it.kat==='paket'||(it.d||0)>=it.qty)return '';const ms=Date.now()-Date.parse(t0o(o,it));return isNaN(ms)?'':ms>=900000?'rd':ms>=300000?'y':''};
-const tmr=(o,it)=>{if(it.kat==='paket'||(it.d||0)>=it.qty)return '';const t=t0o(o,it);return t?`<small class="tm" data-t="${t}">${fmtT(t)}</small>`:''};
+const tmAt=(o,it,k)=>(it.ts&&it.ts[k])||t0o(o,it);
+const clsT=t=>{const ms=Date.now()-Date.parse(t);return isNaN(ms)?'':ms>=900000?'rd':ms>=300000?'y':''};
+const oldU=(o,it)=>{const a=dmOf(it);let m='';for(let k=0;k<it.qty;k++)if(!a[k]){const t=tmAt(o,it,k);if(t&&(!m||t<m))m=t}return m};
+const tcls=(o,it)=>{if(!act(it))return '';const t=oldU(o,it);return t?clsT(t):''};
+const dmOf=it=>Array.from({length:it.qty},(_,k)=>it.dm?!!it.dm[k]:k<(it.d||0));
+const tcls1=(o,it,dn,k)=>dn?'':clsT(tmAt(o,it,k));
+const tmr1=(o,it,dn,k)=>{if(dn)return '';const t=tmAt(o,it,k);return t?`<small class="tm" data-t="${t}">${fmtT(t)}</small>`:''};
+const tmr=(o,it)=>{if(!act(it))return '';const t=oldU(o,it);return t?`<small class="tm" data-t="${t}">${fmtT(t)}</small>`:''};
 function tick(){document.querySelectorAll('[data-t]').forEach(el=>{const ms=Date.now()-Date.parse(el.dataset.t);if(isNaN(ms))return;el.textContent=fmtT(el.dataset.t);const r=el.closest('.ck,tr');if(r){r.classList.toggle('y',ms>=300000&&ms<900000);r.classList.toggle('rd',ms>=900000)}})}
 setInterval(tick,1000);
 const ostart=o=>o?(o.waktu||o.items.map(i=>i.t).filter(Boolean).sort()[0]||''):'';
@@ -109,16 +131,17 @@ const rr=()=>mode==='kasir'?pnl():pel();
 const J=(k,d)=>{try{return JSON.parse(localStorage[k])||d}catch(e){return d}};
 
 async function load(force){const t0=Date.now(),w0=wv;try{
- if(U){const r=await(await fetch(U)).json();if(!force&&(wv!==w0||Date.now()-lw<2500))return;O=r.orders||{};M=r.meja&&r.meja.length?r.meja:DEF;MENU=r.menu&&r.menu.length?r.menu:DEFMENU.map(x=>({...x}));CFG={...DEFCFG,...(r.cfg||{})}}
- else{O=J('O',{});M=J('M',DEF);MENU=J('MENU',DEFMENU.map(x=>({...x})));CFG={...DEFCFG,...J('CFG',{})}}
+ if(U){const r=await(await fetch(U)).json();if(!force&&(wv!==w0||Date.now()-lw<2500))return;O=r.orders||{};M=r.meja&&r.meja.length?r.meja:DEF;MENU=r.menu&&r.menu.length?r.menu:DEFMENU.map(x=>({...x}));CFG={...DEFCFG,...(r.cfg||{})};RV=r.resv||[]}
+ else{O=J('O',{});RV=J('RV',[]);M=J('M',DEF);MENU=J('MENU',DEFMENU.map(x=>({...x})));CFG={...DEFCFG,...J('CFG',{})}}
  ST=U?'● online '+((Date.now()-t0)/1000).toFixed(1)+'s':'● lokal (tes)'}catch(e){ST='⚠ gagal sambung ('+location.protocol+' · '+((e&&e.message)||e)+')'}
  $('#st')&&($('#st').textContent=ST)}
-async function post(d,quiet){wv++;lw=Date.now();let r='';try{if(U){const x=await fetch(U,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(d)});r=await x.text()}else{localStorage.O=JSON.stringify(O);localStorage.M=JSON.stringify(M);localStorage.MENU=JSON.stringify(MENU);localStorage.CFG=JSON.stringify(CFG)}}catch(e){r=null;if(!quiet)alert('Gagal simpan ke Google Sheet')}lw=Date.now();return r}
+async function post(d,quiet){wv++;lw=Date.now();let r='';try{if(U){const x=await fetch(U,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(d)});r=await x.text()}else{localStorage.O=JSON.stringify(O);localStorage.M=JSON.stringify(M);localStorage.MENU=JSON.stringify(MENU);localStorage.CFG=JSON.stringify(CFG);localStorage.RV=JSON.stringify(RV)}}catch(e){r=null;if(!quiet)alert('Gagal simpan ke Google Sheet')}lw=Date.now();return r}
 const head=t=>`<header><b>${t}</b><span><span id="st">${ST}</span> <button onclick="bukaAdmin()">🔧</button> <button onclick="location.hash='';location.reload()">Menu</button></span></header>`;
 
 var busy=false,wv=0,lw=0;
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&!adm&&(mode==='kasir'||(mode==='pelayan'&&sel==null)))load().then(rr0)});
 function start(){
+ document.body.classList.toggle('mk',mode==='kasir');
  if(mode!=='pelayan'&&mode!=='kasir'){app.innerHTML=`<div class="home"><h1>🍽 ${esc(CFG.resto)}</h1><button class="b" onclick="go('kasir')">🖥 Kasir (Desktop)</button><button onclick="go('pelayan')">📱 Pelayan (HP)</button><button class="g" onclick="bukaAdmin()">🔧 Admin</button></div>${U?'':'<p style="color:#c0392b;font-size:13px">⚠ URL Google Sheet belum diisi di file HTML. Data hanya tersimpan di perangkat ini (mode tes).</p>'}`;load().then(()=>{if(!adm&&mode!=='pelayan'&&mode!=='kasir')start2()});return}
  load().then(rr0);
  clearInterval(window.iv);window.iv=setInterval(async()=>{
@@ -130,17 +153,127 @@ function start2(){const h=$('.home h1');if(h)h.textContent='🍽 '+CFG.resto}
 function go(m){location.hash=m;mode=m;start()}
 
 /* ===== MEJA (tampilan) ===== */
-function tbl(m,k){const o=O[m.id],u=blm(o);
- return `<div class="tw"><div class="t ${o?'pakai':''} ${sel==m.id?'sel':''}" onclick="pilih('${m.id}')"><b style="font-size:${m.nama.length>3?9:14}px">${esc(m.nama)}</b><small>${o?(k?sk(tot(o)):'terisi'):'kosong'}</small>${blmP(o)?`<i>${blmP(o)}</i>`:''}${u?`<em>${u}</em>`:''}</div>${otm(o)}</div>`}
-function pilih(id){sel=id;vw='';cart={};notes={};rr0()}
+function tbl(m,k){const o=O[m.id],u=blm(o),rv=!o&&rvHariIni(m.id);
+ return `<div class="tw"><div class="t ${o?'pakai':''} ${rv?'rsv':''} ${sel==m.id?'sel':''}" onclick="pilih('${m.id}')"><b style="font-size:${m.nama.length>3?9:14}px">${esc(m.nama)}</b><small>${o?(k?sk(tot(o)):'terisi'):rv?'📅'+rv.jam:'kosong'}</small>${blmP(o)?`<i>${blmP(o)}</i>`:''}${u?`<em>${u}</em>`:''}</div>${otm(o)}</div>`}
+function pilih(id){sel=id;vw='';cart={};notes={};vr={};rr0()}
+/* ===== RESERVASI ===== */
+const hari=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const mnt=j=>{const p=String(j||'0:0').split(':');return (+p[0])*60+(+p[1]||0)};
+const tglF=t=>{const p=t.split('-');return p[2]+'/'+p[1]+'/'+p[0]};
+const rvSort=(a,b)=>(a.tgl+a.jam).localeCompare(b.tgl+b.jam);
+const rvMeja=id=>RV.filter(r=>r.st==='aktif'&&String(r.meja)===String(id)&&r.tgl>=hari()).sort(rvSort);
+const rvHariIni=id=>rvMeja(id).find(r=>r.tgl===hari());
+const rvN=()=>RV.filter(r=>r.st==='aktif'&&r.tgl===hari()).length;
+const isLt=id=>{const m=M.find(x=>x.id==id);return !!m&&m.area.startsWith('Lantai')};
+function rvRow(r,sm){return `<div class="rvr"><div><b>${r.tgl===hari()?'Hari ini':tglF(r.tgl)} · ${esc(r.jam)}</b> · ${esc(r.nama)} · ${+r.orang||0} org${sm?' · '+esc(lbl(r.meja)):''}${r.telp?`<br><small>☎ ${esc(r.telp)}</small>`:''}${r.cat?`<br><small>📝 ${esc(r.cat)}</small>`:''}</div><div class="rvbt"><button onclick="rvDatang('${r.id}')">✔ Datang</button><button class="g" onclick="rvForm('${r.meja}','${r.id}',${sm?"'list'":"''"})">✏</button><button class="r" onclick="rvBatal('${r.id}',${sm?"'list'":"''"})">✕</button></div></div>`}
+const rvBox=mid=>isLt(mid)?`<div class="rvb"><div class="mrow" style="margin:0"><b>📅 Reservasi meja ini</b><button class="g" style="padding:3px 10px;font-size:12px" onclick="rvForm('${mid}')">＋ Reservasi</button></div>${rvMeja(mid).map(r=>rvRow(r,false)).join('')}</div>`:'';
+async function rvSet(r){const i=RV.findIndex(x=>x.id===r.id);if(i>=0)RV[i]=r;else RV.push(r);await post({action:'rsv',op:'set',r});await load(true)}
+function rvList(){const L=RV.filter(r=>r.st==='aktif'&&r.tgl>=hari()).sort(rvSort);let last='';
+ mdlEl().innerHTML=`<div class="mbox"><h2>📅 Reservasi</h2><div style="max-height:60vh;overflow:auto">${L.length?L.map(r=>{let g='';if(r.tgl!==last){last=r.tgl;g=`<div style="margin-top:8px;font-weight:bold;color:#2471a3">${r.tgl===hari()?'Hari ini':tglF(r.tgl)}</div>`}return g+rvRow(r,true)}).join(''):'<p class="leg">Belum ada reservasi.</p>'}</div><div class="mt"><button class="g" onclick="tutupPay()">Tutup</button><button onclick="rvForm(null,null,'list')">＋ Reservasi baru</button></div></div>`}
+function rvForm(mid,rid,back){const ex=rid&&RV.find(r=>r.id===rid),lt=M.filter(m=>m.area.startsWith('Lantai'));
+ rf=ex?{...ex}:{id:'R'+Date.now(),meja:String(mid||(lt[0]&&lt[0].id)||''),nama:'',telp:'',orang:2,tgl:hari(),jam:'19:00',cat:'',st:'aktif'};rf.back=back||'';
+ mdlEl().innerHTML=`<div class="mbox rvf"><h2>${ex?'✏ Ubah':'＋'} Reservasi</h2>
+ <label>Meja</label><select onchange="rf.meja=this.value">${lt.map(m=>`<option value="${m.id}" ${String(m.id)===String(rf.meja)?'selected':''}>${esc(lbl(m.id))}</option>`).join('')}</select>
+ <label>Nama pemesan</label><input value="${esc(rf.nama)}" oninput="rf.nama=this.value">
+ <label>No. telepon (opsional)</label><input type="tel" value="${esc(rf.telp)}" oninput="rf.telp=this.value">
+ <label>Jumlah orang</label><input type="number" min="1" value="${rf.orang}" oninput="rf.orang=+this.value">
+ <label>Tanggal</label><input type="date" value="${rf.tgl}" oninput="rf.tgl=this.value">
+ <label>Jam</label><input type="time" value="${rf.jam}" oninput="rf.jam=this.value">
+ <label>Catatan (opsional)</label><input value="${esc(rf.cat)}" oninput="rf.cat=this.value" placeholder="mis. ulang tahun, minta kursi bayi">
+ <div class="mt"><button class="g" onclick="rvTutup()">Batal</button><button onclick="rvSimpan()">💾 Simpan</button></div></div>`}
+function rvTutup(){if(rf.back==='list')rvList();else tutupPay()}
+async function rvSimpan(){const r=rf;
+ if(!r.meja)return alert('Pilih meja');if(!r.nama.trim())return alert('Isi nama pemesan');if(!(r.orang>0))return alert('Isi jumlah orang');
+ if(!r.tgl||!r.jam)return alert('Isi tanggal dan jam');if(r.tgl<hari())return alert('Tanggal sudah lewat');
+ const bt=RV.find(x=>x.id!==r.id&&x.st==='aktif'&&String(x.meja)===String(r.meja)&&x.tgl===r.tgl&&Math.abs(mnt(x.jam)-mnt(r.jam))<120);
+ if(bt&&!confirm('Meja ini sudah direservasi jam '+bt.jam+' atas nama '+bt.nama+'. Tetap simpan?'))return;
+ const out={id:r.id,meja:String(r.meja),nama:r.nama.trim(),telp:(r.telp||'').trim(),orang:r.orang,tgl:r.tgl,jam:r.jam,cat:(r.cat||'').trim(),st:'aktif'};
+ await rvSet(out);rvTutup();rr0()}
+async function rvBatal(id,back){const r=RV.find(x=>x.id===id);if(!r||!confirm('Batalkan reservasi '+r.nama+' ('+r.jam+')?'))return;
+ await rvSet({...r,st:'batal'});if(back==='list')rvList();rr0()}
+async function rvDatang(id){const r=RV.find(x=>x.id===id);if(!r)return;
+ await rvSet({...r,st:'datang'});tutupPay();sel=String(r.meja);vw='';cart={};notes={};vr={};rr0()}
+const rvBtn=()=>`<button class="g" onclick="rvList()">📅 Reservasi${rvN()?` <span class="pill">${rvN()} hari ini</span>`:''}</button>`;
+/* ===== HAPUS PESANAN + CATATAN MEJA ===== */
+function remP(o,it,idx){const a=dmOf(it),ts=Array.from({length:it.qty},(_,j)=>tmAt(o,it,j)),p=it.p||0;
+ it.p=Math.max(0,p-idx.filter(j=>j<p).length);it.dm=a.filter((_,j)=>!idx.includes(j));it.ts=ts.filter((_,j)=>!idx.includes(j));it.qty-=idx.length;it.d=it.dm.filter(Boolean).length}
+function hapusLocal(o,id,n,k){
+ const it=o.items.find(i=>i.id==id&&(i.n||'')==(n||''));if(!it||it.kat==='diskon')return false;
+ if(it.kat==='paket'){
+  const cs=o.items.filter(c=>c.pkn===it.nama&&String(c.id).startsWith('p'+it.id+'_')&&(c.n||'')==(it.n||''));
+  if(cs.some(c=>dmOf(c).some(Boolean)))return false;
+  cs.forEach(c=>{const u=Math.round(c.qty/it.qty),idx=[];for(let j=0;j<u;j++)idx.push(c.qty-1-j);remP(o,c,idx)});
+  remP(o,it,[it.qty-1])}
+ else{if(it.pkn||k>=it.qty||dmOf(it)[k])return false;remP(o,it,[k])}
+ const rem=o.items.filter(i=>i.id==it.id).reduce((a,i)=>a+i.qty,0);
+ o.items.forEach(l=>{if(l.kat==='diskon'&&(String(l.id).startsWith('dk'+it.id+'_')||(String(l.id).startsWith('dm')&&String(l.nama).endsWith(it.nama))))l.qty=Math.min(l.qty,rem)});
+ o.items=o.items.filter(i=>i.qty>0);
+ if(!o.items.some(i=>i.kat!=='diskon'))o.items=[];
+ return true}
+let bt={};
+const ALASAN=['Salah input','Pelanggan batal','Stok habis','Terlalu lama','Lainnya'];
+const sdhCetak=(o,it,k)=>it.kat==='paket'?o.items.some(c=>c.pkn===it.nama&&String(c.id).startsWith('p'+it.id+'_')&&(c.p||0)>0):k<(it.p||0);
+async function hapusP(mid,i,k){const o=O[mid],it=o&&o.items[i];if(!it)return;
+ if(!sdhCetak(o,it,k)){ // belum dicetak: hapus biasa, tanpa PIN
+  if(!confirm('Hapus '+(it.kat==='paket'?'1 paket ':'1x ')+'"'+it.nama+'" dari pesanan?'))return;
+  const id=it.id,n=it.n||'';
+  if(!hapusLocal(o,id,n,k))return alert('Tidak bisa dihapus: sudah ada yang diantar.');
+  if(!o.items.length)delete O[mid];
+  await post({action:'hapus',meja:mid,id,n,k});await load(true);return rr0()}
+ bt={mid,id:it.id,n:it.n||'',k,nama:it.nama,pk:it.kat==='paket',alasan:ALASAN[0],lain:'',pin:''};batalUI()}
+function batalUI(){
+ mdlEl().innerHTML=`<div class="mbox rvf"><h2>🚫 Batalkan Pesanan</h2><div style="color:#555">${esc(lbl(bt.mid))}<br><b>${bt.pk?'1 paket ':'1x '}${esc(bt.nama)}</b>${bt.n?` <small>📝 ${esc(bt.n)}</small>`:''}</div>
+ <p style="font-size:13px;color:#a33;margin:8px 0 0">Pesanan yang sudah dikirim hanya bisa dibatalkan dengan PIN admin dan tetap tercatat sebagai pembatalan.</p>
+ <label>Alasan</label><select onchange="bt.alasan=this.value;batalUI()">${ALASAN.map(a=>`<option ${a===bt.alasan?'selected':''}>${a}</option>`).join('')}</select>
+ ${bt.alasan==='Lainnya'?`<input placeholder="Tulis alasan" value="${esc(bt.lain)}" oninput="bt.lain=this.value" style="margin-top:6px">`:''}
+ <label>PIN admin</label><input type="password" inputmode="numeric" value="${esc(bt.pin)}" oninput="bt.pin=this.value" autocomplete="off">
+ <div class="mt"><button class="g" onclick="tutupPay()">Kembali</button><button class="r" onclick="batalOk()">🚫 Batalkan</button></div></div>`}
+async function batalOk(){
+ if(bt.pin!==String(CFG.pin))return alert('PIN salah');
+ const alasan=bt.alasan==='Lainnya'?bt.lain.trim():bt.alasan;if(!alasan)return alert('Tulis alasan pembatalan');
+ const mid=bt.mid,o=O[mid],it=o&&o.items.find(i=>i.id==bt.id&&(i.n||'')==bt.n);if(!it){tutupPay();return}
+ const cs=bt.pk?o.items.filter(c=>c.pkn===it.nama&&String(c.id).startsWith('p'+it.id+'_')):[];
+ const cetak=bt.pk?cs.some(c=>(c.p||0)>0):bt.k<(it.p||0),oleh=mode==='kasir'?'Kasir':'HP',harga=it.harga;
+ if(!hapusLocal(o,bt.id,bt.n,bt.k))return alert('Tidak bisa dibatalkan: sudah ada yang diantar.');
+ if(!U){const l=J('BT',[]),d=new Date(),q=x=>String(x).padStart(2,'0');l.push({tgl:hari(),jam:q(d.getHours())+':'+q(d.getMinutes())+':'+q(d.getSeconds()),meja:lbl(mid),item:bt.nama+(bt.pk?' (paket)':''),qty:1,harga,n:bt.n,alasan,oleh,cetak:cetak?'Ya':'Belum',nilai:harga});localStorage.BT=JSON.stringify(l.slice(-1000))}
+ if(!o.items.length)delete O[mid];
+ const r=await post({action:'hapus',meja:mid,id:bt.id,n:bt.n,k:bt.k,pin:bt.pin,alasan,oleh,label:lbl(mid)},true);let j=null;try{j=JSON.parse(r)}catch(e){}
+ if(U&&r===null)alert('Gagal terhubung. Pembatalan belum tersimpan.');
+ else if(j&&j.err==='pin')alert('PIN salah (ditolak server).');
+ else if(j&&j.err==='diantar')alert('Tidak bisa dibatalkan: sudah ada yang diantar.');
+ tutupPay();await load(true);rr0()}
+/* daftar pembatalan */
+let bl={dari:'',sampai:'',L:[],msg:''};
+async function blCari(){bl.msg='Memuat...';blRender();let L;
+ try{if(!U)L=J('BT',[]).slice().reverse().filter(x=>(!bl.dari||x.tgl>=bl.dari)&&(!bl.sampai||x.tgl<=bl.sampai));
+  else{const p=new URLSearchParams({batal:'1',dari:bl.dari,sampai:bl.sampai});const r=await fetch(U+(U.includes('?')?'&':'?')+p);L=await r.json();if(!Array.isArray(L))throw 0}
+  bl.L=L;bl.msg=L.length?'':'Tidak ada pembatalan'}catch(e){bl.L=[];bl.msg='Gagal memuat. Pastikan Code.gs terbaru sudah di-deploy.'}
+ blRender()}
+function blSet(a,b){bl.dari=a;bl.sampai=b;const x=$('#bld'),y=$('#bls');if(x)x.value=a;if(y)y.value=b;blCari()}
+function blBuka(){const h=hari();bl={dari:h,sampai:h,L:[],msg:''};
+ mdlEl().innerHTML=`<div class="mbox" id="blst" style="max-width:680px;width:96%"><h2>🚫 Pembatalan Pesanan</h2>
+ <div class="rowa" style="gap:6px;flex-wrap:wrap"><span style="font-size:13px">Dari</span><input type="date" id="bld" value="${h}" onchange="bl.dari=this.value;blCari()" style="flex:1;min-width:130px"><span style="font-size:13px">s/d</span><input type="date" id="bls" value="${h}" onchange="bl.sampai=this.value;blCari()" style="flex:1;min-width:130px"></div>
+ <div class="rowa" style="gap:4px;flex-wrap:wrap;margin:6px 0"><button class="g" onclick="blSet(hari(),hari())">Hari ini</button><button class="g" onclick="blSet(hariOff(-1),hariOff(-1))">Kemarin</button><button class="g" onclick="blSet(hariOff(-6),hari())">7 hari</button><button class="g" onclick="blSet(hari().slice(0,8)+'01',hari())">Bulan ini</button></div>
+ <div id="blL"></div><div class="mt"><button class="g" onclick="tutupPay()">Tutup</button></div></div>`;blCari()}
+function blRender(){const el=$('#blL');if(!el)return;const sum=bl.L.reduce((a,x)=>a+(+x.nilai||0),0);
+ el.innerHTML=(bl.L.length?`<div style="background:#fdecec;border-radius:8px;padding:6px 8px;font-size:13px;margin-bottom:4px"><b>${bl.L.length} item dibatalkan · Nilai ${rp(sum)}</b></div>`:'')+`<div style="max-height:46vh;overflow:auto">${bl.msg?`<p class="leg">${bl.msg}</p>`:''}${bl.L.map(x=>`<div class="rvr"><div><b>${+x.qty||1}x ${esc(x.item)}</b>${x.n?` <small>📝 ${esc(x.n)}</small>`:''} · ${rp(x.nilai)}<br><small>${esc(x.tgl)} ${esc(x.jam)} · ${esc(x.meja)} · ${x.cetak==='Ya'?'sudah dicetak':'belum dicetak'}<br>Alasan: <b>${esc(x.alasan)}</b> · oleh ${esc(x.oleh)}</small></div></div>`).join('')}</div>`}
+let cnT=null;
+function cnSet(mid,v){const o=O[mid];if(!o)return;o.cn=v;wv++;lw=Date.now();clearTimeout(cnT);cnT=setTimeout(()=>post({action:'catatan',meja:mid,cn:v.trim()}),700)}
+const cnIn=mid=>O[mid]?`<input class="cn" placeholder="📝 Catatan nota/meja (mis. diambil jam 8 pagi)" value="${esc(O[mid].cn||'')}" oninput="cnSet('${mid}',this.value)">`:'';
+const cnH=o=>o&&o.cn?`<div style="padding:3px 0"><b>📝 ${esc(o.cn)}</b></div><hr>`:'';
 /* ===== CHECKLIST ANTAR ===== */
-function antar(mid,i,on){const o=O[mid],it=o&&o.items[i];if(!it)return;it.d=on?it.qty:0;rr0();
- post({action:'delivered',meja:mid,id:it.id,n:it.n||'',done:on})}
-function rowsAntar(mid){const o=O[mid];return o.items.map((it,i)=>{const dn=(it.d||0)>=it.qty;
- if(it.kat==='paket')return `<div class="ck" style="cursor:default;background:#f0f4f2"><span><b>📦 ${it.qty}x ${esc(it.nama)}</b>${it.n?` <small>📝 ${esc(it.n)}</small>`:''}</span></div>`;
- return `<label class="ck ${dn?'dn':''} ${tcls(o,it)}"><input type="checkbox" ${dn?'checked':''} onchange="antar('${mid}',${i},this.checked)"><span>${it.pkn?'↳ ':''}${it.qty}x ${esc(it.nama)}${!dn&&it.d?` <small>(sisa ${it.qty-it.d})</small>`:''}${it.n?` <small>📝 ${esc(it.n)}</small>`:''}</span>${tmr(o,it)}<small>${it.kat=='bar'?'🥤':'🍛'}</small></label>`}).join('')}
+function antarK(mid,i,k,on){const o=O[mid],it=o&&o.items[i];if(!it)return;if(on&&k>=(it.p||0)){rr0();return alert('Cetak dulu pesanan ini (Dapur/Bartender) sebelum diantar.')}const a=dmOf(it);a[k]=on;it.dm=a;it.d=a.filter(Boolean).length;rr0();
+ post({action:'deliveredOne',meja:mid,id:it.id,n:it.n||'',k,done:on})}
+function rowsAntar(mid){const o=O[mid];return o.items.map((it,i)=>{
+ if(it.kat==='diskon')return '';
+ if(it.kat==='paket')return `<div class="ck" style="cursor:default;background:#f0f4f2"><span><b>📦 ${it.qty}x ${esc(it.nama)}</b>${it.n?` <small>📝 ${esc(it.n)}</small>`:''}</span><button class="xb" title="Hapus 1 paket" onclick="hapusP('${mid}',${i},0)">✕</button></div>`;
+ const a=dmOf(it);let h='';
+ for(let k=0;k<it.qty;k++){const dn=a[k];
+  const bp=!dn&&k>=(it.p||0);
+  h+=`<label class="ck ${dn?'dn':''} ${tcls1(o,it,dn,k)}"><input type="checkbox" ${dn?'checked':''} ${bp?'disabled':''} onchange="antarK('${mid}',${i},${k},this.checked)"><span>${it.pkn?'↳ ':''}1x ${esc(it.nama)}${it.n?` <small>📝 ${esc(it.n)}</small>`:''}</span>${tmr1(o,it,dn,k)}${bp?'<small style="color:#d98324">belum dicetak</small>':''}<small>${it.kat=='bar'?'🥤':'🍛'}</small>${dn||it.pkn?'':`<button class="xb" title="Hapus" onclick="event.preventDefault();event.stopPropagation();hapusP('${mid}',${i},${k})">✕</button>`}</label>`}
+ return h}).join('')}
 function ob(mid,btn){const o=O[mid],b=blm(o);
- return `<div class="ob"><div class="oh"><b>${lbl(mid)}</b>${b?`<span class="pill">${b} belum diantar</span>`:'<span class="ok">✔ semua diantar</span>'}${btn?`<button class="g" style="padding:3px 10px;font-size:12px" onclick="pilih('${mid}')">Buka</button>`:''}</div>${rowsAntar(mid)}</div>`}
+ return `<div class="ob"><div class="oh"><b>${lbl(mid)}</b>${b?`<span class="pill">${b} belum diantar</span>`:'<span class="ok">✔ semua diantar</span>'}${btn?`<button class="g" style="padding:3px 10px;font-size:12px" onclick="pilih('${mid}')">Buka</button>`:''}</div>${O[mid].cn?`<div style="font-size:13px;padding:3px 2px">📝 <b>${esc(O[mid].cn)}</b></div>`:''}${rowsAntar(mid)}</div>`}
 function listAll(){
  const ids=Object.keys(O).filter(id=>O[id]&&O[id].items.length);
  if(!ids.length)return '<p class="leg" style="padding:14px 0">Belum ada order aktif.</p>';
@@ -148,35 +281,59 @@ function listAll(){
  return ids.map(id=>ob(id,true)).join('')}
 
 /* ===== MENU ORDER (dipakai HP & kasir) ===== */
-const isiTxt=m=>(m.isi||[]).map(c=>{const x=MENU.find(y=>y.id==c.id);return c.qty+'x '+(x?esc(x.nama):'?')}).join(', ');
+function promoFor(m){const P=(CFG.promo||[]).filter(p=>p.aktif&&(p.items||[]).includes(m.id));let best=null;
+ P.forEach(p=>{const d=p.tipe==='%'?Math.round(m.harga*Math.min(100,p.nilai)/100):Math.min(m.harga,Math.round(p.nilai));if(!best||d>best.d)best={d,p}});
+ return best&&best.d>0?best:null}
+const promoTag=m=>{const pr=promoFor(m);return pr?`<br><small style="color:#c0392b">🏷 ${esc(pr.p.nama)}: ${rp(m.harga-pr.d)}</small>`:''};
+const isiTxt=m=>(m.isi||[]).map(c=>{const x=c.id!=null?MENU.find(y=>y.id==c.id):null;return c.qty+'x '+esc(x?x.nama:(c.nama||'?'))}).join(', ');
 function menuList(pre){
  let h=`<div class="tabs"><button class="${tab=='dapur'?'on':''}" onclick="tab='dapur';rr()">🍛 Makanan</button><button class="${tab=='bar'?'on':''}" onclick="tab='bar';rr()">🥤 Minuman</button><button class="${tab=='paket'?'on':''}" onclick="tab='paket';rr()">📦 Paket</button></div>${pre||''}`;
- MENU.filter(m=>m.kat==tab).forEach(m=>{h+=`<div class="item"><div>${esc(m.nama)}<br><small>${rp(m.harga)}</small>${m.kat=='paket'?`<br><small>${isiTxt(m)}</small>`:''}</div><div class="q"><button class="g" onclick="chg(${m.id},-1)">−</button><b>${cart[m.id]||0}</b><button onclick="chg(${m.id},1)">+</button></div><input class="nt" placeholder="Catatan menu ini (pedas, tanpa es...)" value="${esc(notes[m.id]||'')}" oninput="notes[${m.id}]=this.value"></div>`});
+ MENU.filter(m=>m.kat==tab).forEach(m=>{h+=`<div class="item"><div>${esc(m.nama)}<br><small>${rp(m.harga)}</small>${promoTag(m)}${m.kat=='paket'?`<br><small>${isiTxt(m)}</small>`:''}</div><div class="q"><button class="g" onclick="chg(${m.id},-1)">−</button><b>${cart[m.id]||0}</b><button onclick="chg(${m.id},1)">+</button></div><input class="nt" placeholder="Catatan menu ini (pedas, tanpa es...)" value="${esc(notes[m.id]||'')}" oninput="notes[${m.id}]=this.value">${vrUI(m)}</div>`});
  return h}
-function chg(id,d){cart[id]=Math.max(0,(cart[id]||0)+d);rr()}
-function merge(o,items){items.forEach(it=>{const ex=o.items.find(i=>i.id==it.id&&(i.n||'')==(it.n||''));if(ex){if((ex.d||0)>=ex.qty)ex.t=it.t;ex.qty+=it.qty}else o.items.push(it)})}
+function vsum(id,skip){return (vr[id]||[]).reduce((a,v,k)=>a+(k===skip?0:v.q),0)}
+function vrUI(m){const id=m.id,c=cart[id]||0,L=vr[id]||[];if(c<2&&!L.length)return '';
+ const rest=c-vsum(id);
+ return `<div class="vrw">${L.map((v,k)=>`<div class="vr"><button class="g" onclick="vq(${id},${k},-1)">−</button><b>${v.q}</b><button onclick="vq(${id},${k},1)">+</button><input placeholder="Catatan khusus ${v.q} porsi ini (mis. pedas)" value="${esc(v.n)}" oninput="vr[${id}][${k}].n=this.value"><button class="r" onclick="vDel(${id},${k})">✕</button></div>`).join('')}
+ ${L.length?`<small>Sisa ${rest} porsi memakai catatan di atas.</small>`:''}${rest>1||(rest>=1&&!L.length)?`<button class="vadd" onclick="vAdd(${id})">＋ Catatan berbeda untuk sebagian porsi</button>`:''}</div>`}
+function vAdd(id){const c=cart[id]||0;if(vsum(id)>=c)return;(vr[id]=vr[id]||[]).push({n:'',q:1});rr()}
+function vq(id,k,d){const v=vr[id][k],mx=(cart[id]||0)-vsum(id,k);v.q=Math.max(1,Math.min(mx,v.q+d));rr()}
+function vDel(id,k){vr[id].splice(k,1);rr()}
+function chg(id,d){cart[id]=Math.max(0,(cart[id]||0)+d);let ex=vsum(id)-cart[id];const L=vr[id]||[];while(ex>0&&L.length){const v=L[L.length-1];if(v.q>ex){v.q-=ex;ex=0}else{ex-=v.q;L.pop()}}rr()}
+function merge(o,items){items.forEach(it=>{const ex=o.items.find(i=>i.id==it.id&&(i.n||'')==(it.n||''));if(ex){const ts=Array.from({length:ex.qty},(_,k)=>tmAt(o,ex,k));for(let k=0;k<it.qty;k++)ts.push(it.t);ex.ts=ts;ex.qty+=it.qty}else o.items.push(it)})}
 function markPrinted(o,list){list.forEach(x=>{const i=o.items.find(i=>i.id==x.id&&(i.n||'')==(x.n||''));if(i)i.p=Math.min(i.qty,Math.max(i.p||0,x.qty))})}
-async function kirim(){
- const waktu=new Date().toISOString(),items=[];
- for(const id in cart){if(!cart[id])continue;const m=MENU.find(x=>x.id==id);if(!m)continue;const n=(notes[id]||'').trim();
-  items.push({id:+id,nama:m.nama,harga:m.harga,kat:m.kat,qty:cart[id],p:0,n,t:waktu});
-  if(m.kat==='paket')(m.isi||[]).forEach(c=>{const x=MENU.find(y=>y.id==c.id);if(x&&x.kat!=='paket')items.push({id:'p'+m.id+'_'+x.id,nama:x.nama,harga:0,kat:x.kat,qty:c.qty*cart[id],p:0,n,t:waktu,pkn:m.nama})})}
+function buildItems(waktu){const items=[];
+ for(const id in cart){if(!cart[id])continue;const m=MENU.find(x=>x.id==id);if(!m)continue;const n0=(notes[id]||'').trim();
+  const grp=[];let sisa=cart[id];(vr[id]||[]).forEach(v=>{const q=Math.min(sisa,v.q),nn=(v.n||'').trim();if(q>0&&nn){grp.push({n:nn,q});sisa-=q}});
+  if(sisa>0)grp.unshift({n:n0,q:sisa});
+  grp.forEach(g=>items.push({id:+id,nama:m.nama,harga:m.harga,kat:m.kat,qty:g.q,p:0,n:g.n,t:waktu}));
+  const pr=promoFor(m);if(pr)items.push({id:'dk'+m.id+'_'+pr.d,nama:(/^promo/i.test(pr.p.nama)?'':'Promo ')+pr.p.nama+': '+m.nama,harga:-pr.d,kat:'diskon',qty:cart[id],p:0,n:'',t:waktu,ex1:pr.p.eks?m.harga-pr.d:0});
+  if(m.kat==='paket')grp.forEach(g=>(m.isi||[]).forEach((c,j)=>{const x=c.id!=null?MENU.find(y=>y.id==c.id):null,nm=x?x.nama:c.nama,kt=x?x.kat:c.kat;
+   if(!nm||(kt!=='dapur'&&kt!=='bar'))return;
+   items.push({id:'p'+m.id+'_'+(x?x.id:'c'+j),nama:nm,harga:0,kat:kt,qty:c.qty*g.q,p:0,n:g.n,t:waktu,pkn:m.nama})}))}
+ return items}
+function previewKirim(){const items=buildItems(new Date().toISOString()).filter(i=>i.kat!=='diskon');if(!items.length)return;
+ const n=items.filter(i=>!i.pkn).reduce((a,i)=>a+i.qty,0),e=mode==='kasir'?'Simpan':'Kirim';
+ mdlEl().innerHTML=`<div class="mbox"><h2>👀 Preview Pesanan</h2><div style="color:#555">${esc(lbl(sel))}</div><div class="prev" style="margin:8px 0">${items.map(i=>i.pkn?`<div style="padding-left:18px;font-size:13px;color:#555">↳ ${i.qty}x ${esc(i.nama)}</div>`:`<div style="padding:5px 0;border-bottom:1px dashed #ccc"><b>${i.qty}x ${esc(i.nama)}</b>${i.n?`<br><small>📝 ${esc(i.n)}</small>`:''}</div>`).join('')}</div><div class="mrow"><span>Total porsi</span><b>${n}</b></div><div class="mt"><button class="g" onclick="tutupPay()">← Kembali</button><button onclick="kirim()">✔ ${e} (${n})</button></div></div>`}
+async function kirim(){tutupPay();
+ const waktu=new Date().toISOString(),items=buildItems(waktu);
  if(!items.length)return;
- if(!U){const o=O[sel]||(O[sel]={meja:sel,waktu,items:[]});merge(o,items)}
- await post({action:'add',meja:sel,items,waktu});cart={};notes={};await load(true);
+ let cnA='';const dr=!O[sel]&&RV.find(r=>r.st==='datang'&&String(r.meja)===String(sel)&&r.tgl===hari());
+ if(dr)cnA='Reservasi: '+dr.nama+' ('+dr.orang+' org)';
+ if(!U){const o=O[sel]||(O[sel]={meja:sel,waktu,items:[]});if(cnA&&!o.cn)o.cn=cnA;merge(o,items)}
+ await post({action:'add',meja:sel,items,waktu,cn:cnA});if(dr)await rvSet({...dr,st:'selesai'});cart={};notes={};vr={};await load(true);
  if(mode==='kasir')kas();else{alert('Pesanan terkirim ke kasir ✔');sel=null;pel()}}
 
 /* ===== PELAYAN (HP) ===== */
 function pel(){
  if(sel==null&&vw==='list'){app.innerHTML=head('Daftar Order')+`<div style="padding:10px 14px 0"><button class="g" onclick="vw='';pel()">← Kembali ke meja</button> <span class="pill">${blmAll()} belum diantar</span> <span class="pill" style="background:${blmPAll()?'#d98324':'#2d6a4f'}">${blmPAll()?blmPAll()+' belum dicetak':'✔ semua tercetak'}</span></div><div style="padding:4px 14px 30px">${listAll()}</div>`;return}
  if(sel==null){
-  app.innerHTML=head('Pilih Meja')+`<div style="padding:10px 10px 0"><button style="width:100%" onclick="vw='list';pel()">📋 Daftar Order${blmAll()?` <span class="pill w">${blmAll()} belum diantar</span>`:''}${blmPAll()?` <span class="pill o">${blmPAll()} belum dicetak</span>`:''}</button></div>`+AREAS.map(a=>{const L=M.filter(m=>m.area==a),n=L.filter(m=>O[m.id]).length;return `<div class="sec cp" style="--c:${COL[a]}"><h3>${a}<small>${n}/${L.length} terisi</small></h3><div class="grid">${L.map(m=>tbl(m,false)).join('')}</div></div>`}).join('');return}
+  app.innerHTML=head('Pilih Meja')+`<div style="padding:10px 10px 0"><div style="margin-bottom:6px">${rvBtn().replace('<button class="g"','<button style="width:100%" class="g"')}</div><button style="width:100%" onclick="vw='list';pel()">📋 Daftar Order${blmAll()?` <span class="pill w">${blmAll()} belum diantar</span>`:''}${blmPAll()?` <span class="pill o">${blmPAll()} belum dicetak</span>`:''}</button></div>`+AREAS.map(a=>{const L=M.filter(m=>m.area==a),n=L.filter(m=>O[m.id]).length;return `<div class="sec cp" style="--c:${COL[a]}"><h3>${a}<small>${n}/${L.length} terisi</small></h3><div class="grid">${L.map(m=>tbl(m,false)).join('')}</div></div>`}).join('');return}
  const o=O[sel],n=cartN();
- const pre=o?`<div style="margin:0 14px">${ob(sel,false)}</div>`:'';
- app.innerHTML=head(lbl(sel))+menuList(pre)+`<div style="height:90px"></div><div class="bar"><button class="g" onclick="sel=null;pel()">←</button><button style="flex:1" ${n?'':'disabled'} onclick="kirim()">Kirim (${n})</button></div>`}
+ const pre=(o?`<div style="margin:10px 14px 0"><b>📋 Sudah dipesan</b>${cnIn(sel)}${ob(sel,false)}</div>`:'')+`<div style="margin:22px 14px 0;border-top:4px solid #2d6a4f;padding-top:10px"><b style="font-size:17px;color:#2d6a4f">＋ ${o?'Tambah':'Buat'} pesanan</b></div>`;
+ app.innerHTML=head(lbl(sel))+(isLt(sel)?`<div style="margin:10px 14px 0">${rvBox(sel)}</div>`:'')+pre+menuList()+`<div style="height:90px"></div><div class="bar"><button class="g" onclick="sel=null;pel()">←</button><button style="flex:1" ${n?'':'disabled'} onclick="previewKirim()">Kirim (${n})</button></div>`}
 
 /* ===== KASIR (desktop) ===== */
-function sumBar(){const n=blmAll(),c=blmPAll();return `<div class="sumb"><button class="g" onclick="sel=null;cart={};notes={};kas()">📋 Semua order</button><span class="pill" style="${n?'':'background:#2d6a4f'}">${n?n+' belum diantar':'✔ semua diantar'}</span><span class="pill" style="background:${c?'#d98324':'#2d6a4f'}">${c?c+' belum dicetak':'✔ semua tercetak'}</span></div>`}
+function sumBar(){const n=blmAll(),c=blmPAll();return `<div class="sumb"><button class="g" onclick="sel=null;cart={};notes={};vr={};kas()">📋 Semua order</button>${rvBtn()}<button class="g" onclick="nlBuka()">🧾 Daftar nota</button><button class="g" onclick="blBuka()">🚫 Pembatalan</button><span class="pill" style="${n?'':'background:#2d6a4f'}">${n?n+' belum diantar':'✔ semua diantar'}</span><span class="pill" style="background:${c?'#d98324':'#2d6a4f'}">${c?c+' belum dicetak':'✔ semua tercetak'}</span></div>`}
 function denahAll(){
  return sumBar()+AREAS.map(a=>{const L=M.filter(m=>m.area==a),n=L.filter(m=>O[m.id]).length;
   return `<div class="sec" style="--c:${COL[a]}"><h3>${a}<small>${n}/${L.length} terisi</small></h3><div class="grid">${L.map(m=>tbl(m,true)).join('')}</div></div>`}).join('')}
@@ -186,14 +343,22 @@ function kas(skip){
  $('#dn').innerHTML=denahAll();
  if(!skip)pnl()}
 function pnl(){$('#pn').innerHTML=panel()}
+function dtRow(o){const d=dtd(o);return d>0?`<tr><td colspan="3" style="color:#c0392b">🏷 Diskon total${o.dt.t==='%'?' '+o.dt.v+'%':''}</td><td align="right" style="color:#c0392b">-${rp(d)}</td></tr>`:''}
 function panel(){
  if(sel==null)return '<h2 style="margin-top:0">📋 Semua order</h2>'+listAll();
  const o=O[sel],n=cartN();
- let h=`<h2 style="margin-top:0">${lbl(sel)}</h2>`;
+ let h=`<h2 style="margin-top:0">${lbl(sel)}</h2>${rvBox(sel)}${cnIn(sel)}`;
  if(!o)h+='<p>Belum ada pesanan.</p>';
- else h+='<table>'+o.items.map((i,x)=>`<tr class="${tcls(o,i)}"><td style="width:28px">${i.kat==='paket'?'':`<input type="checkbox" style="width:20px;height:20px" ${(i.d||0)>=i.qty?'checked':''} onchange="antar('${sel}',${x},this.checked)">`}</td><td>${i.pkn?'↳ ':i.kat==='paket'?'📦 ':''}${i.qty}x ${esc(i.nama)}${i.n?`<br><small>📝 ${esc(i.n)}</small>`:''}</td><td>${i.kat=='paket'?'📦':i.kat=='bar'?'🥤':'🍛'}${act(i)&&i.qty>(i.p||0)?' <b style="color:#d98324">baru</b>':''}${tmr(o,i)?'<br>'+tmr(o,i):''}</td><td align="right">${i.pkn?'':rp(i.harga*i.qty)}</td></tr>`).join('')+`<tr><td colspan="3"><b>TOTAL</b></td><td align="right"><b>${rp(tot(o))}</b></td></tr></table>
-  <div class="btns"><button class="o" onclick="cetakK('dapur')">🖨 Dapur</button><button class="b" onclick="cetakK('bar')">🖨 Bartender</button><button class="g" onclick="cetakK('semua')">🖨 Order (semua)</button><button class="g" onclick="nota()">🧾 Tagihan</button><button class="r" style="grid-column:span 2" onclick="bayar()">💰 Bayar</button></div>`;
- h+=`<hr style="margin:18px 0 6px"><b>＋ ${o?'Tambah':'Buat'} pesanan</b>`+menuList()+`<div style="margin-top:10px"><button style="width:100%" ${n?'':'disabled'} onclick="kirim()">Simpan (${n})</button></div>`;
+ else h+='<table>'+o.items.map((i,x)=>{
+   if(i.kat==='diskon')return `<tr><td></td><td style="color:#c0392b">🏷 ${esc(i.nama)}${i.qty>1?' ('+i.qty+'x)':''}</td><td></td><td align="right" style="color:#c0392b">-${rp(-i.harga*i.qty)}</td></tr>`;
+   if(i.kat==='paket')return `<tr><td></td><td>📦 ${i.qty}x ${esc(i.nama)}${i.n?`<br><small>📝 ${esc(i.n)}</small>`:''}<button class="xb" title="Hapus 1 paket" onclick="hapusP('${sel}',${x},0)">✕</button></td><td>📦</td><td align="right">${rp(i.harga*i.qty)}</td></tr>`;
+   const a=dmOf(i);let r='';
+   for(let k=0;k<i.qty;k++){const dn=a[k];
+    const bp=!dn&&k>=(i.p||0);
+    r+=`<tr class="${tcls1(o,i,dn,k)}"><td style="width:30px"><input type="checkbox" style="width:20px;height:20px" ${dn?'checked':''} ${bp?'disabled title="Cetak dulu"':''} onchange="antarK('${sel}',${x},${k},this.checked)"></td><td${dn?' style="color:#999;text-decoration:line-through"':''}>${i.pkn?'↳ ':''}1x ${esc(i.nama)}${i.n?`<br><small>📝 ${esc(i.n)}</small>`:''}${dn||i.pkn?'':`<button class="xb" title="Hapus" onclick="hapusP('${sel}',${x},${k})">✕</button>`}</td><td>${i.kat=='bar'?'🥤':'🍛'}${k>=(i.p||0)?' <b style="color:#d98324">belum dicetak</b>':''}${tmr1(o,i,dn,k)?'<br>'+tmr1(o,i,dn,k):''}</td><td align="right">${i.pkn?'':rp(i.harga)}</td></tr>`}
+   return r}).join('')+dtRow(o)+`<tr><td colspan="3"><b>TOTAL</b></td><td align="right"><b>${rp(tot(o))}</b></td></tr></table>
+  <div class="btns"><button class="o" onclick="cetakK('dapur')">🖨 Dapur</button><button class="b" onclick="cetakK('bar')">🖨 Bartender</button><button class="g" onclick="cetakK('semua')">🖨 Order (semua)</button><button class="g w3" onclick="nota()">🧾 Tagihan</button><button class="g w3" onclick="cetakChecker()">🔍 Checker</button><button class="g" onclick="diskonUI()">🏷 Diskon</button><button class="r" style="grid-column:span 4;font-size:16px" onclick="bayar()">💰 Bayar</button></div>`;
+ h+=`<hr style="margin:18px 0 6px"><b>＋ ${o?'Tambah':'Buat'} pesanan</b>`+menuList()+`<div style="margin-top:10px"><button style="width:100%" ${n?'':'disabled'} onclick="previewKirim()">Simpan (${n})</button></div>`;
  return h}
 
 /* ===== CETAK ===== */
@@ -205,73 +370,206 @@ async function cetakK(k){
   if(!L.length){L=o.items.filter(i=>i.kat==kt);ulang=true}
   if(!L.length)return;
   L.forEach(i=>pl.push({id:i.id,n:i.n||'',qty:i.qty}));
-  hasil+=`<div style="page-break-after:always"><b>${kt=='bar'?'BARTENDER':'DAPUR'}${ulang?' (ULANG)':''}</b><br>${lbl(sel)} · ${wk()}<hr>${L.map(i=>`<div><b>${ulang?i.qty:i.qty-(i.p||0)}x ${esc(i.nama)}</b>${i.pkn?` <small>[${esc(i.pkn)}]</small>`:''}${i.n?`<br>&nbsp;&nbsp;*${esc(i.n)}`:''}</div>`).join('')}<hr></div>`});
+  hasil+=`<div style="page-break-after:always"><b>${kt=='bar'?'BARTENDER':'DAPUR'}${ulang?' (ULANG)':''}</b><br>${lbl(sel)} · ${wk()}<hr>${cnH(o)}${L.map(i=>`<div><b>${ulang?i.qty:i.qty-(i.p||0)}x ${esc(i.nama)}</b>${i.pkn?` <small>[${esc(i.pkn)}]</small>`:''}${i.n?`<br>&nbsp;&nbsp;*${esc(i.n)}`:''}</div>`).join('')}<hr></div>`});
  if(!hasil)return alert('Tidak ada item untuk dicetak');
  markPrinted(o,pl);await post({action:'printed',meja:sel,list:pl});cetak(hasil);kas()}
-function itemsNota(items){return items.map(i=>i.pkn?`<div style="padding-left:8px">- ${i.qty}x ${esc(i.nama)}</div>`:`<div>${esc(i.nama)}${i.n?` *${esc(i.n)}`:''}</div><div class="r"><span>${i.qty} x ${(+i.harga).toLocaleString('id-ID')}</span><span>${(i.harga*i.qty).toLocaleString('id-ID')}</span></div>`).join('')}
+function showPrev(j,h){prevHTML=h;mdlEl().innerHTML=`<div class="mbox"><h2>${j}</h2><div class="prev">${h}</div><div class="mt"><button class="g" onclick="tutupPay()">Close</button><button onclick="cetak(prevHTML)">🖨 Print</button></div></div>`}
+function cetakChecker(){const o=O[sel];if(!o)return;
+ const L=o.items.filter(act),n=L.reduce((a,i)=>a+i.qty,0);let rows='';
+ L.forEach(i=>{for(let k=0;k<i.qty;k++)rows+=`<div>☐ <b>${esc(i.nama)}</b>${i.pkn?` [${esc(i.pkn)}]`:''}</div>${i.n?`<div style="padding-left:18px">*${esc(i.n)}</div>`:''}`});
+ if(!rows)return alert('Belum ada item untuk dicek');
+ showPrev('🔍 Preview Checker',`<div style="text-align:center"><b>CHECKER</b></div><hr>${esc(lbl(sel))}<br>${wk()}<hr>${cnH(o)}${rows}<hr>Total: ${n} porsi`)}
+function hargaRows(o){if(!o||!o.dt)return '';const sub=subt(o),d=dtd(o);if(d<=0)return '';return `<div class="r"><span>Subtotal</span><span>${rp(sub)}</span></div><div class="r"><span>Diskon${o.dt.t==='%'?' '+o.dt.v+'%':''}</span><span>-${rp(d)}</span></div>${o.items.some(i=>i.kat==='diskon'&&i.ex1)?'<div style="font-size:10px">item promo tidak ikut discount</div>':''}`}
+function itemsNota(items){return items.map(i=>i.kat==='diskon'?`<div class="r"><span>${esc(i.nama)}${i.qty>1?' x'+i.qty:''}</span><span>-${(-i.harga*i.qty).toLocaleString('id-ID')}</span></div>`:i.pkn?`<div style="padding-left:8px">- ${i.qty}x ${esc(i.nama)}</div>`:`<div>${esc(i.nama)}${i.n?` *${esc(i.n)}`:''}</div><div class="r"><span>${i.qty} x ${(+i.harga).toLocaleString('id-ID')}</span><span>${(i.harga*i.qty).toLocaleString('id-ID')}</span></div>`).join('')}
+let prevHTML='';
 function nota(){const o=O[sel];
- cetak(`<div style="text-align:center"><b>${esc(CFG.resto)}</b><br>${esc(CFG.alamat)}</div><hr><div style="text-align:center"><b>TAGIHAN</b><br>(belum dibayar)</div><hr>${esc(lbl(sel))}<br>${wk()}<hr>${itemsNota(o.items)}<hr><div class="r"><b>TOTAL</b><b>${rp(tot(o))}</b></div><hr><div style="text-align:center">Terima kasih 🙏</div>`)}
-function cetakNota(){const n=lastNota;if(!n)return;
- cetak(`<div style="text-align:center"><b>${esc(CFG.resto)}</b><br>${esc(CFG.alamat)}</div><hr>No: ${n.no}<br>${esc(n.lbl)}<br>${n.waktu}<hr>${itemsNota(n.items)}<hr><div class="r"><b>TOTAL</b><b>${rp(n.total)}</b></div><div class="r"><span>Bayar (${esc(n.metode)})</span><span>${rp(n.bayar)}</span></div><div class="r"><span>Kembali</span><span>${rp(n.kembali)}</span></div><hr><div style="text-align:center">Terima kasih 🙏</div>`)}
+ prevHTML=`<div style="text-align:center"><b>${esc(CFG.resto)}</b><br>${esc(CFG.alamat)}</div><hr><div style="text-align:center"><b>TAGIHAN</b><br>(belum dibayar)</div><hr>${esc(lbl(sel))}<br>${wk()}<hr>${cnH(o)}${itemsNota(o.items)}<hr>${hargaRows(o)}<div class="r"><b>TOTAL</b><b>${rp(tot(o))}</b></div><hr><div style="text-align:center">Terima kasih 🙏</div>`;
+ showPrev('🧾 Preview Tagihan',prevHTML)}
+const lblL=l=>l.metode==='Utang'?'Utang'+(l.ket?' a.n. '+esc(l.ket):''):esc(l.metode)+(l.ket?' ('+esc(l.ket)+')':'');
+function cetakNota(){renderNota(lastNota)}
+function renderNota(n,copy){if(!n)return;
+ const bag=n.lines.map(l=>`<div class="r"><span>${lblL(l)}</span><span>${rp(l.jumlah)}</span></div>`).join('')+(n.kembali>0?`<div class="r"><span>Kembali</span><span>${rp(n.kembali)}</span></div>`:'');
+ cetak(`<div style="text-align:center"><b>${esc(CFG.resto)}</b><br>${esc(CFG.alamat)}</div>${copy?`<div style="text-align:center;margin-top:4px"><b>*** COPY ${copy} ***</b></div>`:''}<hr>No: ${n.no}<br>${esc(n.lbl)}<br>${n.waktu}<hr>${cnH(n)}${itemsNota(n.items)}<hr>${hargaRows({items:n.items,dt:n.dt})}<div class="r"><b>TOTAL</b><b>${rp(n.total)}</b></div><hr>${bag}<hr><div style="text-align:center">Terima kasih 🙏</div>`)}
 function localNo(){const t=new Date(),q=n=>String(n).padStart(2,'0'),tgl=q(t.getDate())+q(t.getMonth()+1)+q(t.getFullYear()%100);let c=J('NOTA',{});if(c.tgl!==tgl)c={tgl,n:0};c.n++;localStorage.NOTA=JSON.stringify(c);return tgl+String(c.n).padStart(4,'0')}
 
 /* ===== PEMBAYARAN ===== */
-let pay=null,lastNota=null;
+let pay=null,lastNota=null,PR=[];
 function mdlEl(){let el=$('#mdl');if(!el){el=document.createElement('div');el.id='mdl';el.className='mdl';document.body.appendChild(el)}return el}
 function tutupPay(){pay=null;const e=$('#mdl');e&&e.remove()}
-function bayar(){const o=O[sel];if(!o||!o.items.length)return;pay={mid:sel,metode:'Cash',bayar:''};payUI()}
+const METODE=['Cash','Transfer / QRIS','Utang','Lainnya'],MI={'Cash':'💵','Transfer / QRIS':'📲','Utang':'📝','Lainnya':'➕'};
+const fmtN=v=>(v===''||v==null)?'':(+v).toLocaleString('id-ID');
+const sumL=a=>a.reduce((x,l)=>x+l.jumlah,0);
+function calc(){
+ const total=tot(O[pay.mid]),m=pay.metode,ket=(pay.ket||'').trim(),sisa=Math.max(0,total-sumL(pay.lines));
+ const cur=m==='Cash'?(+pay.bayar||0):(pay.bayar===null?sisa:(+pay.bayar||0));
+ const all=cur>0?[...pay.lines,{metode:m,jumlah:cur,ket}]:pay.lines.slice();
+ const nc=sumL(all.filter(l=>l.metode!=='Cash')),cs=sumL(all.filter(l=>l.metode==='Cash')),paid=nc+cs;
+ const curOk=cur===0||m!=='Utang'||ket!=='';
+ return {total,sisa,cur,all,nc,paid,kembali:Math.max(0,paid-total),
+  ok:(all.length>0||total===0)&&paid>=total&&nc<=total&&curOk,
+  canAdd:cur>0&&sisa>0&&curOk&&(m==='Cash'||cur<=sisa)}}
+const okLbl=()=>calc().all.some(l=>l.metode==='Utang')?'✔ Catat Utang &amp; Selesai':'✔ Bayar &amp; Selesai';
+function bayar(){const o=O[sel];if(!o||!o.items.length)return;pay={mid:sel,metode:'Cash',bayar:'',ket:'',lines:[]};payUI()}
+function pickM(x){pay.metode=x;pay.bayar=x==='Cash'?'':null;payUI()}
 function payUI(){
- const o=O[pay.mid],total=tot(o),cash=pay.metode==='Cash';
- const qk=[20000,50000,100000,200000].filter(x=>x>=total).slice(0,3);
+ const c=calc(),m=pay.metode,cash=m==='Cash',utang=m==='Utang';
  mdlEl().innerHTML=`<div class="mbox"><h2>💰 Pembayaran</h2><div style="color:#555">${esc(lbl(pay.mid))}</div>
- <div class="mt"><button class="${cash?'on':'tg'}" onclick="pay.metode='Cash';payUI()">💵 Cash</button><button class="${cash?'tg':'on'}" onclick="pay.metode='Transfer / QRIS';payUI()">📲 Transfer / QRIS</button></div>
- <div class="mrow"><span>Total</span><b style="font-size:22px">${rp(total)}</b></div>
- <div class="mrow"><span>Bayar</span><input class="by" id="by" type="number" inputmode="numeric" min="0" ${cash?'':'disabled'} value="${cash?pay.bayar:total}" oninput="pay.bayar=this.value;hitung()"></div>
- ${cash?`<div class="qk"><button onclick="setBayar(${total})">Uang pas</button>${qk.map(x=>`<button onclick="setBayar(${x})">${x.toLocaleString('id-ID')}</button>`).join('')}</div>`:''}
- <div class="mrow"><span>Kembalian</span><span class="kb" id="kb"></span></div>
- <div class="mt"><button class="g" onclick="tutupPay()">Batal</button><button id="okb" onclick="konfirmBayar()">✔ Bayar &amp; Selesai</button></div></div>`;
- hitung();if(cash)$('#by').focus()}
+ <div class="mrow"><span>Total</span><b style="font-size:22px">${rp(c.total)}</b></div>
+ <div class="mrow" style="margin:0"><span style="font-size:13px;color:#c0392b">${bruto(O[pay.mid])-c.total>0?'🏷 Termasuk diskon '+rp(bruto(O[pay.mid])-c.total):''}</span><button class="g" style="padding:3px 10px;font-size:12px" onclick="diskonUI(true)">🏷 Atur diskon</button></div>
+ ${pay.lines.length?`<div class="pl">${pay.lines.map((l,i)=>`<div class="mrow"><span>${MI[l.metode]} ${lblL(l)}</span><span>${rp(l.jumlah)} <button class="r" style="padding:1px 8px" onclick="hapusLine(${i})">✕</button></span></div>`).join('')}</div>`:''}
+ <div class="mrow"><span id="stl"></span><span class="kb" id="kb"></span></div>
+ <div class="sep"></div><b>＋ ${pay.lines.length?'Tambah pembayaran':'Pembayaran'}</b>
+ <div class="mg">${METODE.map(x=>`<button class="${x===m?'on':''}" onclick="pickM('${x}')">${MI[x]} ${x}</button>`).join('')}</div>
+ ${(utang||m==='Lainnya')?`<div style="margin:8px 0"><span style="font-size:14px;color:#555">${utang?'Nama pengutang / keterangan (wajib)':'Keterangan (mis. voucher, kartu debit)'}</span><input class="kt" id="kt" type="text" maxlength="60" autocomplete="off" value="${esc(pay.ket||'')}" oninput="pay.ket=this.value;hitung()"></div>`:''}
+ <div class="mrow"><span>Jumlah</span><input class="by" id="by" type="text" inputmode="numeric" autocomplete="off" value="${cash?(+pay.bayar?fmtN(pay.bayar):''):(pay.bayar===null?fmtN(c.sisa):(+pay.bayar?fmtN(pay.bayar):''))}" oninput="fmtBayar(this)"></div>
+ ${cash?`<div class="qk"><button onclick="setBayar(${c.sisa})">Uang pas</button><button class="hp" onclick="setBayar(0)">Hapus</button></div><div class="qn">${[1000,2000,5000,10000,20000,50000,100000].map(x=>`<button onclick="addBayar(${x})">${fmtN(x)}</button>`).join('')}</div>`:`<div class="qk"><button onclick="setBayar(null)">Sisa (${rp(c.sisa)})</button></div>`}
+ <button class="g" id="addb" style="width:100%;margin-top:6px" onclick="tambahLine()">＋ Tambahkan pembayaran ini</button>
+ <div class="mt"><button class="g" onclick="tutupPay()">Batal</button><button id="okb" onclick="konfirmBayar()">${okLbl()}</button></div></div>`;
+ hitung();if(cash)$('#by').focus();else if(utang||m==='Lainnya')$('#kt').focus()}
 function setBayar(v){pay.bayar=v;payUI()}
-function hitung(){const total=tot(O[pay.mid]),by=pay.metode==='Cash'?(+pay.bayar||0):total,k=by-total,kb=$('#kb');
- kb.textContent=k>=0?rp(k):'Kurang '+rp(-k);kb.className='kb'+(k<0?' neg':'');$('#okb').disabled=k<0}
+function addBayar(v){pay.bayar=(+pay.bayar||0)+v;payUI()}
+function hapusLine(i){pay.lines.splice(i,1);payUI()}
+function tambahLine(){const c=calc();if(!c.canAdd)return;pay.lines.push({metode:pay.metode,jumlah:c.cur,ket:(pay.ket||'').trim()});pay.bayar=pay.metode==='Cash'?'':null;pay.ket='';payUI()}
+function fmtBayar(el){
+ const before=el.value.slice(0,el.selectionStart).replace(/\D/g,'').length;
+ const d=el.value.replace(/\D/g,'').replace(/^0+(?=\d)/,'');
+ pay.bayar=d;el.value=d?fmtN(d):'';
+ let n=0,np=0;while(np<el.value.length&&n<before){if(/\d/.test(el.value[np]))n++;np++}
+ el.setSelectionRange(np,np);hitung()}
+function hitung(){const c=calc(),kb=$('#kb'),st=$('#stl');
+ if(c.nc>c.total){st.textContent='Non-tunai melebihi total';kb.textContent=rp(c.nc-c.total);kb.className='kb neg'}
+ else if(c.paid<c.total){st.textContent='Kurang';kb.textContent=rp(c.total-c.paid);kb.className='kb neg'}
+ else{st.textContent='Kembalian';kb.textContent=rp(c.kembali);kb.className='kb'}
+ $('#okb').disabled=!c.ok;$('#okb').innerHTML=okLbl();$('#addb').disabled=!c.canAdd}
 async function konfirmBayar(){
- const mid=pay.mid,o=O[mid],total=tot(o),metode=pay.metode,by=metode==='Cash'?(+pay.bayar||0):total;
- if(by<total)return;
- const ok=$('#okb'),reset=()=>{ok.disabled=false;ok.innerHTML='✔ Bayar &amp; Selesai'};
+ const c=calc();if(!c.ok)return;
+ const mid=pay.mid,o=O[mid],total=c.total,lines=c.all.length?c.all:[{metode:'Lainnya',jumlah:0,ket:'Gratis (diskon 100%)'}],kembali=c.kembali;
+ const metode=[...new Set(lines.map(l=>l.metode))].join(' + '),bayarT=sumL(lines.filter(l=>l.metode!=='Utang'));
+ const ok=$('#okb'),reset=()=>{ok.disabled=false;ok.innerHTML=okLbl()};
  ok.disabled=true;ok.textContent='Menyimpan...';
- const snap=JSON.parse(JSON.stringify(o)),d={action:'pay',meja:mid,label:lbl(mid),total,metode,bayar:by,kembali:by-total};
+ const snap=JSON.parse(JSON.stringify(o)),wkN=new Date().toLocaleString('id-ID'),nota={lbl:lbl(mid),waktu:wkN,items:snap.items,dt:snap.dt,cn:snap.cn,total,lines,kembali,metode,bayar:bayarT},d={action:'pay',meja:mid,label:lbl(mid),total,lines,kembali,metode,bayar:bayarT,nota};
  let no;
- if(!U){no=localNo();delete O[mid];await post(d)}
+ if(!U){no=localNo();const nt=J('NT',[]);nt.push({no,n:{...nota,no},copy:0});localStorage.NT=JSON.stringify(nt.slice(-300));delete O[mid];await post(d)}
  else{
   const r=await post(d,true);let j=null;try{j=JSON.parse(r)}catch(e){}
   if(r===null){reset();return alert('Gagal terhubung ke Google Sheet. Pembayaran belum tersimpan, silakan coba lagi.')}
   if(j&&j.err==='berubah'){alert('Pesanan meja ini baru saja berubah (total sekarang '+rp(j.total)+'). Data dimuat ulang, silakan cek lalu bayar lagi.');tutupPay();await load(true);return kas()}
   if(j&&j.err==='kosong'){alert('Meja ini sudah dibayar atau kosong.');tutupPay();await load(true);return kas()}
+  if(j&&j.err==='kurang'){reset();return alert('Jumlah pembayaran kurang dari total di Google Sheet ('+rp(j.total)+'). Silakan periksa lagi.')}
   if(!j||!j.no){reset();return alert('Respon dari Google Sheet tidak dikenali. Cek sheet Riwayat sebelum mengulang, dan pastikan Code.gs terbaru sudah di-deploy (New version).')}
   no=j.no;delete O[mid]}
- lastNota={no,lbl:lbl(mid),waktu:new Date().toLocaleString('id-ID'),items:snap.items,total,metode,bayar:by,kembali:by-total};
- sel=null;pay=null;doneUI();kas()}
-function doneUI(){const n=lastNota;
- mdlEl().innerHTML=`<div class="mbox" style="text-align:center"><h2>✔ Pembayaran berhasil</h2><div style="font-size:13px;color:#555">No. Nota</div><div style="font-size:28px;font-weight:700;letter-spacing:1px">${n.no}</div>
- <div class="mrow"><span>${esc(n.metode)}</span><b>${rp(n.total)}</b></div><div class="mrow"><span>Bayar</span><span>${rp(n.bayar)}</span></div><div class="mrow"><span>Kembalian</span><span class="kb">${rp(n.kembali)}</span></div>
- <div class="mt"><button class="g" onclick="tutupPay()">Tutup</button><button onclick="cetakNota()">🧾 Cetak Nota</button></div></div>`}
+ lastNota={no,lbl:lbl(mid),waktu:wkN,items:snap.items,dt:snap.dt,cn:snap.cn,total,lines,kembali,metode,bayar:bayarT};
+ sel=null;pay=null;doneUI();kas();setTimeout(cetakNota,80)}
+function doneUI(){const n=lastNota,u=n.lines.some(l=>l.metode==='Utang');
+ mdlEl().innerHTML=`<div class="mbox" style="text-align:center"><h2>${u?'📝 Tercatat (ada utang)':'✔ Pembayaran berhasil'}</h2><div style="font-size:13px;color:#555">No. Nota</div><div style="font-size:28px;font-weight:700;letter-spacing:1px">${n.no}</div>
+ <div class="mrow"><span>Total</span><b>${rp(n.total)}</b></div>${n.lines.map(l=>`<div class="mrow"><span>${MI[l.metode]} ${lblL(l)}</span><span>${rp(l.jumlah)}</span></div>`).join('')}
+ ${n.kembali>0?`<div class="mrow"><span>Kembalian</span><span class="kb">${rp(n.kembali)}</span></div>`:''}
+ <div class="mt"><button class="g" onclick="tutupPay()">Tutup</button><button onclick="ulangNota(lastNota)">🖨 Cetak Ulang (Copy)</button></div></div>`}
+
+/* ===== NOTA LAMA / CETAK ULANG (COPY) ===== */
+let nl={q:'',dari:'',sampai:'',metode:'',L:[],msg:'',t:null};
+const hariOff=n=>{const d=new Date();d.setDate(d.getDate()+n);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const noTgl=no=>'20'+no.substr(4,2)+'-'+no.substr(2,2)+'-'+no.substr(0,2);
+function nlMatch(e){const n=e.n,no=String(e.no),q=nl.q.trim(),dg=q.replace(/\D/g,''),d=noTgl(no);
+ if(nl.dari&&d<nl.dari)return false;if(nl.sampai&&d>nl.sampai)return false;
+ if(nl.metode&&!n.lines.some(l=>l.metode===nl.metode))return false;
+ if(q&&!(no.includes(q)||(dg&&String(Math.round(n.total))===dg)||String(n.lbl||'').toLowerCase().includes(q.toLowerCase())))return false;
+ return true}
+async function ulangNota(n){if(!n)return;let c;
+ if(!U){const nt=J('NT',[]),e=nt.find(x=>x.no===n.no);if(!e)return alert('Nota tidak ditemukan');e.copy=(e.copy||0)+1;c=e.copy;localStorage.NT=JSON.stringify(nt)}
+ else{const r=await post({action:'copy',no:n.no},true);let j=null;try{j=JSON.parse(r)}catch(e){}
+  if(!j||!j.copy)return alert('Gagal mencatat cetak ulang. Pastikan internet aktif dan Code.gs terbaru sudah di-deploy.');c=j.copy}
+ renderNota(n,c);if($('#nlst')){const e=nl.L.find(x=>x.n.no===n.no);if(e)e.copy=c;nlRender()}}
+async function nlCari(){nl.msg='Memuat...';nlRender();const my=nl.seq=(nl.seq||0)+1;let L;
+ try{if(!U)L=J('NT',[]).slice().reverse().filter(nlMatch).slice(0,500);
+  else{const p=new URLSearchParams({nota:'1',q:nl.q.trim(),dari:nl.dari,sampai:nl.sampai,metode:nl.metode});
+   const r=await fetch(U+(U.includes('?')?'&':'?')+p.toString());L=await r.json();if(!Array.isArray(L))throw 0}
+  if(my!==nl.seq)return;nl.L=L;nl.msg=L.length?'':'Tidak ada nota yang cocok'}
+ catch(e){if(my!==nl.seq)return;nl.L=[];nl.msg='Gagal memuat. Pastikan Code.gs terbaru sudah di-deploy.'}
+ nlRender()}
+function nlSet(a,b){nl.dari=a;nl.sampai=b;const x=$('#nld'),y=$('#nls');if(x)x.value=a;if(y)y.value=b;nlCari()}
+function nlBuka(){const h=hari();nl={q:'',dari:h,sampai:h,metode:'',L:[],msg:'',t:null};
+ mdlEl().innerHTML=`<div class="mbox" id="nlst" style="max-width:680px;width:96%"><h2>🧾 Daftar Nota</h2>
+ <input id="nlq" placeholder="Cari no. nota, nominal (mis. 50000) atau meja" oninput="nl.q=this.value;clearTimeout(nl.t);nl.t=setTimeout(nlCari,450)" style="width:100%;box-sizing:border-box;padding:8px;border:1px solid #ccc;border-radius:8px;margin-bottom:6px">
+ <div class="rowa" style="gap:6px;flex-wrap:wrap"><span style="font-size:13px">Dari</span><input type="date" id="nld" value="${h}" onchange="nl.dari=this.value;nlCari()" style="flex:1;min-width:130px"><span style="font-size:13px">s/d</span><input type="date" id="nls" value="${h}" onchange="nl.sampai=this.value;nlCari()" style="flex:1;min-width:130px"></div>
+ <div class="rowa" style="gap:4px;flex-wrap:wrap;margin:6px 0"><button class="g" onclick="nlSet(hari(),hari())">Hari ini</button><button class="g" onclick="nlSet(hariOff(-1),hariOff(-1))">Kemarin</button><button class="g" onclick="nlSet(hariOff(-6),hari())">7 hari</button><button class="g" onclick="nlSet(hari().slice(0,8)+'01',hari())">Bulan ini</button><button class="g" onclick="nlSet('','')">Semua</button>
+ <select id="nlm" onchange="nl.metode=this.value;nlCari()" style="flex:1;min-width:120px"><option value="">Semua pembayaran</option>${METODE.map(m=>`<option value="${m}">${MI[m]} ${m}</option>`).join('')}</select></div>
+ <div id="nll"></div><div class="mt"><button class="g" onclick="tutupPay()">Tutup</button></div></div>`;nlCari()}
+function nlRender(){const el=$('#nll');if(!el)return;
+ const by={};let sum=0;nl.L.forEach(e=>{sum+=+e.n.total||0;e.n.lines.forEach(l=>by[l.metode]=(by[l.metode]||0)+l.jumlah);if(e.n.kembali>0)by['Cash']=(by['Cash']||0)-e.n.kembali});
+ el.innerHTML=(nl.L.length?`<div style="background:#eef5ff;border-radius:8px;padding:6px 8px;font-size:13px;margin-bottom:4px"><b>${nl.L.length}${nl.L.length>=500?'+':''} nota · Total ${rp(sum)}</b><br>${METODE.filter(m=>by[m]).map(m=>`${MI[m]} ${m}: ${rp(by[m])}`).join(' &nbsp;·&nbsp; ')}</div>`:'')+
+ `<div style="max-height:44vh;overflow:auto">${nl.msg?`<p class="leg">${nl.msg}</p>`:''}${nl.L.map((e,i)=>`<div class="rvr"><div><b>${esc(e.n.no)}</b> · ${esc(e.n.lbl)} · <b>${rp(e.n.total)}</b><br><small>${esc(e.n.waktu)} · ${[...new Set(e.n.lines.map(l=>l.metode))].map(m=>MI[m]+' '+m).join(' + ')}${e.copy?' · dicetak ulang '+e.copy+'x':''}</small></div><div class="rvbt"><button onclick="ulangNota(nl.L[${i}].n)">🖨 Copy ${(e.copy||0)+1}</button></div></div>`).join('')}</div>`}
+/* ===== DISKON ===== */
+let dk={};
+function applyDiskon(o,dt,add,rm){
+ if(rm&&rm.length)o.items=o.items.filter(i=>!rm.includes(i.id));
+ (add||[]).forEach(l=>{o.items=o.items.filter(i=>i.id!==l.id);o.items.push(l)});
+ if(dt===null)delete o.dt;else if(dt)o.dt=dt}
+async function saveDiskon(mid,dt,add,rm){const o=O[mid];if(!o)return;
+ if(!U)applyDiskon(o,dt,add,rm);
+ await post({action:'diskon',meja:mid,dt,add,rm});await load(true)}
+function diskonUI(back){const mid=back&&pay?pay.mid:sel,o=O[mid];if(!o||!o.items.length)return;
+ dk={mid,back:!!back,tI:'%',vI:'',sel:{},tT:o.dt?o.dt.t:'%',vT:o.dt?String(o.dt.v):''};dkRender()}
+function dkRender(){
+ const o=O[dk.mid];if(!o)return tutupPay();
+ const sub=subt(o),priced=o.items.map((i,x)=>({i,x})).filter(({i})=>i.kat!=='diskon'&&!i.pkn&&i.harga>0),ex=o.items.filter(i=>i.kat==='diskon');
+ mdlEl().innerHTML=`<div class="mbox"><h2>🏷 Diskon</h2><div style="color:#555">${esc(lbl(dk.mid))}</div>
+ <div class="mrow"><span>Subtotal</span><b>${rp(sub)}</b></div>
+ <div class="sep"></div><b>Diskon item / promo</b><div style="font-size:12px;color:#555">Pilih item, lalu isi potongan (per porsi, untuk jumlah yang sudah dipesan).</div>
+ <div style="max-height:170px;overflow:auto;margin:6px 0">${priced.map(({i,x})=>`<label class="ck"><input type="checkbox" ${dk.sel[x]?'checked':''} onchange="dk.sel[${x}]=this.checked"><span>${i.qty}x ${esc(i.nama)} <small>@${rp(i.harga)}</small></span></label>`).join('')}</div>
+ <div class="rowa"><select onchange="dk.tI=this.value"><option value="%" ${dk.tI=='%'?'selected':''}>%</option><option value="Rp" ${dk.tI=='Rp'?'selected':''}>Rp</option></select><input type="text" inputmode="decimal" placeholder="Nilai diskon" value="${esc(dk.vI)}" oninput="dk.vI=this.value"><button onclick="dkItem()">Terapkan</button></div>
+ <label style="font-size:13px"><input type="checkbox" ${dk.eks?'checked':''} onchange="dk.eks=this.checked"> Item ini tidak ikut diskon total</label>
+ ${ex.length?`<div class="pl">${ex.map(i=>`<div class="mrow"><span style="font-size:14px">${esc(i.nama)}${i.qty>1?' ('+i.qty+'x)':''}</span><span style="color:#c0392b">-${rp(-i.harga*i.qty)} <button class="r" style="padding:1px 8px" onclick="dkRm('${i.id}')">✕</button></span></div>`).join('')}</div>`:''}
+ <div class="sep"></div><b>Diskon total (seluruh pembayaran)</b>
+ <div class="rowa"><select onchange="dk.tT=this.value"><option value="%" ${dk.tT=='%'?'selected':''}>%</option><option value="Rp" ${dk.tT=='Rp'?'selected':''}>Rp</option></select><input type="text" inputmode="decimal" placeholder="Nilai diskon" value="${esc(dk.vT)}" oninput="dk.vT=this.value"><button onclick="dkTotal()">Terapkan</button></div>
+ <div class="mrow"><span style="font-size:14px">${o.dt?'Aktif: '+(o.dt.t==='%'?o.dt.v+'%':rp(o.dt.v))+' → -'+rp(dtd(o)):'Belum ada diskon total'}</span>${o.dt?`<button class="r" style="padding:3px 10px" onclick="dkHapusTotal()">Hapus</button>`:''}</div>
+ <div class="sep"></div><div class="mrow"><b>TOTAL BAYAR</b><b style="font-size:20px">${rp(tot(o))}</b></div>
+ <div class="mt"><button onclick="dkTutup()">Selesai</button></div></div>`}
+async function dkItem(){const o=O[dk.mid],v=parseFloat(dk.vI);
+ if(!(v>0))return alert('Isi nilai diskon');if(dk.tI==='%'&&v>100)return alert('Maksimal 100%');
+ const picks=Object.keys(dk.sel).filter(k=>dk.sel[k]).map(Number);if(!picks.length)return alert('Pilih item dulu');
+ const add=picks.map(x=>{const i=o.items[x];if(!i)return null;const d=dk.tI==='%'?Math.round(i.harga*v/100):Math.min(i.harga,Math.round(v));
+  return d>0?{id:'dm'+Date.now()+'_'+x,nama:'Diskon '+(dk.tI==='%'?v+'% ':'')+i.nama,harga:-d,kat:'diskon',qty:i.qty,p:0,n:'',t:new Date().toISOString(),ex1:dk.eks?i.harga-d:0}:null}).filter(Boolean);
+ if(!add.length)return;
+ dk.sel={};dk.vI='';await saveDiskon(dk.mid,undefined,add,[]);dkRender();kas(true)}
+async function dkRm(id){await saveDiskon(dk.mid,undefined,[],[id]);dkRender();kas(true)}
+async function dkTotal(){const v=parseFloat(dk.vT);
+ if(!(v>0))return alert('Isi nilai diskon');if(dk.tT==='%'&&v>100)return alert('Maksimal 100%');
+ await saveDiskon(dk.mid,{t:dk.tT,v:dk.tT==='Rp'?Math.round(v):v},[],[]);dkRender();kas(true)}
+async function dkHapusTotal(){await saveDiskon(dk.mid,null,[],[]);dk.vT='';dkRender();kas(true)}
+function dkTutup(){if(dk.back&&pay)payUI();else tutupPay();kas()}
 
 /* ===== ADMIN ===== */
 function bukaAdmin(){
  const p=prompt('Masukkan PIN admin:');if(p===null)return;
  if(p!==String(CFG.pin))return alert('PIN salah');
- adm=true;atab='meja';MN=JSON.parse(JSON.stringify(MENU));load(true).then(admin)}
+ adm=true;atab='meja';load(true).then(()=>{MN=JSON.parse(JSON.stringify(MENU));PR=JSON.parse(JSON.stringify(CFG.promo||[]));admin()})}
 function tutupAdmin(){adm=false;sel=null;app.innerHTML='';start()}
 function admin(){
  const T=(k,t)=>`<button class="${atab==k?'on':''}" onclick="atab='${k}';admin()">${t}</button>`;
- let h=`<header><b>🔧 Admin</b><button onclick="tutupAdmin()">✕ Tutup</button></header><div class="adm"><div class="tabs" style="padding-left:0;padding-right:0">${T('meja','Meja')}${T('menu','Menu')}${T('set','Pengaturan')}</div>`;
+ let h=`<header><b>🔧 Admin</b><button onclick="tutupAdmin()">✕ Tutup</button></header><div class="adm"><div class="tabs" style="padding-left:0;padding-right:0">${T('meja','Meja')}${T('menu','Menu')}${T('promo','Promo')}${T('set','Pengaturan')}</div>`;
  if(atab=='meja'){
   h+=AREAS.map((a,i)=>`<div class="sec" style="--c:${COL[a]}"><h3>${a}</h3>${M.filter(m=>m.area==a).map(m=>`<div class="rowa"><span>${esc(m.nama)}${O[m.id]?' <small>(ada pesanan)</small>':''}</span><button class="r" ${O[m.id]?'disabled':''} onclick="admHapus('${m.id}')">🗑 Hapus</button></div>`).join('')}<div class="rowa"><input id="nm${i}" placeholder="Nama meja baru (kosong = otomatis)"><button onclick="admTambah(${i})">＋ Tambah</button></div></div>`).join('')+'<button class="g" onclick="resetMeja()">↺ Reset meja ke default</button>'}
  if(atab=='menu'){
   h+=MN.map((m,i)=>`<div class="rowa"><input value="${esc(m.nama)}" onchange="MN[${i}].nama=this.value"><input type="number" value="${m.harga}" onchange="MN[${i}].harga=+this.value"><select onchange="admKat(${i},this.value)"><option value="dapur" ${m.kat=='dapur'?'selected':''}>Makanan</option><option value="bar" ${m.kat=='bar'?'selected':''}>Minuman</option><option value="paket" ${m.kat=='paket'?'selected':''}>Paket</option></select><button class="r" onclick="MN.splice(${i},1);admin()">🗑</button></div>${m.kat=='paket'?paketEd(i):''}`).join('')+'<div class="rowa"><button class="g" onclick="admMenuTambah()">＋ Tambah menu</button><button onclick="admMenuSimpan()">💾 Simpan menu</button></div><p class="leg" style="padding:0">Perubahan menu baru berlaku setelah klik Simpan. Pesanan yang sudah masuk tidak berubah. Paket: pilih kategori Paket, lalu isi dengan menu makanan/minuman.</p>'}
+ if(atab=='promo'){
+  h+='<p class="leg" style="padding:0 0 6px">Promo yang <b>aktif</b> otomatis memotong harga item yang dipilih setiap kali item itu dipesan (potongan per porsi). Pesanan yang sudah masuk tidak berubah.</p>'
+   +PR.map((p,i)=>`<div class="sec" style="--c:#c0392b"><div class="rowa"><input placeholder="Nama promo (mis. Promo Weekend)" value="${esc(p.nama)}" onchange="PR[${i}].nama=this.value"><select onchange="PR[${i}].tipe=this.value"><option value="%" ${p.tipe=='%'?'selected':''}>%</option><option value="Rp" ${p.tipe=='Rp'?'selected':''}>Rp</option></select><input type="number" min="0" value="${p.nilai}" onchange="PR[${i}].nilai=+this.value"></div>
+    <div class="rowa"><label><input type="checkbox" ${p.aktif?'checked':''} onchange="PR[${i}].aktif=this.checked"> Aktif</label><label><input type="checkbox" ${p.eks?'checked':''} onchange="PR[${i}].eks=this.checked"> Tidak ikut diskon total</label><button class="r" onclick="PR.splice(${i},1);admin()">🗑 Hapus promo</button></div>
+    <small>Item yang kena promo:</small><div class="pgrid">${MENU.map(m=>`<label><input type="checkbox" ${(p.items||[]).includes(m.id)?'checked':''} onchange="admPI(${i},${m.id},this.checked)"> ${esc(m.nama)}</label>`).join('')}</div></div>`).join('')
+   +'<div class="rowa"><button class="g" onclick="admPromoTambah()">＋ Tambah promo</button><button onclick="admPromoSimpan()">💾 Simpan promo</button></div>'}
  if(atab=='set'){
   h+=`<label class="fld">Nama restoran</label><input id="cn" value="${esc(CFG.resto)}"><label class="fld">Alamat (tampil di nota)</label><input id="ca" value="${esc(CFG.alamat)}"><label class="fld">PIN admin</label><input id="cp" value="${esc(CFG.pin)}"><div class="rowa" style="margin-top:14px"><button onclick="admSet()">💾 Simpan pengaturan</button></div>`}
  app.innerHTML=h+'</div>'}
+function admPromoTambah(){PR.push({id:Date.now(),nama:'',tipe:'%',nilai:10,aktif:true,items:[]});admin()}
+function admPI(i,id,on){const a=PR[i].items||(PR[i].items=[]),k=a.indexOf(id);if(on&&k<0)a.push(id);if(!on&&k>=0)a.splice(k,1)}
+async function admPromoSimpan(){
+ for(const p of PR){if(!String(p.nama).trim())return alert('Nama promo tidak boleh kosong');
+  if(!(+p.nilai>0))return alert('Nilai promo "'+p.nama+'" harus lebih dari 0');
+  if(p.tipe=='%'&&+p.nilai>100)return alert('Promo "'+p.nama+'" maksimal 100%');
+  if(!(p.items||[]).length)return alert('Pilih minimal satu item untuk promo "'+p.nama+'"')}
+ CFG={...CFG,promo:JSON.parse(JSON.stringify(PR)).map(p=>({...p,nama:String(p.nama).trim(),nilai:+p.nilai}))};
+ await post({action:'cfg',cfg:CFG});alert('Promo tersimpan ✔');admin()}
 async function admTambah(i){
  const a=AREAS[i],s=M.filter(m=>m.area==a);let n=($('#nm'+i).value||'').trim();
  if(!n)n=a.startsWith('Lantai')?''+(Math.max(0,...s.map(m=>parseInt(m.nama)||0))+1):a+' '+(s.length+1);
@@ -284,18 +582,26 @@ async function resetMeja(){
  if(!confirm('Kembalikan daftar meja ke default? Meja tambahan akan dihapus.'))return;
  M=DEF.map(m=>({...m}));await post({action:'meja',list:M});admin()}
 function admKat(i,v){MN[i].kat=v;if(v=='paket'){if(!MN[i].isi)MN[i].isi=[]}else delete MN[i].isi;admin()}
-function admIsi(i){const f=MN.find(x=>x.kat!=='paket');if(!f)return alert('Belum ada menu makanan/minuman');(MN[i].isi=MN[i].isi||[]).push({id:f.id,qty:1});admin()}
+function admIsi(i,custom){const f=MN.find(x=>x.kat!=='paket');
+ if(!custom&&!f)return alert('Belum ada menu makanan/minuman. Pakai "＋ Custom" atau buat menunya dulu.');
+ (MN[i].isi=MN[i].isi||[]).push(custom?{nama:'',kat:'dapur',qty:1}:{id:f.id,qty:1});admin()}
 function paketEd(i){const m=MN[i],opts=MN.filter(x=>x.kat!=='paket');
- return `<div style="margin:-2px 0 10px 14px;padding:8px;border-left:3px solid #d98324;background:#fff8ec;border-radius:8px"><small><b>Isi paket:</b></small>${(m.isi||[]).map((c,j)=>`<div class="rowa"><input type="number" style="width:60px" min="1" value="${c.qty}" onchange="MN[${i}].isi[${j}].qty=Math.max(1,+this.value||1)"><select style="flex:1" onchange="MN[${i}].isi[${j}].id=+this.value">${opts.map(x=>`<option value="${x.id}" ${x.id==c.id?'selected':''}>${esc(x.nama)} (${x.kat=='bar'?'minuman':'makanan'})</option>`).join('')}</select><button class="r" onclick="MN[${i}].isi.splice(${j},1);admin()">✕</button></div>`).join('')}<button class="g" style="padding:6px 10px;font-size:13px" onclick="admIsi(${i})">＋ Tambah isi</button></div>`}
+ const rows=(m.isi||[]).map((c,j)=>{
+  const q=`<input type="number" style="width:60px" min="1" value="${c.qty}" onchange="MN[${i}].isi[${j}].qty=Math.max(1,+this.value||1)">`,del=`<button class="r" onclick="MN[${i}].isi.splice(${j},1);admin()">✕</button>`;
+  if(c.id==null)return `<div class="rowa">${q}<input placeholder="Nama item custom (mis. Nasi putih)" value="${esc(c.nama||'')}" onchange="MN[${i}].isi[${j}].nama=this.value"><select onchange="MN[${i}].isi[${j}].kat=this.value"><option value="dapur" ${c.kat=='dapur'?'selected':''}>Makanan</option><option value="bar" ${c.kat=='bar'?'selected':''}>Minuman</option></select>${del}</div>`;
+  return `<div class="rowa">${q}<select style="flex:1" onchange="MN[${i}].isi[${j}].id=+this.value">${opts.map(x=>`<option value="${x.id}" ${x.id==c.id?'selected':''}>${esc(x.nama)} (${x.kat=='bar'?'minuman':'makanan'})</option>`).join('')}</select>${del}</div>`}).join('');
+ return `<div style="margin:-2px 0 10px 14px;padding:8px;border-left:3px solid #d98324;background:#fff8ec;border-radius:8px"><small><b>Isi paket:</b> pilih dari menu yang ada, atau tambah item custom (Makanan dicetak ke dapur, Minuman ke bartender)</small>${rows}<div class="rowa"><button class="g" style="padding:6px 10px;font-size:13px" onclick="admIsi(${i})">＋ Dari menu</button><button class="g" style="padding:6px 10px;font-size:13px" onclick="admIsi(${i},true)">＋ Custom</button></div></div>`}
 function admMenuTambah(){MN.push({id:Math.max(0,...MN.map(m=>m.id),...MENU.map(m=>m.id))+1,nama:'Menu baru',harga:0,kat:'dapur'});admin()}
 async function admMenuSimpan(){
  if(MN.some(m=>!String(m.nama).trim()))return alert('Nama menu tidak boleh kosong');
  if(!MN.length)return alert('Menu tidak boleh kosong');
  for(const m of MN.filter(x=>x.kat=='paket')){if(!(m.isi||[]).length)return alert('Paket "'+m.nama+'" belum ada isinya');
-  for(const c of m.isi){const x=MN.find(y=>y.id==c.id);if(!x||x.kat=='paket')return alert('Isi paket "'+m.nama+'" memuat menu yang sudah dihapus atau diubah jadi paket. Perbaiki dulu.')}}
- MENU=JSON.parse(JSON.stringify(MN)).map(m=>({...m,nama:String(m.nama).trim(),harga:+m.harga||0}));await post({action:'menu',list:MENU});alert('Menu tersimpan ✔');admin()}
+  for(const c of m.isi){if(c.id==null){if(!String(c.nama||'').trim())return alert('Ada item custom di paket "'+m.nama+'" yang namanya masih kosong.');continue}
+   const x=MN.find(y=>y.id==c.id);if(!x||x.kat=='paket')return alert('Isi paket "'+m.nama+'" memuat menu yang sudah dihapus atau diubah jadi paket. Perbaiki dulu.')}}
+ MENU=JSON.parse(JSON.stringify(MN)).map(m=>({...m,nama:String(m.nama).trim(),harga:+m.harga||0}));
+ MENU.forEach(m=>{if(m.isi)m.isi.forEach(c=>{if(c.id==null)c.nama=String(c.nama).trim()})});await post({action:'menu',list:MENU});alert('Menu tersimpan ✔');admin()}
 async function admSet(){
- CFG={resto:$('#cn').value.trim()||DEFCFG.resto,alamat:$('#ca').value.trim(),pin:$('#cp').value.trim()||'1234'};
+ CFG={...CFG,resto:$('#cn').value.trim()||DEFCFG.resto,alamat:$('#ca').value.trim(),pin:$('#cp').value.trim()||'1234'};
  await post({action:'cfg',cfg:CFG});alert('Pengaturan tersimpan ✔');admin()}
 start();
 </script></body></html>

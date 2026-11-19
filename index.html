@@ -549,6 +549,47 @@ header .hav{font-style:normal;width:26px;height:26px;border-radius:50%;display:i
 header .hus svg{margin-left:2px;opacity:.75}
 @media(max-width:360px){header .hus span{display:none}header .hus{padding:0 9px 0 3px!important}}
 @media(max-width:520px){header>span{gap:6px;justify-content:flex-start!important;flex-wrap:nowrap!important}header .hmx{width:32px;padding:0!important}header .hmx span{display:none}header .hus span{max-width:68px;overflow:hidden;text-overflow:ellipsis}header .hbt,header #st,header .tmb{height:32px}header .hic,header .tmb{width:32px}header .hbt{padding:0 11px!important;font-size:13px}header .hus{padding:0 10px 0 3px!important}header .hav{width:24px;height:24px}header #st{padding:0 10px;font-size:12px}}
+/* ===== REPORT ===== */
+.rpb{display:none;margin:24px auto 0;padding:11px 28px;border-radius:999px;border:1px solid #c9a24a;background:linear-gradient(180deg,#fffaf0,#f3e7c6);color:#6b5217;font:700 13.5px Georgia,'Times New Roman',serif;letter-spacing:.32em;text-transform:uppercase;box-shadow:0 8px 22px rgba(160,120,20,.28),inset 0 1px 0 #fff;cursor:pointer;align-items:center;gap:10px}
+.rpb.on{display:inline-flex;animation:rpbin .4s cubic-bezier(.2,.9,.3,1.2)}.rpb:hover{filter:brightness(1.04);transform:translateY(-1px)}.rpb svg{width:17px;height:17px}
+@keyframes rpbin{from{opacity:0;transform:translateY(8px) scale(.94)}to{opacity:1;transform:none}}
+.rpx{position:fixed;inset:0;z-index:60;overflow:auto;background:radial-gradient(1100px 480px at 88% -8%,#e6def2 0,transparent 62%),radial-gradient(900px 480px at -8% 6%,#dbe8f4 0,transparent 58%),#f6f4ef;animation:rpxin .3s ease;font-family:'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif}
+@keyframes rpxin{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.rpxh{position:sticky;top:0;z-index:6;display:flex;align-items:center;gap:14px;padding:12px 22px;background:linear-gradient(135deg,#14243a,#2a2b5e 62%,#3a2348);color:#fff;border-bottom:3px solid #c9a24a;box-shadow:0 6px 22px rgba(20,20,55,.32)}
+.rpxb{box-sizing:border-box;height:36px;display:inline-flex;align-items:center;gap:7px;padding:0 15px;border-radius:999px;border:1px solid rgba(255,255,255,.3);background:linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,.08));color:#fff;font:600 13.5px/1 'Segoe UI',Roboto,Arial,sans-serif;cursor:pointer;flex:none}.rpxb:hover{background:rgba(255,255,255,.28)}
+.rpxtt{flex:1;text-align:center;line-height:1.15;min-width:0}.rpxtt small{display:block;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:#dcc78f;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rpxtt b{display:block;font:700 25px Georgia,'Times New Roman',serif;letter-spacing:.34em;padding-left:.34em}
+.rpxu{display:flex;align-items:center;gap:8px;flex:none;font-weight:600;font-size:13.5px;color:#f1e9d2}.rpxu .hav{font-style:normal;width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f1d98a,#c9a24a);color:#3a2a08;font:700 14px/1 Arial,sans-serif}
+.rpxbody{max-width:1500px;margin:0 auto;padding:18px 16px 50px}
+.rpxf{background:#fff;border:1px solid #e6e1d4;border-radius:20px;padding:12px 18px 8px;box-shadow:0 4px 18px rgba(60,50,20,.07)}
+.rpxft{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:2px}.rpxft span{font:700 11.5px/1 'Segoe UI',Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#8a7a4a}.rpxft b{font:600 14px 'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;letter-spacing:.02em;font-variant-numeric:lining-nums tabular-nums;color:#2a2b5e;background:#f1eefa;border-radius:999px;padding:5px 12px}
+.rpxk{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin:12px 0 10px}
+.rpxk>div{background:#fff;border:1px solid #e8e3d6;border-top:3px solid var(--c);border-radius:14px;padding:10px 14px 11px;box-shadow:0 4px 16px rgba(60,50,20,.07);min-width:0}
+.rpxk small{display:block;font-size:10.8px;letter-spacing:.12em;text-transform:uppercase;color:#7b8590;font-weight:600}
+.rpxk b{display:block;margin-top:6px;font:700 clamp(17px,2vw,25px)/1.15 'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;font-variant-numeric:lining-nums tabular-nums;letter-spacing:-.015em;color:var(--c);overflow-wrap:anywhere}
+.rpxsk{display:block;height:22px;border-radius:8px;background:linear-gradient(90deg,#eee,#f7f7f7,#eee);background-size:200% 100%;animation:rpsk 1.2s infinite}@keyframes rpsk{to{background-position:-200% 0}}
+.rpxn{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:4px 0 12px}
+.rpxt{display:inline-flex;background:#e9e4d8;border-radius:999px;padding:4px;box-shadow:inset 0 1px 3px rgba(0,0,0,.08)}.rpxt button{border:0;background:transparent;padding:9px 20px;border-radius:999px;font:600 14px 'Segoe UI',Arial,sans-serif;color:#5b5648;cursor:pointer;white-space:nowrap}
+.rpxt button.on{background:linear-gradient(180deg,#2e2f66,#16273d);color:#fff;box-shadow:0 3px 10px rgba(30,30,80,.35)}
+.rpxa{display:flex;gap:8px;flex-wrap:wrap}.rpxa .rpa{border-radius:12px;padding:9px 16px;font:600 13.5px 'Segoe UI',Arial,sans-serif;background:#fff;color:#2a2b5e;border:1px solid #d9d4c4;box-shadow:0 2px 8px rgba(60,50,20,.08);cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.rpxa .rpa:hover{transform:translateY(-1px);box-shadow:0 5px 14px rgba(60,50,20,.16)}.rpxa .rpa.pdf{background:#a93226;color:#fff;border-color:#a93226}.rpxa .rpa.xls{background:#1e7a46;color:#fff;border-color:#1e7a46}.rpxa .rpa.wab{background:#25a244;color:#fff;border-color:#25a244}.rpxa .rpa svg{width:16px;height:16px}
+.rpxm{text-align:center;padding:50px 10px;color:#6b6a60;font-size:15px}
+.rpx .lhg{padding:12px 0}.rpx .lhcard{margin:0 0 12px;max-width:none;border-radius:18px;border-color:#e6e1d4;box-shadow:0 4px 18px rgba(60,50,20,.07)}
+.rpx .lhc{background:#fff;border:1px solid #e6e1d4;border-radius:18px;padding:12px 14px;box-shadow:0 4px 18px rgba(60,50,20,.06)}
+.rpx #rpt .rcard{border:1px solid #e6e1d4;border-radius:18px;box-shadow:0 4px 18px rgba(60,50,20,.06)}
+.rpxfm{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:center;font:500 12.5px/1.4 'Segoe UI',Roboto,Arial,sans-serif;color:#6b6a60;margin:0 2px 10px}.rpxfm b{font-weight:700;color:#2a2b5e;font-variant-numeric:lining-nums tabular-nums;margin-left:3px}.rpxfm .eq{color:#a77d16;font-weight:700}.rpxfm .eq b{color:#a77d16}
+.rpxs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin-bottom:12px}.rpxs>div{background:#fff;border:1px solid #e8e3d6;border-radius:12px;padding:8px 12px;min-width:0}.rpxs small{display:block;font:600 10.5px 'Segoe UI',Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#7b8590;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rpxs b{display:block;margin-top:3px;font:700 14.5px 'Segoe UI',Roboto,Arial,sans-serif;font-variant-numeric:lining-nums tabular-nums;color:#1d2a3a;overflow-wrap:anywhere}.rpxs .m b{color:#b03a2e}
+.rpxg{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:12px}.rpxc{grid-column:span 4;background:#fff;border:1px solid #e6e1d4;border-radius:16px;padding:12px 16px 14px;box-shadow:0 3px 14px rgba(60,50,20,.06);min-width:0}.rpxc.w2{grid-column:span 8}
+.rpxc{display:flex;flex-direction:column}.rpxc>h4~*{margin-top:auto;margin-bottom:auto}.rpxc svg{max-height:230px}
+.rpxc h4{margin:0 0 10px;font:700 12px 'Segoe UI',Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#2a2b5e;padding-bottom:8px;border-bottom:1px solid #eee9db}
+.rpxc svg text{font-family:'Segoe UI',Roboto,Arial,sans-serif;font-variant-numeric:lining-nums tabular-nums}.rpxc span,.rpxc div{font-variant-numeric:lining-nums tabular-nums}
+.rpxe{color:#8a8778;font-size:13px;margin:6px 0;text-align:center}.rpxn2{font-size:12.5px;color:#6b6a60;margin-top:6px}.rpxn2 b{color:#b03a2e}
+.rpxt30{margin:0 0 12px}.rpxlg{float:right;font:600 11px 'Segoe UI',Arial,sans-serif;letter-spacing:0;text-transform:none;color:#6b6a60}.rpxlg i{display:inline-block;width:8px;height:8px;border-radius:50%;margin:0 4px 0 10px}.rpxt30 h4 small{font:500 11px 'Segoe UI',Arial,sans-serif;letter-spacing:0;text-transform:none;color:#8a8778;margin-left:8px;white-space:nowrap}@media(max-width:640px){.rpxt30 h4 small{display:block;margin:3px 0 0}}
+.rpxts{display:flex;flex-wrap:wrap;gap:6px 28px;margin:0 0 8px}.rpxts small{display:block;font:600 10.5px 'Segoe UI',Arial,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:#7b8590}.rpxts b{display:block;font:700 16px 'Segoe UI',Roboto,Arial,sans-serif;font-variant-numeric:lining-nums tabular-nums;color:#1d2a3a;margin-top:2px}
+.rpxjg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px 22px}.rpxjh{display:flex;justify-content:space-between;align-items:baseline;border-left:3px solid var(--c);padding-left:8px;margin-bottom:5px;font:700 13px 'Segoe UI',Arial,sans-serif;color:#1d2a3a}.rpxjh small{font:500 11.5px 'Segoe UI',Arial,sans-serif;color:#7b8590}
+@media(max-width:1100px){.rpxs{grid-template-columns:repeat(3,minmax(0,1fr))}.rpxc,.rpxc.w2{grid-column:span 6}.rpxc.w2{grid-column:1/-1}}
+@media(max-width:640px){.rpxs{grid-template-columns:repeat(2,minmax(0,1fr))}.rpxc,.rpxc.w2{grid-column:1/-1}.rpxk b{font-size:18px}}
+@media(max-width:900px){.rpxk{grid-template-columns:repeat(2,minmax(0,1fr))}.rpxk>div:last-child{grid-column:1/-1}}
+@media(max-width:640px){.rpxh{padding:10px 12px;gap:8px}.rpxtt b{font-size:19px;letter-spacing:.24em;padding-left:.24em}.rpxtt small{font-size:10px;letter-spacing:.14em}.rpxu span{display:none}.rpxb span{display:none}.rpxb{width:36px;padding:0;justify-content:center}.rpxbody{padding:12px 10px 40px}.rpxf{padding:10px 12px 6px}.rpxn{flex-direction:column;align-items:stretch}.rpxt{display:flex}.rpxt button{flex:1;padding:9px 6px;font-size:13px}.rpxa{display:grid;grid-template-columns:1fr 1fr}.rpxa .rpa{justify-content:center}}
 /* ===== End Day ===== */
 header .edb{display:inline-flex;align-items:center;gap:6px;font-weight:600}
 .mbox.edx{max-width:400px;padding:0;overflow:hidden;border-radius:24px;box-shadow:0 24px 60px rgba(10,30,22,.45);animation:edin .35s cubic-bezier(.2,.9,.3,1.2)}
@@ -741,8 +782,9 @@ async function netProbe(){if(!OFS.real)return;let up=navigator.onLine!==false;
  const dn=up?false:(navigator.onLine===false||OFS.fail>=2);
  if(dn!==OFS.down){OFS.down=dn;netApply()}else if(dn&&mode==='pelayan')netOv(true)}
 addEventListener('online',netProbe);addEventListener('offline',netProbe);setInterval(netProbe,5000);setTimeout(()=>{netProbe();offBadge()},600);
-const curTk=()=>(adm&&AUTH.tk)?AUTH.tk:(SES&&SES.tk)||'';
-const curId=()=>(adm&&AUTH.id)?AUTH.id:(SES&&SES.id)||'-';
+const RPT={login:false,on:false,S:null,tab:'a',btn:false,t:null,H:null};
+const curTk=()=>(RPT.on&&RPT.S)?RPT.S.tk:(adm&&AUTH.tk)?AUTH.tk:(SES&&SES.tk)||'';
+const curId=()=>(RPT.on&&RPT.S)?RPT.S.id:(adm&&AUTH.id)?AUTH.id:(SES&&SES.id)||'-';
 const gq=p=>U+(U.includes('?')?'&':'?')+new URLSearchParams({...p,tk:curTk()}).toString();
 function auditDesc(d){const o=O[d.meja],nm=(id,n)=>{const i=o&&o.items.find(x=>x.id==id&&(x.n||'')==(n||''));return i?i.nama:String(id)};
  switch(d.action){
@@ -761,12 +803,12 @@ function auditDesc(d){const o=O[d.meja],nm=(id,n)=>{const i=o&&o.items.find(x=>x
 function logLocal(d){const m={ongkir:'Ongkos kirim',add:'Tambah pesanan',printed:'Cetak pesanan',catatan:'Catatan nota',diskon:'Diskon',pay:'Bayar',copy:'Cetak ulang nota',rsv:'Reservasi',soldout:'Sold out',biaya:'Biaya',meja:'Admin: ubah meja',menu:'Admin: ubah menu',cfg:'Admin: ubah pengaturan/promo',userSet:'Admin: ubah ID',userDel:'Admin: hapus ID',log:d.aksi,delivered:d.done?'Antar':'Batal antar',deliveredOne:d.done?'Antar':'Batal antar',hapus:d.alasan?'Batalkan pesanan (sudah dicetak)':'Hapus pesanan (belum dicetak)',trxEdit:'Edit transaksi',trxDel:'Hapus transaksi',lunas:'Pelunasan utang'}[d.action];
  if(!m)return;const l=J('LOG',[]),n=new Date(),q=x=>String(x).padStart(2,'0');
  l.push({tgl:hari(),jam:q(n.getHours())+':'+q(n.getMinutes())+':'+q(n.getSeconds()),id:curId(),src:d.src,aksi:m,meja:d.label||d.meja||'',det:d.ket||''});localStorage.LOG=JSON.stringify(l.slice(-3000))}
-function authLost(){if(lostAuth)return;lostAuth=true;SES=null;try{localStorage.removeItem('SES')}catch(e){}
+function authLost(){if(RPT.on){rptTutup(1);alert('Sesi Report berakhir. Silakan masuk lagi.');return}if(lostAuth)return;lostAuth=true;SES=null;try{localStorage.removeItem('SES')}catch(e){}
  if(adm){adm=false;AUTH={}}alert('Sesi login habis. Silakan login kembali.');lostAuth=false;start()}
 async function post(d,quiet){wv++;lw=Date.now();let r='';d.tk=curTk();d.src=adm?'Admin':mode==='kasir'?'Kasir':'HP';
  if(d.meja!=null&&!d.label)d.label=lbl(d.meja);if(d.ket===undefined)d.ket=auditDesc(d);
  try{if(U){const x=await fetch(U,{method:'POST',headers:{'Content-Type':'text/plain'},body:JSON.stringify(d)});r=await x.text();if(r&&r.includes('"err":"auth"')&&d.action!=='login'){authLost()}}else{logLocal(d);localStorage.O=JSON.stringify(O);localStorage.M=JSON.stringify(M);localStorage.MENU=JSON.stringify(MENU);localStorage.CFG=JSON.stringify(CFG);localStorage.RV=JSON.stringify(RV);localStorage.SO=JSON.stringify(SO)}}catch(e){r=null;if(mode==='kasir'&&!adm&&OFS.real&&!OFS.on){offGo();alert('Koneksi internet terputus.\nAplikasi masuk MODE OFFLINE di komputer kasir ini. Ulangi transaksi terakhir.')}else if(!quiet)alert('Gagal simpan ke Google Sheet')}lw=Date.now();if(OFS.on&&d.action!=='login'&&d.action!=='logout'){const q=offQ();q.push(d);offQset(q);offBadge()}return r}
-const HI=(p=>({user:p('<path d="M20 21v-1a6 6 0 0 0-6-6h-4a6 6 0 0 0-6 6v1"/><circle cx="12" cy="7" r="4"/>'),wrench:p('<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>'),home:p('<path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/>'),x:p('<path d="M18 6L6 18M6 6l12 12"/>'),out:p('<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/>')}))(d=>`<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`);
+const HI=(p=>({user:p('<path d="M20 21v-1a6 6 0 0 0-6-6h-4a6 6 0 0 0-6 6v1"/><circle cx="12" cy="7" r="4"/>'),wrench:p('<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>'),home:p('<path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/>'),x:p('<path d="M18 6L6 18M6 6l12 12"/>'),chart:p('<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>'),out:p('<path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5M21 12H9"/>')}))(d=>`<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`);
 const head=t=>`<header><b>${t}</b><span><span id="st">${ST}</span>${mode==='kasir'&&!adm&&SES?`<button class="hbt edb" onclick="endDay()" title="End Day: simpan semua data hari ini">${ED_ICO}<span>End Day</span></button>`:''}${SES?`<button class="hbt hus" onclick="logout()" title="Keluar dari ${esc(SES.id)}"><i class="hav">${esc(String(SES.id||'?').charAt(0).toUpperCase())}</i><span>${esc(SES.id)}</span>${HI.out}</button>`:''}${temaBtn()}<button class="hbt hic" onclick="bukaAdmin()" title="Admin" aria-label="Admin">${HI.wrench}</button><button class="hbt hmx" onclick="location.hash='';location.reload()" title="Menu utama" aria-label="Menu utama">${HI.home}<span>Menu</span></button></span></header>`;
 
 var busy=false,wv=0,lw=0;
@@ -788,7 +830,7 @@ function homeHtml(){const nm=String(CFG.resto||'').trim(),lg=typeof CFG.logo==='
  const card=(c,k,ic,t,d,go)=>`<button class="${c}" onclick="${go}"><i>${HMI[ic]}</i><span class="tx"><b>${t}</b><small>${d}</small><em>Masuk</em></span></button>`;
  return `<div class="hm">${temaBtn()}<div class="hmw"><div class="hml">${lg?`<img src="${lg}" alt="">`:`<span>${esc((nm[0]||'R').toUpperCase())}</span>`}</div><h1>${esc(nm)}</h1>${CFG.alamat?`<p class="hma">${esc(CFG.alamat)}</p>`:''}<div class="hmo">◆</div><div class="hmd">${tg}</div><div style="height:22px"></div>
  <div class="hmc">${card('hmk','k','k','Kasir','Pesanan, pembayaran, nota &amp; laporan<br>(layar desktop)',"go('kasir')")}${card('hmp','p','p','Pelayan','Catat pesanan meja<br>langsung dari HP',"go('pelayan')")}${card('hma2','a','a','Admin','Menu, promo, meja<br>&amp; pengaturan restoran',"bukaAdmin()")}</div>
- ${U?'':'<p class="hmn">⚠ URL Google Sheet belum diisi di file HTML. Data hanya tersimpan di perangkat ini (mode tes).</p>'}<div class="hmf">Sistem Kasir &amp; Pemesanan</div></div></div>`}
+ <div style="text-align:center"><button id="rptb" class="rpb${RPT.btn?' on':''}" onclick="bukaReport()">${HI.chart}<span>Report</span></button></div>${U?'':'<p class="hmn">⚠ URL Google Sheet belum diisi di file HTML. Data hanya tersimpan di perangkat ini (mode tes).</p>'}<div class="hmf">Sistem Kasir &amp; Pemesanan</div></div></div>`}
 function start2(){if(!adm&&mode!=='pelayan'&&mode!=='kasir'&&$('.hm')&&!document.querySelector('#mdl'))app.innerHTML=homeHtml()}
 function go(m){location.hash=m;mode=m;start()}
 
@@ -1374,7 +1416,7 @@ function nlRender(){const el=$('#nll');if(!el)return;
  el.innerHTML=(nl.L.length?`<div class="nlsm"><div class="nlt"><span>${nl.L.length}${nl.L.length>=500?'+':''} nota</span><b>${rp(sum)}</b></div><div class="nlc">${MET().filter(m=>by[m]).map(m=>`<span>${MIf(m)} ${m} <b>${rp(by[m])}</b></span>`).join('')}</div></div>`:'')+
  `<div style="max-height:max(140px,calc(100vh - 480px));overflow:auto">${nl.msg?`<p class="leg">${nl.msg}</p>`:''}${nl.L.map((e,i)=>`<div class="rvr nlr"><div class="nli"><div class="nl1"><b>${esc(e.n.no)}</b><span>${esc(e.n.lbl)}</span></div><small>${esc(e.n.waktu)} · ${[...new Set(e.n.lines.map(l=>l.metode))].map(m=>MIf(m)+' '+m).join(' + ')}${e.copy?` · <em>dicetak ulang ${e.copy}x</em>`:''}</small></div><div class="nln">${rp(e.n.total)}</div><div class="rvbt"><button class="g" onclick="prevNota(${i})">👁 Preview</button><button onclick="ulangNota(nl.L[${i}].n)">🖨 Copy ${(e.copy||0)+1}</button>${isSuper()?`<button class="g xb2" title="Edit (Super Admin)" onclick="nlEdit(${i})">✏</button><button class="r xb2" title="Hapus (Super Admin)" onclick="nlHapus(${i})">🗑</button>`:''}</div></div>`).join('')}</div>`}
 /* ===== EXPORT EXCEL / PDF + EDIT & HAPUS TRANSAKSI (SUPER ADMIN) ===== */
-const isSuper=()=>{const S=adm?AUTH:SES;return !!(S&&S.role==='super')};
+const isSuper=()=>{const S=(RPT.on&&RPT.S)?RPT.S:adm?AUTH:SES;return !!(S&&S.role==='super')};
 const CRCT=(()=>{const t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
 const crc32=b=>{let c=0xFFFFFFFF;for(let i=0;i<b.length;i++)c=CRCT[(c^b[i])&255]^(c>>>8);return (c^0xFFFFFFFF)>>>0};
 const xmlE=s=>String(s==null?'':s).replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -1681,7 +1723,7 @@ async function rpCari(){const el=$('#rpt');if(!el)return;el.innerHTML='<p class=
    D={nota:J('NT',[]).filter(x=>ok(noTgl(x.no))),biaya:J('BY',[]).filter(x=>ok(x.tgl)),batal:J('BT',[]).filter(x=>ok(x.tgl))}}
   else{const r=await fetch(gq({report:'1',dari:rp0.dari,sampai:rp0.sampai}));D=await r.json();if(!D||!Array.isArray(D.nota))throw 0}}
  catch(e){el.innerHTML='<p class="leg">Gagal memuat laporan. Pastikan Code.gs terbaru sudah di-deploy.</p>';return}
- rp0.D=D;rp0.R=rpHitung(D);if($('#rpt'))$('#rpt').innerHTML=rpHtml(rp0.R)}
+ rp0.D=D;rp0.R=rpHitung(D);if(RPT.on){rptRender();return}if($('#rpt'))$('#rpt').innerHTML=rpHtml(rp0.R)}
 function rpHitung(D){
  const R={n:D.nota.length,ongkir:0,kotor:0,dItem:0,dTot:0,bulat:0,bersih:0,porsi:0,utang:0,met:{},kat:{},menu:{},area:{},hari:{},jam:{},cut:!!D.cut,biaya:{total:0,n:0,ket:{},hari:{}},batal:{n:0,nilai:0,alasan:{},oleh:{},cetak:0}};
  const add=(o,k,f)=>{const e=o[k]||(o[k]={});f(e)};
@@ -1772,7 +1814,7 @@ async function lhLoad(){const a=lhA(),b=lhB(),ok=t=>t>=a&&t<=b;let N,B,P=[];
  lhRender();lhHist()}
 let LHR={a:'',b:''};
 function lhRange(){if(!LHR.a||!LHR.b){LHR={a:hariOff(-29),b:hari()}}return LHR}
-async function lhHist(){const {a,b}=lhRange();let N;LHD.H=null;lhChartDraw();
+async function lhHist(){if(RPT.on)return;const {a,b}=lhRange();let N;LHD.H=null;lhChartDraw();
  try{if(!U)N=J('NT',[]);else{const r=await fetch(gq({nota:'1',dari:a,sampai:b}));N=await r.json();if(!Array.isArray(N))throw 0}}catch(e){LHD.H=false;lhChartDraw();return}
  const H={};N.forEach(x=>{const d=noTgl(String(x.no));if(d<a||d>b)return;const e=H[d]||(H[d]={v:0,n:0});e.v+=+(x.n||{}).total||0;e.n++});LHD.H=H;lhChartDraw()}
 function lhRSet(a,b){if(!a||!b)return;if(a>b)[a,b]=[b,a];const mn=hariOffD(b,-365);if(a<mn)a=mn;LHR={a,b};const x=$('#lhd1'),y=$('#lhd2');if(x)x.value=a;if(y)y.value=b;lhHist()}
@@ -1860,7 +1902,7 @@ function lhPdfSimpan(){const pp=$('#lhpp');if(!pp)return;const zz=pp.style.zoom;
  const dt=document.title;document.title='Laporan '+fnTgl(lhA(),lhB());const back=()=>{document.title=dt;window.removeEventListener('afterprint',back)};window.addEventListener('afterprint',back);
  setTimeout(()=>window.print(),80)}
 function lhTutup(){const e=$('#lhf');e&&e.remove()}
-function lhRender(){if(mode!=='kasir')return;const R=lhHitung(),ok=!LHD.msg;let el=$('#lhf');if(!el){el=document.createElement('div');el.id='lhf';document.body.appendChild(el)}
+function lhRender(){if(RPT.on){rptHarian();return}if(mode!=='kasir')return;const R=lhHitung(),ok=!LHD.msg;let el=$('#lhf');if(!el){el=document.createElement('div');el.id='lhf';document.body.appendChild(el)}
  el.className='lhx lhf';
  el.innerHTML=`<div class="lhh"><button class="g" onclick="lhTutup()">← Kembali</button><div style="text-align:center;flex:1"><b style="font-size:20px">📊 Laporan Harian</b><div style="color:#555;font-size:13px">${esc(CFG.resto||'')} · ${lhTgl()}</div></div>${ok?'<button class="g" onclick="lhPdf()" style="background:#a93226;color:#fff">📄 PDF</button><button class="g" onclick="lhXls()" style="background:#1e7a46;color:#fff">📗 Excel</button><button onclick="lhCetak()">🖨 Cetak</button><button id="lhwa" class="wab" onclick="lhWa()">'+WA_SVG+'Kirim WA</button>':'<button class="g" onclick="lhBuka(1)">↻ Muat ulang</button>'}</div>
  ${ok?`<div class="lhcard" id="lhch">${lhCtl()}</div>${lhFilter()}<div class="lhg"><div class="lhc">${lhRingkas()}</div><div class="lhc">${lhKiri()}</div><div class="lhc">${lhTransaksi(R)}</div></div>${lhMgr()}`:`<p class="leg" style="text-align:center;padding:30px">${LHD.msg}</p>`}`
@@ -2034,10 +2076,11 @@ async function cekPin(p){if(!p)return false;if(!U)return localUsers().some(u=>u.
 const AKL={kasir:'k',pelayan:'p',admin:'a'},hasAk=(S,as)=>!!S&&(S.role==='super'||String(S.ak||'').includes(AKL[as]));
 let lgAs='admin';
 function bukaAdmin(){AUTH={};loginUI('admin')}
-function loginUI(as){lgAs=as;const t={kasir:'Kasir',pelayan:'Pelayan (HP)',admin:'Admin'}[as];
- mdlEl().innerHTML=`<div class="mbox rvf"><h2>🔐 Login ${t}</h2><label>ID</label><input id="lgi" autocomplete="username" autocapitalize="none" value="${esc((SES&&SES.id)||'')}"><label>Password</label><input id="lgp" type="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')loginOk()"><div class="mt"><button class="g" onclick="loginBatal()">Batal</button><button onclick="loginOk()">Masuk</button></div></div>`;
- setTimeout(()=>{const e=$((SES&&SES.id)?'#lgp':'#lgi');e&&e.focus()},50)}
-function loginBatal(){tutupPay();if(lgAs!=='admin'){location.hash='';location.reload()}}
+function bukaReport(){RPT.login=true;AUTH={};loginUI('admin')}
+function loginUI(as){lgAs=as;const t=RPT.login&&as==='admin'?'Admin · Report':{kasir:'Kasir',pelayan:'Pelayan (HP)',admin:'Admin'}[as];
+ mdlEl().innerHTML=`<div class="mbox rvf"><h2>🔐 Login ${t}</h2>${RPT.login?'<p style="margin:0 0 4px;color:#7a6a3a;font-size:13px">Halaman Report hanya untuk ID dengan akses Admin. Password wajib diisi.</p>':''}<label>ID</label><input id="lgi" autocomplete="username" autocapitalize="none" value="${RPT.login?'':esc((SES&&SES.id)||'')}"><label>Password</label><input id="lgp" type="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')loginOk()"><div class="mt"><button class="g" onclick="loginBatal()">Batal</button><button onclick="loginOk()">Masuk</button></div></div>`;
+ setTimeout(()=>{const e=$((SES&&SES.id&&!RPT.login)?'#lgp':'#lgi');e&&e.focus()},50)}
+function loginBatal(){RPT.login=false;tutupPay();if(lgAs!=='admin'){location.hash='';location.reload()}}
 async function loginOk(){const id=($('#lgi').value||'').trim(),pw=$('#lgp').value||'',as=lgAs;if(!id||!pw)return alert('Isi ID dan password');
  let S=null;
  if(!U){const u=localUsers().find(x=>x.id.toLowerCase()===id.toLowerCase());
@@ -2049,6 +2092,7 @@ async function loginOk(){const id=($('#lgi').value||'').trim(),pw=$('#lgp').valu
   if(!j||j.err==='login')return alert('ID atau password salah');if(j.err==='lock')return alert('Terlalu banyak percobaan salah. Coba lagi 10 menit lagi.');
   if(j.err==='akses')return alert('ID ini tidak punya akses ke '+as+'.');if(!j.tk)return alert('Login gagal');S={tk:j.tk,id:j.id,role:j.role,ak:j.ak}}
  tutupPay();
+ if(as==='admin'&&RPT.login){RPT.login=false;rptOpen(S);return}
  if(as==='admin'){AUTH=S;adm=true;atab='meja';load(true).then(()=>{MN=JSON.parse(JSON.stringify(MENU));MC=null;PP=null;BY=null;AL=null;JB=null;LG=undefined;TP=null;PR=JSON.parse(JSON.stringify(CFG.promo||[]));DC=dcepat().slice();OKC=null;admin()})}
  else{SES=S;try{localStorage.SES=JSON.stringify(S)}catch(e){}start()}}
 async function logout(){if(!confirm('Keluar dari ID '+curId()+'?'))return;await post({action:'logout'},true);SES=null;try{localStorage.removeItem('SES')}catch(e){}location.hash='';location.reload()}
@@ -2455,16 +2499,17 @@ document.addEventListener('keydown',e=>{
 },true);
 ['pointerdown','touchstart'].forEach(ev=>document.addEventListener(ev,()=>{if(onl)onlTimer()},true));
 let lpT=null,lpX=0,lpY=0,lpFired=0;
-function lpOk(e){if(adm||document.querySelector('#mdl'))return false;
+function lpOk(e){if(adm||RPT.on||RPT.login||document.querySelector('#mdl'))return false;
+ if(document.querySelector('.hm'))return true;
  if(mode==='pelayan')return sel==null&&vw!=='list';
  if(mode==='kasir')return !!(e.target.closest&&e.target.closest('header'));return false}
 document.addEventListener('pointerdown',e=>{clearTimeout(lpT);if(!lpOk(e))return;lpX=e.clientX;lpY=e.clientY;
  const hide=onl; // tahan 2 detik: tersembunyi → tampilkan, terlihat → sembunyikan
- lpT=setTimeout(()=>{lpFired=Date.now();setOnl(!hide)},hideTahan()*1000)},true);
+ lpT=setTimeout(()=>{lpFired=Date.now();if(document.querySelector('.hm'))rptBtn(!RPT.btn);else setOnl(!hide)},hideTahan()*1000)},true);
 ['pointerup','pointercancel'].forEach(ev=>document.addEventListener(ev,()=>clearTimeout(lpT),true));
 document.addEventListener('pointermove',e=>{if(lpT&&Math.hypot(e.clientX-lpX,e.clientY-lpY)>12)clearTimeout(lpT)},true);
 document.addEventListener('click',e=>{if(lpFired&&Date.now()-lpFired<800){e.stopPropagation();e.preventDefault();lpFired=0}},true);
-document.addEventListener('contextmenu',e=>{if(lpT&&mode==='pelayan')e.preventDefault()},true);
+document.addEventListener('contextmenu',e=>{if(lpT&&(mode==='pelayan'||document.querySelector('.hm')))e.preventDefault()},true);
 document.addEventListener('selectstart',e=>{if(lpT)e.preventDefault()},true);
 start();
 /* ===== bar filter tanggal seragam ===== */
@@ -2570,6 +2615,63 @@ async function bkUi(){const m=$('#bks');if(!m)return;const D=await bkLoad(),S=bk
  <div class="bzf"><span>Status: ${esc(BK.busy?'Menyalin...':BK.st||(D.ts?'Terakhir '+new Date(D.ts).toLocaleString('id-ID'):'Belum pernah disalin'))}</span><span class="bzb"><button type="button" onclick="bkSync(false)" ${BK.busy?'disabled':''}>🔄 Simpan sekarang</button><button type="button" class="g" onclick="if(confirm('Muat ulang semua data 2 tahun terakhir dari server? Bisa beberapa menit.'))bkSync(true)">♻ Muat ulang penuh</button></span></div>
  <small style="color:#777">File: resto-penuh.xlsx/.json di folder Data penuh, resto-terbatas.xlsx/.json di folder Data terbatas (ditimpa tiap simpan). Nota yang dihapus/diedit Super Admin lama tidak ikut berubah sampai "Muat ulang penuh".</small>`}
 
+/* ===== REPORT: halaman tersembunyi di layar awal (tahan layar 2 detik). Wajib login ID Admin + password. Gabungan Laporan Harian & Report Admin ===== */
+function rptBtn(v){RPT.btn=v;clearTimeout(RPT.t);const e=$('#rptb');if(e)e.classList.toggle('on',v);if(v)RPT.t=setTimeout(()=>rptBtn(false),hideAuto()*60000)}
+const RPT_PRE=()=>[["Hari ini",hari(),hari()],["Kemarin",hariOff(-1),hariOff(-1)],["7 hari",hariOff(-6),hari()],["30 hari",hariOff(-29),hari()],["Bulan ini",hari().slice(0,8)+"01",hari()]];
+function rptFilter(){return `<div class="rpxft"><span>🗓 Periode laporan</span><b id="rptP">${esc(lhTgl())}</b></div>${dfBar({d:"rpxd",s:"rpxs",vd:lhA(),vs:lhB(),max:1,fd:"rptSet(this.value,$('#rpxs').value)",fs:"rptSet($('#rpxd').value,this.value)",set:"rptSet",pre:RPT_PRE()})}`}
+function rptShell(){const S=RPT.S||{},id=S.id||'-';
+ return `<div class="rpxh"><button class="rpxb" onclick="rptTutup()" title="Tutup Report (Esc)">${HI.x}<span>Tutup</span></button><div class="rpxtt"><small>${esc(CFG.resto||'')}</small><b>REPORT</b></div><div class="rpxu"><i class="hav">${esc(String(id).charAt(0).toUpperCase())}</i><span>${esc(id)}</span></div></div>
+ <div class="rpxbody"><section class="rpxc rpxt30" id="rptT"></section><div class="rpxf" id="rpxf">${rptFilter()}</div><div class="rpxk" id="rptK">${rptKpi(null)}</div><div id="rptM"><p class="rpxm">Memuat...</p></div><div id="rpt" style="display:none"></div></div>`}
+function rptKpi(R){const it=R?[['Total Penjualan',rp(R.total),'#1e7a52'],['Jumlah Nota',R.n,'#2b5d9a'],['Pengeluaran',rp(R.keluar),'#b03a2e'],['Penjualan − Pengeluaran',rp(R.total-R.keluar),'#5b3a70'],['Uang Cash',(R.uang<0?'-':'')+rp(Math.abs(R.uang)),'#a77d16']]:['Total Penjualan','Jumlah Nota','Pengeluaran','Penjualan − Pengeluaran','Uang Cash'].map(x=>[x,'',' #bbb']);
+ return it.map(x=>`<div style="--c:${x[2].trim()}"><small>${x[0]}</small><b>${R?x[1]:'<span class="rpxsk"></span>'}</b></div>`).join('')}
+const rpxC=(t,b,w)=>`<section class="rpxc${w?' '+w:''}"><h4>${t}</h4>${b}</section>`;
+const rpxEmpty='<p class="rpxe">Belum ada data pada periode ini.</p>';
+function rptRender(){const el=$('#rptM');if(!el)return;const p=$('#rptP');if(p)p.textContent=lhTgl();const k=$('#rptK');
+ if(LHD.msg){el.innerHTML=`<p class="rpxm">${esc(LHD.msg)}${/^Gagal/.test(LHD.msg)?' <button class="g" onclick="lhBuka(1);rpCari()">↻ Muat ulang</button>':''}</p>`;if(k)k.innerHTML=rptKpi(null);return}
+ const R=lhHitung(),A=rp0.R,I=lhItems(),ks=LHK.filter(x=>I.C[x[0]]);if(k)k.innerHTML=rptKpi(R);
+ const lun=R.lunasCash?`<span>+ Pelunasan utang (cash) <b>${rp(R.lunasCash)}</b></span>`:'';
+ const fm1=`<div class="rpxfm"><span>Modal awal <b>${rp(R.modal)}</b></span><span>+ Cash masuk <b>${rp(R.cash)}</b></span>${lun}<span>− Pengeluaran <b>${rp(R.keluar)}</b></span><span class="eq">= Uang Cash <b>${R.uang<0?'-':''}${rp(Math.abs(R.uang))}</b></span></div>`;
+ let chips='',trend=rpxEmpty,pay=rpxEmpty,top=rpxEmpty,bya=rpxEmpty,nom=rpxEmpty;
+ if(!A){chips='<div class="rpxs">'+'<span class="rpxsk"></span>'.repeat(6)+'</div>';trend=pay=top=bya=nom='<span class="rpxsk" style="height:90px"></span>'}
+ else{const cp=(l,v,c)=>`<div${c?` class="${c}"`:''}><small>${l}</small><b>${v}</b></div>`;
+  chips=`<div class="rpxs">${cp('Porsi terjual',A.porsi)}${cp('Rata-rata / nota',rp(A.n?Math.round(A.bersih/A.n):0))}${cp('Penjualan kotor',rp(A.kotor))}${cp('Diskon',rp(A.dItem+A.dTot),(A.dItem+A.dTot)?'m':'')}${cp('Utang belum diterima',rp(A.utang),A.utang?'m':'')}${cp('Pembatalan',A.batal.n?A.batal.n+' item · '+rp(A.batal.nilai):'-',A.batal.n?'m':'')}</div>`;
+  const multi=Object.keys(A.hari).length>1||rpDates(rp0.dari||'',rp0.sampai||'').length>1;
+  trend=multi?rpTrend(A):(Object.keys(A.jam).length?rpCols(Array.from({length:24},(_,h)=>String(h).padStart(2,'0')),Array.from({length:24},(_,h)=>(A.jam[h]||{}).v||0),'#2b5d9a'):rpxEmpty);
+  pay=rpDonut(Object.keys(A.met).map(x=>({label:x,val:A.met[x].v})),rpFull)||rpxEmpty;
+  top=rpHBar(Object.keys(A.menu).map(x=>A.menu[x]).sort((a,b)=>b.qty-a.qty).slice(0,6).map(e=>({label:e.nama,val:e.qty})),v=>v+' porsi','#d98324')||rpxEmpty;
+  nom=rpHBar(Object.keys(A.menu).map(x=>A.menu[x]).sort((a,b)=>b.v-a.v).slice(0,6).map(e=>({label:e.nama,val:e.v})),rpFull,'#2b5d9a')||rpxEmpty;
+  bya=(rpHBar(Object.keys(A.biaya.ket).map(x=>({label:A.biaya.ket[x].ket,val:A.biaya.ket[x].v})).sort((a,b)=>b.val-a.val).slice(0,5),rpFull,'#b03a2e')||rpxEmpty)+`<div class="rpxn2">${A.biaya.n} catatan · Total <b>${rp(A.biaya.total)}</b></div>`}
+ const per=ks.length?`<div class="rpxjg">${ks.map(([k,nm,col,ic])=>{const c=I.C[k],m={};['Makanan','Minuman'].forEach(t=>Object.values((c.g||{})[t]||{}).forEach(x=>{const e=m[x.nama]||(m[x.nama]={label:x.nama,val:0});e.val+=x.qty}));const L=Object.values(m).sort((a,b)=>b.val-a.val).slice(0,4);return `<div><div class="rpxjh" style="--c:${col}"><span>${ic} ${nm}</span><small>${c.porsi} porsi</small></div>${rpHBar(L,v=>v+' porsi',col)||rpxEmpty}</div>`}).join('')}</div>`:rpxEmpty;
+ const jenis=ks.length?rpHBar(ks.map(([x,nm])=>({label:nm,val:I.C[x].net})),rpFull,'#2d6a4f'):rpxEmpty;
+ el.innerHTML=fm1+chips+`<div class="rpxg">${rpxC(Object.keys((A||{hari:{}}).hari).length>1?'📈 Tren penjualan &amp; biaya':'🕒 Penjualan per jam',trend,'w2')}${rpxC('💳 Jenis pembayaran',pay)}${rpxC('🍽 Jenis pembelian',jenis)}${rpxC('🏆 Menu terlaris · porsi',top)}${rpxC('💰 Menu terlaris · nominal',nom)}${rpxC('💸 Pengeluaran',bya)}${rpxC('🍽 Menu terlaris per jenis pembelian (porsi)',per,'w2')}</div>${A&&A.cut?'<p class="rpxe" style="color:#b03a2e">Data terlalu banyak dan dipotong. Persempit periode.</p>':''}`}
+function rptHarian(){rptRender()}
+async function rptT30(){const b=hari(),a=hariOff(-29);let N;RPT.H=null;rptT30Draw();
+ try{if(!U)N=J('NT',[]);else{const r=await fetch(gq({nota:'1',dari:a,sampai:b}));N=await r.json();if(!Array.isArray(N))throw 0}}catch(e){if(RPT.on){RPT.H=false;rptT30Draw()}return}
+ if(!RPT.on)return;const H={};N.forEach(x=>{const d=noTgl(String(x.no));if(d<a||d>b)return;H[d]=(H[d]||0)+(+(x.n||{}).total||0)});RPT.H=H;rptT30Draw()}
+function rptT30Draw(){const el=$('#rptT');if(!el)return;const H=RPT.H,hd='<h4>📈 Penjualan 30 hari terakhir<span class="rpxlg"><i style="background:#1d6fd1"></i>Sabtu<i style="background:#d0312d"></i>Minggu</span></h4>';
+ if(H===null){el.innerHTML=hd+'<span class="rpxsk" style="height:150px"></span>';return}
+ if(H===false){el.innerHTML=hd+'<p class="rpxe">Gagal memuat grafik. <button class="g" onclick="rptT30()">↻ Muat ulang</button></p>';return}
+ const days=rpDates(hariOff(-29),hari()),v=days.map(d=>H[d]||0),tot=v.reduce((x,y)=>x+y,0),mxv=Math.max(...v),mi=v.indexOf(mxv),act=v.filter(x=>x>0).length;
+ const W=Math.max(320,Math.round((el.clientWidth||900)-34)),Ht=W<520?112:96,pl=W<520?44:56,pr=24,pt=10,pb=22,stp=Math.ceil(56/((W-pl-pr)/29)),mx=Math.max(1,mxv),X=i=>pl+i*(W-pl-pr)/(days.length-1),Y=x=>pt+(Ht-pt-pb)*(1-x/mx);let g='';
+ for(let t=0;t<=2;t++){const x=mx*t/2,y=Y(x);g+=`<line x1="${pl}" x2="${W-pr}" y1="${y}" y2="${y}" stroke="${t?'#e6e2d6':'#b9b4a4'}"/><text x="${pl-8}" y="${y+4}" text-anchor="end" font-size="11" fill="#6b6a60">${fm(Math.round(x))}</text>`}
+ const SB='#1d6fd1',SM='#d0312d',wd=d=>new Date(d+'T00:00:00').getDay(),sp=(W-pl-pr)/(days.length-1);
+ days.forEach((d,i)=>{const w=wd(d),c=w===6?SB:w===0?SM:'#6b6a60',all=sp>=44,dd=sp>=22;if(all||dd||(days.length-1-i)%stp===0)g+=`<text x="${X(i)}" y="${Ht-6}" text-anchor="middle" font-size="${all?11:10}" fill="${c}" font-weight="${w===6||w===0?700:400}">${all||!dd?d.slice(8)+'/'+d.slice(5,7):d.slice(8)}</text>`});
+ const pts=v.map((x,i)=>X(i)+','+Y(x)).join(' ');
+ g=`<defs><linearGradient id="rptg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#2b5d9a" stop-opacity=".28"/><stop offset="1" stop-color="#2b5d9a" stop-opacity="0"/></linearGradient></defs>`+g+`<polygon points="${X(0)},${Y(0)} ${pts} ${X(days.length-1)},${Y(0)}" fill="url(#rptg)"/><polyline points="${pts}" fill="none" stroke="#2b5d9a" stroke-width="2.4" stroke-linejoin="round"/>`;
+ v.forEach((x,i)=>{g+=`<circle cx="${X(i)}" cy="${Y(x)}" r="${i===mi&&x>0?4.2:(wd(days[i])===6||wd(days[i])===0?3.2:2.2)}" fill="${i===mi&&x>0?'#a77d16':wd(days[i])===6?SB:wd(days[i])===0?SM:'#2b5d9a'}" stroke="#fff" stroke-width="1.2"><title>${['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'][wd(days[i])]}, ${tglF(days[i])}: ${rpFull(x)}</title></circle>`});
+ el.innerHTML=hd+`<div class="rpxts"><div><small>Total 30 hari</small><b>${rp(tot)}</b></div><div><small>Rata-rata / hari</small><b>${rp(Math.round(tot/30))}</b></div><div><small>Hari tertinggi</small><b>${mxv>0?rp(mxv)+' · '+days[mi].slice(8)+'/'+days[mi].slice(5,7):'-'}</b></div><div><small>Hari ada penjualan</small><b>${act} hari</b></div></div><svg viewBox="0 0 ${W} ${Ht}" style="width:100%;height:auto;display:block">${g}</svg>`}
+
+function rptSet(a,b){if(!a||!b)return;if(a>b)[a,b]=[b,a];LHF={a,b};rp0.dari=a;rp0.sampai=b;const x=$('#rpxd'),y=$('#rpxs');if(x)x.value=a;if(y)y.value=b;dfSync();lhBuka(1);rpCari()}
+async function rptOpen(S){RPT.on=true;RPT.S=S;RPT.tab='a';rptBtn(false);
+ let el=$('#rpx');if(el)el.remove();const t=hari();LHF={a:t,b:t};LHR={a:'',b:''};LHD={N:[],B:[],msg:'Memuat...',H:null};rp0={dari:t,sampai:t,D:null,R:null,msg:''};
+ el=document.createElement('div');el.id='rpx';el.className='lhx rpx';document.body.appendChild(el);document.documentElement.style.overflow='hidden';el.innerHTML=rptShell();
+ try{await load(true)}catch(e){}
+ if(!RPT.on)return;const h=$('.rpxh .rpxtt small');if(h)h.textContent=CFG.resto||'';
+ lhBuka(1);rpCari();rptT30()}
+function rptTutup(silent){const e=$('#rpx');if(e)e.remove();lhPdfTutup();document.documentElement.style.overflow='';
+ if(RPT.on&&RPT.S&&!silent&&U){try{post({action:'logout'},true)}catch(x){}}
+ RPT.on=false;RPT.S=null;LHD={N:[],B:[],msg:''};rp0={dari:'',sampai:'',D:null,R:null,msg:''};if(document.querySelector('.hm'))app.innerHTML=homeHtml()}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&RPT.on&&!$('#lhpdf')&&!$('#mdl'))rptTutup()});
 /* ===== END DAY: simpan semua transaksi hari ini (server -> komputer & Google Sheet) ===== */
 let EDB=false;
 const ED_ICO='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8"/><path d="M7 3v5h8"/></svg>';

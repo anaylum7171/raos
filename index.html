@@ -641,7 +641,7 @@ const rr=()=>mode==='kasir'?pnl():pel();
 const J=(k,d)=>{try{return JSON.parse(localStorage[k])||d}catch(e){return d}};
 
 async function load(force){const t0=Date.now(),w0=wv;try{
- if(U){const r=await(await fetch(gq(mode==='kasir'&&!adm?{hb:'1'}:{}))).json();if(r&&r.err==='auth'){if(r.resto)CFG.resto=r.resto;if(mode==='kasir'||mode==='pelayan'||adm)authLost();return}if(!force&&(wv!==w0||Date.now()-lw<2500))return;O=r.orders||{};M=r.meja&&r.meja.length?r.meja:DEF;MENU=r.menu&&r.menu.length?r.menu:DEFMENU.map(x=>({...x}));CFG={...DEFCFG,...(r.cfg||{})};RV=r.resv||[];SO=(r.habis||[]).map(String);if(mode==='pelayan'&&!adm)kofSet(r.kasirAge)}
+ if(U){const r=await(await fetch(gq(mode==='kasir'&&!adm?{hb:'1'}:{}))).json();if(r&&r.err==='auth'){if(r.resto){CFG.resto=r.resto;CFG.alamat=r.alamat||'';if(r.logo)CFG.logo=r.logo;else delete CFG.logo}if(mode==='kasir'||mode==='pelayan'||adm)authLost();return}if(!force&&(wv!==w0||Date.now()-lw<2500))return;O=r.orders||{};M=r.meja&&r.meja.length?r.meja:DEF;MENU=r.menu&&r.menu.length?r.menu:DEFMENU.map(x=>({...x}));CFG={...DEFCFG,...(r.cfg||{})};RV=r.resv||[];SO=(r.habis||[]).map(String);if(mode==='pelayan'&&!adm)kofSet(r.kasirAge)}
  else{O=J('O',{});RV=J('RV',[]);SO=J('SO',[]);M=J('M',DEF);MENU=J('MENU',DEFMENU.map(x=>({...x})));CFG={...DEFCFG,...J('CFG',{})}}
  ST=U?'● online '+((Date.now()-t0)/1000).toFixed(1)+'s':OFS.on?'⚠ OFFLINE':'● lokal (tes)'}catch(e){ST='⚠ gagal sambung ('+location.protocol+' · '+((e&&e.message)||e)+')'}
  $('#st')&&($('#st').textContent=ST)}

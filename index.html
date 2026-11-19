@@ -537,7 +537,7 @@ html.rg .rvr,html.rg .nlr{padding-top:5px;padding-bottom:5px}
 <div id="app"></div><div id="pr"></div>
 <script>
 /* ====== HUBUNGKAN GOOGLE SHEET: tempel URL Web App (berakhiran /exec) di antara tanda kutip, lalu simpan file ====== */
-const SHEET_URL='';
+const SHEET_URL='https://resto-api.dapurraos.workers.dev';
 /* Kecepatan baca data (milidetik). Makin kecil makin cepat, tapi makin banyak permintaan ke Google. */
 const POLLS=(()=>{try{return JSON.parse(localStorage.getItem('POLLS')||'{}')}catch(e){return {}}})();const pn=(v,d,a,b)=>{v=Number(v);return v>=a&&v<=b?v:d};
 const POLL_KASIR=pn(POLLS.k,4,1,60)*1000,POLL_HP=pn(POLLS.h,6,1,60)*1000,BK_MS=pn(POLLS.b,5,1,60)*60000;
@@ -593,7 +593,7 @@ function tierOfM(m){const L=tarifList(),mp=(adm&&MC?MC.map:CFG.tarifMap)||{},k=t
 function tierDef(id){const m=M.find(x=>x.id==id);return m?tierOfM(m):1}
 const fmtR=el=>{const d=el.value.replace(/\D/g,'');el.value=d?(+d).toLocaleString('id-ID'):''};
 const prs=v=>+String(v).replace(/\D/g,'')||0;
-let U=(()=>{try{return (localStorage.getItem('SURL')||SHEET_URL).trim()}catch(e){return SHEET_URL.trim()}})(),O={},M=DEF,MENU=DEFMENU.map(x=>({...x})),CFG={...DEFCFG},ar='',mode=location.hash.slice(1),sel=null,cart={},tab='mk',notes={},vr={},RV=[],SO=[],soSig='',rf={},ST='',adm=false,vw='',atab='meja',MN=[],onl=false,onlT=null,AUTH={},SES=(()=>{try{return JSON.parse(localStorage.SES||'null')}catch(e){return null}})(),lostAuth=false;
+let U=SHEET_URL.trim(),O={},M=DEF,MENU=DEFMENU.map(x=>({...x})),CFG={...DEFCFG},ar='',mode=location.hash.slice(1),sel=null,cart={},tab='mk',notes={},vr={},RV=[],SO=[],soSig='',rf={},ST='',adm=false,vw='',atab='meja',MN=[],onl=false,onlT=null,AUTH={},SES=(()=>{try{return JSON.parse(localStorage.SES||'null')}catch(e){return null}})(),lostAuth=false;
 const app=$('#app');
 const okOf=o=>o?Math.max(0,Math.round(+o.ok||0)):0;
 const subt=o=>o?Math.max(0,o.items.reduce((a,i)=>a+i.harga*i.qty,0))+okOf(o):0;
@@ -1976,7 +1976,7 @@ const AKL={kasir:'k',pelayan:'p',admin:'a'},hasAk=(S,as)=>!!S&&(S.role==='super'
 let lgAs='admin';
 function bukaAdmin(){AUTH={};loginUI('admin')}
 function loginUI(as){lgAs=as;const t={kasir:'Kasir',pelayan:'Pelayan (HP)',admin:'Admin'}[as];
- mdlEl().innerHTML=`<div class="mbox rvf"><h2>🔐 Login ${t}</h2><label>ID</label><input id="lgi" autocomplete="username" autocapitalize="none" value="${esc((SES&&SES.id)||'')}"><label>Password</label><input id="lgp" type="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')loginOk()"><div class="mt"><button class="g" onclick="loginBatal()">Batal</button><button onclick="loginOk()">Masuk</button></div><div style="text-align:center;margin-top:8px"><a href="#" onclick="srvPrompt();return false" style="font-size:12px;color:#777">⚙ Alamat server</a></div></div>`;
+ mdlEl().innerHTML=`<div class="mbox rvf"><h2>🔐 Login ${t}</h2><label>ID</label><input id="lgi" autocomplete="username" autocapitalize="none" value="${esc((SES&&SES.id)||'')}"><label>Password</label><input id="lgp" type="password" autocomplete="current-password" onkeydown="if(event.key==='Enter')loginOk()"><div class="mt"><button class="g" onclick="loginBatal()">Batal</button><button onclick="loginOk()">Masuk</button></div></div>`;
  setTimeout(()=>{const e=$((SES&&SES.id)?'#lgp':'#lgi');e&&e.focus()},50)}
 function loginBatal(){tutupPay();if(lgAs!=='admin'){location.hash='';location.reload()}}
 async function loginOk(){const id=($('#lgi').value||'').trim(),pw=$('#lgp').value||'',as=lgAs;if(!id||!pw)return alert('Isi ID dan password');
@@ -2056,7 +2056,7 @@ if(atab=='report')h+=rpShell();
  if(atab=='ic'&&AUTH.role==='super')h+=icShell();
  if(atab=='set'){
   const PL=pp().l;
-  h+=`<div class="sec" style="--c:#0b6e8a"><h3>☁ Server data (Cloudflare Worker)</h3><label class="fld">Alamat server (SHEET_URL)</label><input id="csu" value="${esc(U)}" placeholder="https://resto-api.namaakun.workers.dev" autocapitalize="none"><div class="rowa" style="gap:14px;flex-wrap:wrap;align-items:flex-end;margin-top:6px"><div><label class="fld">Tarik data pesanan — Kasir (detik)</label><input id="cpk" type="number" min="1" max="60" step="1" value="${POLL_KASIR/1000}" style="width:110px"></div><div><label class="fld">Tarik data pesanan — HP (detik)</label><input id="cph" type="number" min="1" max="60" step="1" value="${POLL_HP/1000}" style="width:110px"></div><div><label class="fld">Salin cadangan kasir (menit)</label><input id="cpb" type="number" min="1" max="60" step="1" value="${BK_MS/60000}" style="width:110px"></div></div><small style="color:#777">Berlaku untuk perangkat ini saja (disimpan di browser perangkat). Kosongkan alamat = mode uji lokal. Makin kecil detik, makin cepat tampil tetapi makin banyak permintaan ke server. Halaman dimuat ulang setelah disimpan. Jadwal Google Sheet diatur di Apps Script (fungsi pasang).</small><div class="secsv"><button onclick="srvSet()">💾 Simpan &amp; muat ulang</button></div></div>
+  h+=`<div class="sec" style="--c:#0b6e8a"><h3>☁ Server data (Cloudflare Worker)</h3><div class="rowa" style="gap:14px;flex-wrap:wrap;align-items:flex-end"><div><label class="fld">Tarik data pesanan — Kasir (detik)</label><input id="cpk" type="number" min="1" max="60" step="1" value="${POLL_KASIR/1000}" style="width:110px"></div><div><label class="fld">Tarik data pesanan — HP (detik)</label><input id="cph" type="number" min="1" max="60" step="1" value="${POLL_HP/1000}" style="width:110px"></div><div><label class="fld">Salin cadangan kasir (menit)</label><input id="cpb" type="number" min="1" max="60" step="1" value="${BK_MS/60000}" style="width:110px"></div></div><small style="color:#777">Berlaku untuk perangkat ini saja (disimpan di browser perangkat). Makin kecil detik, makin cepat tampil tetapi makin banyak permintaan ke server. Halaman dimuat ulang setelah disimpan. Jadwal Google Sheet diatur di Apps Script (fungsi pasang).</small><div class="secsv"><button onclick="srvSet()">💾 Simpan &amp; muat ulang</button></div></div>
 <div class="sec" style="--c:#6b5b8a"><h3>🏪 Info restoran</h3><label class="fld">Nama restoran</label><input id="cn" value="${esc(CFG.resto)}"><label class="fld">Alamat (tampil di nota)</label><input id="ca" value="${esc(CFG.alamat)}">
 <label class="fld">Logo restoran (tampil di atas nota)</label><div class="rowa" style="gap:8px">${lgCur()?`<img src="${lgCur()}" style="max-height:48px;max-width:140px;border:1px solid #ccc;border-radius:6px;background:#fff">`:'<small style="color:#777">Belum ada logo</small>'}<label class="g" style="cursor:pointer;padding:5px 12px;border-radius:8px;background:#ddd;font-size:13px;margin:0">📁 ${lgCur()?'Ganti':'Upload'} logo<input type="file" accept="image/*" style="display:none" onchange="lgPilih(this)"></label>${lgCur()?'<button class="r" style="padding:4px 10px;font-size:13px" onclick="lgHapus()">🗑 Hapus</button>':''}</div>
 <small style="color:#777">Otomatis diperkecil dan dijadikan hitam-putih untuk printer nota. Klik Simpan pengaturan agar tersimpan.</small><div class="secsv"><button onclick="admSet()">💾 Simpan pengaturan</button></div></div>
@@ -2207,10 +2207,9 @@ async function arDel(i){const a=areas()[i],L=[...ltList()],k=L.indexOf(a);
  M=M.filter(m=>m.area!==a);L.splice(k,1);CFG.areaLt=L;if(Array.isArray(CFG.areaOrd))CFG.areaOrd=CFG.areaOrd.filter(x=>x!==a);[CFG.tarifMap,MC&&MC.map].forEach(mp=>{if(mp)delete mp[a]});await saveCfg();await post({action:'meja',list:M});admin()}
 /* urutan area: ▲▼ atau seret ⠿ */
 
-function srvSet(){let u=($('#csu').value||'').trim();if(u&&!/^https?:\/\//i.test(u))return alert('Alamat harus diawali https://');
- try{if(u)localStorage.setItem('SURL',u);else localStorage.removeItem('SURL');localStorage.setItem('POLLS',JSON.stringify({k:+$('#cpk').value||4,h:+$('#cph').value||6,b:+$('#cpb').value||5}))}catch(e){return alert('Gagal menyimpan: '+e.message)}
- if(u!==U){try{localStorage.removeItem('SES')}catch(e){}}location.reload()}
-function srvPrompt(){const u=prompt('Alamat server (https://...workers.dev). Kosongkan untuk mode uji lokal.',U||'');if(u===null)return;const v=u.trim();if(v&&!/^https?:\/\//i.test(v))return alert('Alamat harus diawali https://');try{if(v)localStorage.setItem('SURL',v);else localStorage.removeItem('SURL');localStorage.removeItem('SES')}catch(e){}location.reload()}
+function srvSet(){
+ try{localStorage.setItem('POLLS',JSON.stringify({k:+$('#cpk').value||4,h:+$('#cph').value||6,b:+$('#cpb').value||5}))}catch(e){return alert('Gagal menyimpan: '+e.message)}
+ location.reload()}
 const EYE_ON='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',EYE_OFF='<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/><path d="M3 3l18 18"/></svg>';
 const areaHid=a=>a==='Online'?!CFG.onShow:(Array.isArray(CFG.areaHide)&&CFG.areaHide.includes(a));
 async function arHide(i,hide){const a=areas()[i];
